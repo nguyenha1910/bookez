@@ -1,0 +1,24 @@
+:root {
+    /* CSS HEX */
+    --light-yellow: #f9c74f;
+    --light-red: #f9844a;
+    --bright-orange: #f8961e;
+    --light-orange: #ffbd75;
+    --orange: #f3722c;
+    --red: #f94144;
+    --white: white;
+}
+
+.navbar-custom{
+    background-color: var(--light-yellow);
+}
+
+.navbar-text{
+    color: var(--white);
+}
+
+/*.navbar-toggler{*/
+/*    !*border-radius: 1;*!*/
+/*    background-color: aqua;*/
+/*}*/
+
