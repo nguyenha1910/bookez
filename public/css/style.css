@@ -18,8 +18,7 @@
     color: var(--white);
 }
 
-/*.navbar-toggler{*/
-/*    !*border-radius: 1;*!*/
-/*    background-color: aqua;*/
-/*}*/
+.error_message{
+    color: var(--red);
+}
 
