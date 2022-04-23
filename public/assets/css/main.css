@@ -1,9 +1,31 @@
+:root {
+    /* CSS HEX */
+    --orange-brown: #ed862b;
+    --light-yellow: #ffe169;
+    /*--light-red: #f9844a;*/
+    /*--bright-orange: #f8961e;*/
+    /*--light-orange: #ffbd75;*/
+    /*--orange: #f3722c;*/
+    --red: #ff3c38;
+    --white: white;
+	--dark: black; 
+}
+
+
+
 /* Header */
-#head { background:#181015 url( ../images/bg_header.jpg) no-repeat; background-size: cover; min-height:520px; text-align: center; padding-top:240px; color:white; font-family:"Open sans", Helvetica, Arial; font-weight:300; }
+#head { 
+	background: url( ../../img/header_pic.jpg) no-repeat; 
+	background-size: cover; 
+	min-height:600px; 
+	text-align: center; 
+	padding-top:300px; 
+	color: var(--white); 
+	font-family:"Open sans", Helvetica, Arial; 
+	font-weight:800; }
 #head.secondary { height:100px; min-height: 100px; padding-top:0px; }
-	#head .lead { font-family:"Open sans", Helvetica, Arial; font-size:44px; margin-bottom:6px; color:white; line-height:1.15em; } 
+	#head .lead { font-family:"Open sans", Helvetica, Arial; font-size:60px; margin-bottom:6px; color:white; line-height:1.15em; } 
 	#head .tagline { color:rgba(255,255,255,0.75); margin-bottom:25px; }
-		#head .tagline a { color:#fff; } 
 	#head .btn { margin-bottom:10px;}
 	#head .btn-default { text-shadow: none; background:transparent; color:rgba(255,255,255,.5); -webkit-box-shadow:inset 0px 0px 0px 3px rgba(255,255,255,.5); -moz-box-shadow:inset 0px 0px 0px 3px rgba(255,255,255,.5); box-shadow:inset 0px 0px 0px 3px rgba(255,255,255,.5); background: transparent; }
 		#head .btn-default:hover,
@@ -30,10 +52,239 @@
 	.h-body { }
 
 
+
+/*Find us section*/
+#find-us .find-us-image {
+	width: 350px;
+	height: 350px;
+	object-fit: cover;
+	border-radius: 50%;
+	margin: 70px auto 10px auto;
+	display: block;
+}
+
+#find-us .info {
+	/* text-align: center; */
+	padding-top: 150px ;  
+	padding-left: 100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.css-grid {
+    display: grid; 
+    grid-template-columns: 30% 70%;
+}
+
+
+
+/* -------------------- Side Nav Bar -------------------- */
+.css-grid .col1 {
+    display: flex;
+}
+
+.css-grid .col2 {
+    z-index: 1;
+}
+
+.sidebar {
+    /* position: fixed; */
+    flex: 1 1 0; 
+    max-width: 300px;
+    padding: 2rem 1.25rem;
+}
+
+.sidebar.is-active {
+    /* position: fixed; */
+    flex: 1 1 0; 
+    /* max-width: 300px; */
+    padding: 2rem 1.25rem;
+    background-color: var(--primary);
+    z-index: 2;
+}
+
+.sidebar h3 {
+    font-size: 1.25rem; 
+    text-transform: uppercase;
+    margin-bottom: 0.5em;
+    color: var(--primary);
+}
+
+.sidebar.is-active h3 {
+    font-size: 1.25rem; 
+    text-transform: uppercase;
+    margin-bottom: 0.5em;
+    color: var(--light);
+    z-index: 2;
+}
+
+.sidebar .menu {
+    background-color: var(--light);
+    margin: 0 -1rem; 
+    border-bottom: none;
+}
+
+.sidebar.is-active .menu {
+    background-color: var(--primary);
+    margin: 0 -1rem; 
+    border-bottom: none;
+    z-index: 2;
+}
+
+.sidebar .menu .menu-item {
+    display: block; 
+    padding: 1em;
+    color: var(--dark);
+    text-decoration: none;
+    transition: 0.2s linear;
+}
+
+.sidebar.is-active .menu .menu-item {
+    display: block; 
+    padding: 1em;
+    color: var(--light);
+    text-decoration: none;
+    transition: 0.2s linear;
+    z-index: 2;
+}
+
+.sidebar .menu .menu-item:hover,
+.sidebar .menu .menu-item.is-active {
+    color: var(--primary);
+    border-right: 5px solid var(--primary);
+}
+
+.sidebar.is-active .menu .menu-item:hover {
+    color: var(--dark);
+    border-right: 5px solid var(--dark);
+}
+
+.menu-toggle {
+    display: none; 
+    position: fixed;
+    top: 5rem; 
+    right: 1.5rem; 
+    width: 60px; 
+    height: 60px; 
+    border-radius: 99px; 
+    background-color: var(--primary);
+    cursor: pointer; 
+}
+
+.hamburger {
+    position: relative; 
+    top: calc(50% - 2px); 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    width: 32px; 
+}
+
+.hamburger > span, 
+.hamburger > span::before, 
+.hamburger > span::after {
+    display: block; 
+    position: absolute; 
+    width: 100%; 
+    height: 4px; 
+    border-radius: 99px;
+    background-color: var(--light); 
+    transition-duration: .25s;
+}
+
+.hamburger > span::before {
+    content: '';
+    top: -8px; 
+}
+
+.hamburger > span::after {
+    content: '';
+    top: 8px; 
+}
+
+.menu-toggle.is-active .hamburger > span {
+    transform: rotate(45deg);
+}
+.menu-toggle.is-active .hamburger > span::before {
+    top: 0; 
+    transform: rotate(0deg); 
+}
+.menu-toggle.is-active .hamburger > span::after {
+    top: 0; 
+    transform: rotate(90deg); 
+}
+
+@media (max-width: 1024px) {
+    .sidebar {
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .content {
+        padding-top: 8rem;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0; 
+        left: -300px;
+        height: 100vh; 
+        width: 100%; 
+        max-width: 300px;
+        transition: 0.2s linear; 
+    }
+
+    .sidebar.is-active {
+        left: 0; 
+    }
+}
+
+
+/* Order-list */
+#order_list li {
+	list-style: none;
+	
+}
+
+
+
+
+.pagination {
+	padding-right: 0;
+	justify-content: right;
+	margin-right: 0;
+	margin: auto auto 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* Typography */
-h1, h2, h3, h4, h5, h6 { font-family:"Open sans", Helvetica, Arial; }
+/* h1, h2, h3, h4, h5, h6 { font-family:"Open sans", Helvetica, Arial; }
 h1, .h1, h2, .h2, h3, .h3 { margin-top:30px; } 
-blockquote { font-style: italic; font-family: Georgia; color:#999; margin:30px 0 30px; }
+blockquote { font-style: italic; font-family: Georgia; color:#999; margin:30px 0 30px; } */
 label { color: #777; }
 .thin { font-weight:300; }
 .page-title { margin-top:20px; font-weight:300; }
@@ -54,12 +305,11 @@ img.pull-left { margin-right: 10px; }
 	#social .wrapper { width:340px; margin:0 auto; }
 
 /* Main content block */
-.maincontent { }
 
 /* Sidebars */
-.sidebar { padding-top:36px; padding-bottom:30px; }
+/* .sidebar { padding-top:36px; padding-bottom:30px; }
 	.sidebar .widget { margin-bottom:20px; }
-	.sidebar h1, .sidebar .h1, .sidebar h2, .sidebar .h2, .sidebar h3, .sidebar .h3 { margin-top:20px; } 
+	.sidebar h1, .sidebar .h1, .sidebar h2, .sidebar .h2, .sidebar h3, .sidebar .h3 { margin-top:20px; }  */
 
 /* Footer */
 .footer1 { background: #232323; padding: 30px 0 0 0; font-size: 12px; color: #999; }

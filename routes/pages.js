@@ -2,12 +2,34 @@ const express = require('express');
 // const authController = require('../controllers/auth');          // load a module
 // const questionController = require('../controllers/question');   // load a module
 const router = express.Router();
+const path = require('path');
 
 
 router.get('/', (req,res) => {
-    console.log("get index");
-    res.sendFile(__dirname + "index.html");
+    res.sendFile( path.join(__dirname, "../views/index.html") );
 });
+
+
+router.get('/admin-orders', (req,res) => {
+    res.sendFile( path.join(__dirname, "../views/order-admin-page.html") );
+});
+
+router.get('/admin-donations', (req,res) => {
+    res.sendFile( path.join(__dirname, "../views/donation-admin-page.html") );
+});
+
+router.get('/signin', (req,res) => {
+    res.sendFile( path.join(__dirname, "../views/signin.html") );
+});
+
+router.get('/signup', (req,res) => {
+    res.sendFile( path.join(__dirname, "../views/signup.html") );
+});
+
+router.get('/each_order', (req,res) => {
+    res.sendFile( path.join(__dirname, "../views/each_order.html") );
+});
+
 
 
 // router.get('/questions_tagged/tag=:tag', authController.isLoggedIn, questionController.populateQuestionsWithTag, (req,res) => {

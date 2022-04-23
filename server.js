@@ -13,10 +13,6 @@ app.use(express.static(__dirname + "/public"));
 // define routes
 app.use('/', require('./routes/pages')); 
 
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + "/views/index.html");
-});
-
 
 
 
