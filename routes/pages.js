@@ -56,7 +56,6 @@ router.get('/book_list', (req,res) => {
 });
 
 router.get('/get_all_books', (req,res) => {
-    console.log('GET /get_all_books');
     Book.find(function (err, data) {
         if (err) {
             res.send({

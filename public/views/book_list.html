@@ -49,10 +49,10 @@
         <!-- Sort selection-->
         <div class="col-lg-3">
             <h6>Sort by</h6>
-            <select class="form-select">
-                <option value="book_name_sort" id="book_name_sort" onclick="update_books()">Book name</option>
-                <option value="author_name_sort" id="author_name_sort" onclick="update_books()">Author name</option>
-                <option value="price_sort" id="price_sort" onclick="update_books()">Price</option>
+            <select id="sortDropdown" class="form-select" onchange="update_books()">>
+                <option id="book_name_sort" value="book_name_sort">Book name</option>
+                <option id="author_name_sort" value="author_name_sort">Author name</option>
+                <option id="price_sort" value="price_sort">Price</option>
             </select>
         </div>
 
