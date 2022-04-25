@@ -44,16 +44,26 @@ $.getJSON("/get_all_books").done((data)=>{
     }
 });
 
+function sortAlpha(prop, a, b) {
+    if (a[prop] < b[prop]) {
+        return -1;
+    }
+    if (a[prop] > b[prop]) {
+        return 1;
+    }
+    return 0;
+}
 
-
-// $(document).ready(()=>{
-//     $.getJSON('/get_current_user').done((data)=>{
-//         if (data.message === "success"){
-//             const user = data.data;
-//             $('.login').remove();
-//             $('#showname').text(user.fullname);
-//         } else {
-//             $('.logout').remove();
-//         }
-//     });
-// });
+function update_books(){
+    const sort_by = $('#sortDropdown').val();
+    if (sort_by === "book_name_sort"){
+        bookData.sort((a, b) => sortAlpha("book_name", a, b));
+    } else if (sort_by === "author_name_sort"){
+        bookData.sort((a, b) => sortAlpha("author_name", a, b));
+    } else{
+        bookData.sort(function (a, b) {
+            return a.price - b.price;
+        });
+    }
+    showList(bookData);
+}
