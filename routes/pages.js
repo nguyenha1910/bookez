@@ -3,13 +3,33 @@ const express = require('express');
 // const questionController = require('../controllers/question');   // load a module
 const router = express.Router();
 const path = require('path');
+const mongoose = require("mongoose");
+
+mongoose.connect('mongodb://localhost:27017/bookDB',
+    {useNewUrlParser: true}, function () {
+        console.log("db connection successful");
+    });
+
+const bookSchema = {
+    book_name: {
+        type: String,
+        required: [true, "Book name cannot be empty"],
+    },
+    author_name: {
+        type: String,
+    },
+    price: {
+        type: Number,
+    }
+}
+
+const Book = mongoose.model('Book', bookSchema);
 
 
 router.get('/', (req,res) => {
     res.sendFile( path.join(__dirname, "../public/views/index.html") );
     // res.sendFile( "./views/index.html" );
 });
-
 
 router.get('/admin-orders', (req,res) => {
     res.sendFile( path.join(__dirname, "../public/views/order-admin-page.html") );
@@ -31,6 +51,48 @@ router.get('/each_order', (req,res) => {
     res.sendFile( path.join(__dirname, "../public/views/each_order.html") );
 });
 
+router.get('/book_list', (req,res) => {
+    res.sendFile( path.join(__dirname, "../public/views/book_list.html") );
+});
+
+router.get('/get_all_books', (req,res) => {
+    console.log('GET /get_all_books');
+    Book.find(function (err, data) {
+        if (err) {
+            res.send({
+                "message": "internal database error",
+                "data": []
+            });
+        } else {
+            res.send({
+                "message": "success",
+                "data": data
+            })
+        }
+    });
+});
+
+router.get('/get_book_by_id', (req,res) => {
+    res.sendFile( path.join(__dirname, "../public/views/book_detail.html") );
+});
+
+router.get('/get_cart_by_id', (req,res) => {
+    if (req.isAuthenticated()){
+        res.sendFile( path.join(__dirname, "../public/views/book_detail.html") );
+    }
+    else{
+        res.redirect("/signin");
+    }
+});
+
+router.get('/purchase', (req,res) => {
+    if (req.isAuthenticated()){
+        res.sendFile( path.join(__dirname, "../public/views/purchase.html") );
+    }
+    else{
+        res.redirect("/signin");
+    }
+});
 
 
 // router.get('/questions_tagged/tag=:tag', authController.isLoggedIn, questionController.populateQuestionsWithTag, (req,res) => {
@@ -161,10 +223,6 @@ router.get('/each_order', (req,res) => {
 //     delete req.session.message_fail;
 //     delete req.session.message_success;
 // });
-
-
-
-
 
 module.exports = router; 
 
