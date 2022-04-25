@@ -7,24 +7,30 @@
 <body>
 
 <section id="header_section">
-    <nav class="navbar navbar-inverse navbar-expand-lg navbar-custom">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">BookEZ</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link active navbar-text" aria-current="page" href="index.html">Purchase</a>
-                    <a class="nav-link active navbar-text" aria-current="page" href="index.html">Donate</a>
-                    <a class="nav-link active navbar-text" aria-current="page" href="index.html">About US</a>
-                    <a class="nav-link active navbar-text" aria-current="page" href="index.html">Admin Page</a>
-                    <a class="nav-link active navbar-text" aria-current="page" href="index.html">Sign in/Log out</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <div class="navbar navbar-inverse navbar-fixed-top headroom" >
+		<div class="container">
+			<div class="navbar-header">
+				<!-- Button for smallest screens -->
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+				<a class="navbar-brand" href="/"><img src="/favicon.ico" alt="BookEZ">  BookEZ</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav pull-right">
+					<li><a href="/">Home</a></li>
+					<li><a href="">About (not done)</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin zone <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="/admin-orders">Orders</a></li>
+							<li><a href="/admin-donations">Donations</a></li>
+						</ul>
+					</li>
+					<li><a href="">Contact</a></li>
+					<li><a class="btn" href="/signin">SIGN IN / SIGN UP</a></li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div>
+	</div> 
 </section>
 
 </body>
