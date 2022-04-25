@@ -6,28 +6,29 @@ const path = require('path');
 
 
 router.get('/', (req,res) => {
-    res.sendFile( path.join(__dirname, "../views/index.html") );
+    res.sendFile( path.join(__dirname, "../public/views/index.html") );
+    // res.sendFile( "./views/index.html" );
 });
 
 
 router.get('/admin-orders', (req,res) => {
-    res.sendFile( path.join(__dirname, "../views/order-admin-page.html") );
+    res.sendFile( path.join(__dirname, "../public/views/order-admin-page.html") );
 });
 
 router.get('/admin-donations', (req,res) => {
-    res.sendFile( path.join(__dirname, "../views/donation-admin-page.html") );
+    res.sendFile( path.join(__dirname, "../public/views/donation-admin-page.html") );
 });
 
 router.get('/signin', (req,res) => {
-    res.sendFile( path.join(__dirname, "../views/signin.html") );
+    res.sendFile( path.join(__dirname, "../public/views/signin.html") );
 });
 
 router.get('/signup', (req,res) => {
-    res.sendFile( path.join(__dirname, "../views/signup.html") );
+    res.sendFile( path.join(__dirname, "../public/views/signup.html") );
 });
 
 router.get('/each_order', (req,res) => {
-    res.sendFile( path.join(__dirname, "../views/each_order.html") );
+    res.sendFile( path.join(__dirname, "../public/views/each_order.html") );
 });
 
 
