@@ -17,7 +17,7 @@
 #head { 
 	background: url( ../../img/header_pic.jpg) no-repeat; 
 	background-size: cover; 
-	min-height:600px; 
+	min-height:800px; 
 	text-align: center; 
 	padding-top:300px; 
 	color: var(--white); 
