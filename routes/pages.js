@@ -4,6 +4,19 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 const mongoose = require("mongoose");
+const passportLocalMongoose = require("passport-local-mongoose");
+const passport = require("passport");
+const session = require("express-session");
+
+//Initialize passport
+router.use(session({
+    secret: "MyLittleSecretThatIdontWantOthersToKnow",
+    resave: false,
+    saveUninitialized: false
+}));
+router.use(passport.initialize());
+router.use(passport.session());
+
 
 mongoose.connect('mongodb://localhost:27017/bookDB',
     {useNewUrlParser: true}, function () {
@@ -25,6 +38,46 @@ const bookSchema = {
 
 const Book = mongoose.model('Book', bookSchema);
 
+const userSchema = new mongoose.Schema({
+    email: {
+        type: String,
+        unique: true,
+        required: [true, "Email cannot be empty"],
+        minLength: 2
+    },
+    fname: {
+        type: String,
+        required: [true, "Firstname cannot be empty"],
+    },
+    lname: {
+        type: String,
+        required: [true, "Lastname cannot be empty"],
+    },
+    password: {
+        type: String,
+        required: [true, "Password cannot be empty"],
+    },
+    user_type: {
+        type: String
+    },
+    cart:[
+        {
+            book_id: {type: mongoose.Schema.Types.ObjectId, ref: 'Book'}
+        }
+    ]
+});
+
+// User passportLocalMongoose to process userSchema
+userSchema.plugin(passportLocalMongoose, {
+    usernameField: 'email'
+});
+const User = mongoose.model('User', userSchema);
+
+passport.use(User.createStrategy());
+// Convert obj to binary data
+passport.serializeUser(User.serializeUser());
+// Convert binary data to obj
+passport.deserializeUser(User.deserializeUser());
 
 router.get('/', (req,res) => {
     res.sendFile( path.join(__dirname, "../public/views/index.html") );
@@ -51,6 +104,20 @@ router.get('/each_order', (req,res) => {
     res.sendFile( path.join(__dirname, "../public/views/each_order.html") );
 });
 
+router.get('/get_current_user', (req,res) => {
+    if (req.isAuthenticated()) {
+        res.send({
+            message: "success",
+            data: req.user
+        });
+    } else {
+        res.send({
+            message: "user not found",
+            data: {}
+        });
+    }
+});
+
 router.get('/book_list', (req,res) => {
     res.sendFile( path.join(__dirname, "../public/views/book_list.html") );
 });
@@ -72,17 +139,21 @@ router.get('/get_all_books', (req,res) => {
 });
 
 router.get('/get_book_by_id', (req,res) => {
-    res.sendFile( path.join(__dirname, "../public/views/book_detail.html") );
+    Book.find({"_id": req.query.book_id}, function (err, data) {
+        if (err || data.length === 0) {
+            res.send({
+                "message": "internal database error",
+                "data": {}
+            });
+        } else {
+            res.send({
+                "message": "success",
+                "data": data[0]
+            })
+        }
+    });
 });
 
-router.get('/get_cart_by_id', (req,res) => {
-    if (req.isAuthenticated()){
-        res.sendFile( path.join(__dirname, "../public/views/book_detail.html") );
-    }
-    else{
-        res.redirect("/signin");
-    }
-});
 
 router.get('/purchase', (req,res) => {
     if (req.isAuthenticated()){
