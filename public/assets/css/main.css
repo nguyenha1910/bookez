@@ -330,3 +330,50 @@ img.pull-left { margin-right: 10px; }
 
 	.widget-simplenav { margin-left:-5px; }		
 	.widget-simplenav a{ margin:0 5px; }		
+
+	
+	/* Added CSS */
+	#contacts {
+		margin-bottom: 3%;
+		height:200px;
+		text-align: left;
+		position:relative;
+		outline: 5px solid #000;
+	} 	
+
+	#names {
+		/* padding-top: 5%; */
+		position:absolute;
+		right: 50%;
+		bottom: 50%;
+
+	}
+	#email {
+		position:absolute;
+		right: 50%;
+		bottom: 30%;
+	}
+
+	#thankyou {
+		height:200px;
+		text-align:center;
+		/* padding-top:30px; */
+		outline: 5px solid #000;
+		margin-bottom:20px;
+	}
+
+	#donation {
+		height:500px;
+		text-align:center;
+		/* padding-top:30px; */
+		outline: 5px solid #000;
+	}
+
+	.button {
+		transition-duration: 0.4s;
+		}
+
+		.button:hover {
+		background-color: #000; /* Green */
+		color: white;
+	}
