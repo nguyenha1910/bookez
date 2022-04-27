@@ -31,18 +31,19 @@ router.get('/each_order', (req,res) => {
     res.sendFile( path.join(__dirname, "../public/views/each_order.html") );
 });
 
-// frontend pages
+// DAVID pages
 router.get('/about', (req,res) => {
     res.sendFile( path.join(__dirname, "../public/views/about.html") );
 });
 
-router.get('/thankyou', (req,res) => {
+router.get('/thank-you', (req,res) => {
     res.sendFile( path.join(__dirname, "../public/views/thankyou.html") );
 });
 
 router.get('/donation-form', (req,res) => {
     res.sendFile( path.join(__dirname, "../public/views/donation-form.html") );
 });
+
 
 // router.get('/questions_tagged/tag=:tag', authController.isLoggedIn, questionController.populateQuestionsWithTag, (req,res) => {
 //     if (req.user) {
