@@ -93,6 +93,8 @@ router.get('/admin-donations', (req,res) => {
 });
 
 router.get('/signin', (req,res) => {
+    // Test
+    console.log("GET /signin");
     res.sendFile( path.join(__dirname, "../public/views/signin.html") );
 });
 
