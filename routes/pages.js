@@ -92,6 +92,7 @@ router.get('/about', (req,res) => {
     res.sendFile( path.join(__dirname, "../public/views/about.html") );
 });
 
+
 router.get('/admin-orders', (req,res) => {
     res.sendFile( path.join(__dirname, "../public/views/order-admin-page.html") );
 });
@@ -112,6 +113,10 @@ router.get('/each_order', (req,res) => {
     res.sendFile( path.join(__dirname, "../public/views/each_order.html") );
 });
 
+router.get('/about', (req,res) => {
+    res.sendFile( path.join(__dirname, "../public/views/about.html") ); 
+}); 
+
 router.get('/get_current_user', (req,res) => {
     if (req.isAuthenticated()) {
         res.send({
@@ -130,22 +135,14 @@ router.get('/book_list', (req,res) => {
     res.sendFile( path.join(__dirname, "../public/views/book_list.html") );
 });
 
-router.get('/get_all_books', (req,res) => {
-    Book.find(function (err, data) {
-        if (err) {
-            res.send({
-                "message": "internal database error",
-                "data": []
-            });
-        } else {
-            res.send({
-                "message": "success",
-                "data": data
-            })
-        }
-    });
+router.get('/thank-you', (req,res) => {
+    res.sendFile( path.join(__dirname, "../public/views/thankyou.html") );
 });
 
+router.get('/donation-form', (req,res) => {
+    res.sendFile( path.join(__dirname, "../public/views/donation-form.html") );
+});
+  
 router.get('/get_book_by_id', (req,res) => {
     Book.find({"_id": req.query.book_id}, function (err, data) {
         if (err || data.length === 0) {
@@ -187,7 +184,8 @@ router.get('/purchase', (req,res) => {
 
 
 
+
+
+
+
 module.exports = router; 
-
-
-
