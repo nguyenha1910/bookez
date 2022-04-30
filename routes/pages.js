@@ -154,6 +154,53 @@ router.get('/get_book_by_id', (req,res) => {
     });
 });
 
+router.get('/get_cart_by_id', (req,res) => {
+    if (req.isAuthenticated()){
+        res.sendFile( path.join(__dirname, "../public/views/cart.html") );
+    }
+    else{
+        res.redirect("/signin");
+    }
+});
+
+router.post('/add_to_cart',(req, res)=>{
+    //Users need to log in to add a book to their cart
+    if (req.isAuthenticated) {
+        // Save the book to the cart list inside User schema
+        const book_id = req.body.book_id;
+        const user_id = req.user._id;
+        User.updateOne(
+            {
+                _id: user_id,
+                // 'cart.book_id': {$ne: book_id}
+            },
+            {
+                $push: {
+                    cart: book_id
+                }
+            },
+            {},
+            (err) => {
+                if (err) {
+                    res.send({
+                        message: "database error"
+                    });
+                } else {
+                    res.send({
+                        message: "success"
+                    });
+                }
+            }
+        );
+    } else {
+        // navigate to the login page
+        res.send({
+            message: "login required",
+            redr: "/signin.html"
+        });
+        res.redirect('/signin');
+    }
+});
 
 router.get('/purchase', (req,res) => {
     if (req.isAuthenticated()){
