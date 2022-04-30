@@ -56,6 +56,7 @@
 					<ul class="nav navbar-nav pull-right">
 						<li><a href="/">Home</a></li>
 						<li><a href="/about">About</a></li>
+
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin zone <b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -63,8 +64,16 @@
 								<li><a href="/admin-donations">Donations</a></li>
 							</ul>
 						</li>
-						<li><a href="/donation-form">Donate</a></li>
-						<li><a class="btn" href="/signin">SIGN IN / SIGN UP</a></li>
+
+						<li><a href="">Contact</a></li>
+						<li id="signin"><a class="btn" href="/signin">SIGN IN / SIGN UP</a></li>
+						<li class="dropdown" id="profile"> 
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="user_fname"></span>'s profile <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="">Profile page</a></li>
+								<li><a href="/auth/logout">Logout</a></li>
+							</ul>
+						</li>
 					</ul>
 				</div><!--/.nav-collapse -->
 			</div>
@@ -122,13 +131,13 @@
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 highlight">
-					<div class="h-caption"><h4><i class="fa fa-heart fa-5"></i>Chris Nguyen</h4></div>
+					<div class="h-caption"><h4><i class="fa fa-heart fa-5"></i>Step 3: Make the order </h4></div>
 					<div class="h-body text-center">
 						<p>I love BookEZ</p>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 highlight">
-					<div class="h-caption"><h4><i class="fa fa-smile-o fa-5"></i>Chris Nguyen</h4></div>
+					<div class="h-caption"><h4><i class="fa fa-smile-o fa-5"></i>Step 4: </h4></div>
 					<div class="h-body text-center">
 						<p>Me too</p>
 					</div>
