@@ -37,3 +37,15 @@ function showList(books) {
     });
 }
 
+$.getJSON("/get_cart_by_id").done((data)=>{
+    if (data.message === "success") {
+        console.log("file loaded");
+        // Get a list of book id
+        // GET request to find all books
+        // bookData = data.data;
+        // showList(bookData);
+    } else {
+        console.log("FE cant load data");
+    }
+});
+

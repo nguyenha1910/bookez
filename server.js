@@ -5,10 +5,7 @@ const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser'); 
 const mongoose = require('mongoose');
 var session = require('cookie-session');
-//Add sessions
-// const session = require('express-session');
-// const passport = require('passport');
-// const passportLocalMongoose = require('passport-local-mongoose');
+
 
 dotenv.config({ path: './.env'}); 
 
@@ -34,7 +31,8 @@ app.use(cookieParser());
 // define routes
 app.use('/', require('./routes/pages'));
 app.use('/auth', require('./routes/auth')); 
-app.use('/books', require('./routes/books')); 
+app.use('/books', require('./routes/books'));
+app.use('/order_and_donation', require('./routes/order_and_donation'));
 
 port_number = 3002;
 app.listen(port_number, function () {
