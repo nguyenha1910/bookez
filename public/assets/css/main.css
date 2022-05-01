@@ -22,10 +22,10 @@
 	text-align: center; 
 	padding-top:300px; 
 	color: var(--white); 
-	font-family:"Open sans", Helvetica, Arial; 
+	font-family: 'Karla', sans-serif;
 	font-weight:800; }
 #head.secondary { height:100px; min-height: 100px; padding-top:0px; }
-	#head .lead { font-family:"Open sans", Helvetica, Arial; font-size:60px; margin-bottom:6px; color:white; line-height:1.15em; } 
+	#head .lead { font-family: 'Karla', sans-serif;; font-size:60px; margin-bottom:6px; color:white; line-height:1.15em; } 
 	#head .tagline { color:rgba(255,255,255,0.75); margin-bottom:25px; }
 	#head .btn { margin-bottom:10px;}
 	#head .btn-default { text-shadow: none; background:transparent; color:rgba(255,255,255,.5); -webkit-box-shadow:inset 0px 0px 0px 3px rgba(255,255,255,.5); -moz-box-shadow:inset 0px 0px 0px 3px rgba(255,255,255,.5); box-shadow:inset 0px 0px 0px 3px rgba(255,255,255,.5); background: transparent; }
@@ -46,6 +46,7 @@
 
 
 /* Highlights (in jumbotron in most cases) */
+.highlight { margin-top:40px;}
 	.h-caption { text-align: center; } 
 	.h-caption i { display:block; font-size: 54px; color:#382526; margin-bottom:36px; }
 	.h-caption h4 { color:#382526; font-size: 16px; font-weight: bold; margin-bottom:20px; }
@@ -69,8 +70,6 @@
 	padding-left: 100px;
 }
 
-<<<<<<< Updated upstream
-
 
 /* -------------------- Form -------------------- */
 form .button {
@@ -81,13 +80,6 @@ form .button {
 
 
 
-
-
-
-
-
-=======
->>>>>>> Stashed changes
 .css-grid {
     display: grid; 
     grid-template-columns: 30% 70%;
@@ -333,6 +325,7 @@ img.pull-left { margin-right: 10px; }
 	
 	/* Added CSS */
 	/* ABOUT US */
+	#contacts.contacts {
 		margin-bottom: 20px;
 		margin-left: auto;
 		margin-right: auto;
@@ -346,6 +339,7 @@ img.pull-left { margin-right: 10px; }
 		padding-bottom: 0.5%;
 	} 	
 	
+	#names.names {
 		margin-left: 200px;
 		float: right;
 		position:absolute;
@@ -379,6 +373,7 @@ img.pull-left { margin-right: 10px; }
 
 
 	/* DONATION-FORM */
+	#donation.donate{
 		/* height:500px; */
 		/* align-items: center; */
 		background-color: #F4F3F8;
