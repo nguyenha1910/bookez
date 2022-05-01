@@ -18,7 +18,7 @@ console.log(book_id);
 
 $(document).ready(function () {
     if (book_id) {
-        $.getJSON('/books/get_book_by_id?book_id=' + book_id)
+        $.getJSON('/get_book_by_id?book_id=' + book_id)
             .done(function (data) {
                 if (data["message"] === "success") {
                     book = data["data"];

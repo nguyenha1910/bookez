@@ -25,7 +25,20 @@ const session = require("express-session");
 //         console.log("db connection successful");
 //     });
 
+const bookSchema = {
+    book_name: {
+        type: String,
+        required: [true, "Book name cannot be empty"],
+    },
+    author_name: {
+        type: String,
+    },
+    price: {
+        type: Number,
+    }
+}
 
+const Book = mongoose.model('Book', bookSchema);
 
 const userSchema = new mongoose.Schema({
     email: {
@@ -118,12 +131,80 @@ router.get('/get_current_user', (req,res) => {
     }
 });
 
+router.get('/book_list', (req,res) => {
+    res.sendFile( path.join(__dirname, "../public/views/book_list.html") );
+});
+
 router.get('/thank-you', (req,res) => {
     res.sendFile( path.join(__dirname, "../public/views/thankyou.html") );
 });
 
 router.get('/donation-form', (req,res) => {
     res.sendFile( path.join(__dirname, "../public/views/donation-form.html") );
+});
+  
+router.get('/get_book_by_id', (req,res) => {
+    Book.find({"_id": req.query.book_id}, function (err, data) {
+        if (err || data.length === 0) {
+            res.send({
+                "message": "internal database error",
+                "data": {}
+            });
+        } else {
+            res.send({
+                "message": "success",
+                "data": data[0]
+            })
+        }
+    });
+});
+
+router.get('/get_cart_by_id', (req,res) => {
+    if (req.isAuthenticated()){
+        res.sendFile( path.join(__dirname, "../public/views/cart.html") );
+    }
+    else{
+        res.redirect("/signin");
+    }
+});
+
+router.post('/add_to_cart',(req, res)=>{
+    //Users need to log in to add a book to their cart
+    if (req.isAuthenticated) {
+        // Save the book to the cart list inside User schema
+        const book_id = req.body.book_id;
+        const user_id = req.user._id;
+        User.updateOne(
+            {
+                _id: user_id,
+                // 'cart.book_id': {$ne: book_id}
+            },
+            {
+                $push: {
+                    cart: book_id
+                }
+            },
+            {},
+            (err) => {
+                if (err) {
+                    res.send({
+                        message: "database error"
+                    });
+                } else {
+                    res.send({
+                        message: "success"
+                    });
+                }
+            }
+        );
+    } else {
+        // navigate to the login page
+        res.send({
+            message: "login required",
+            redr: "/signin.html"
+        });
+        res.redirect('/signin');
+    }
 });
 
 router.get('/purchase', (req,res) => {
