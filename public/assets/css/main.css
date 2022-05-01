@@ -329,33 +329,57 @@ img.pull-left { margin-right: 10px; }
 		margin-bottom: 20px;
 		margin-left: auto;
 		margin-right: auto;
-		width: 95%;
+		width: auto;
 		min-height: 200px;
 		text-align: left;
 		position:relative;
-		outline: 4px solid #000;
+		/* outline: 4px solid #000; */
 		text-align: left;
 		padding-left: 5%;
 		padding-bottom: 0.5%;
+		overflow-x: hidden;
+		overflow-y: auto;
 	} 	
 	
+	#contact-wrapper.contact-wrapper {
+		margin-left: 5%;
+		margin-right: 5%;
+		outline: 4px solid #000;
+		margin-bottom: 20px;
+	}
+	
+	#contactimg.contactimg {
+		position: relative;
+		float:left; 
+		width:200px;height:200px;
+		margin-right:15px;
+		border-radius: 30px;
+	}
 	#names.names {
-		margin-left: 200px;
+		/* margin-left: 200px; */
 		float: right;
 		position:absolute;
-		width: 50%;
-		bottom: 50%;
+		bottom: 70%;
 	}
 
 	#emails.emails {
-		margin-left: 200px;
+		/* margin-left: 200px; */
 		float: right;
 		position:absolute;
-		width: 50%;
-		bottom: 50%;
-		bottom: 30%;
+		bottom: 60%;
+		
 	}
 
+	#contact_description.contact_description {
+		font-family: Georgia, 'Times New Roman', Times, serif;
+		/* margin-left: 200px; */
+		margin-right: 150px;
+		float: right;
+		position:absolute;
+		bottom: 0%;
+		top: 40%;
+	}
+	
 	/* THANK YOU */
 	#thankyou.thankyou{
 		margin-bottom: 20px;
