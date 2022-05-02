@@ -207,7 +207,19 @@ router.get('/search_books', function (req, res) {
 
 router.get('/get_cart_by_id', (req, res) => {
     if (req.isAuthenticated()) {
-        res.sendFile(path.join(__dirname, "../public/views/cart.html"));
+        User.find({"_id": req.query.user_id}, function (err, data) {
+            if (err || data.length === 0) {
+                res.send({
+                    "message": "internal database error",
+                    "data": {}
+                });
+            } else {
+                res.send({
+                    "message": "success",
+                    "data": data[0]
+                })
+            }
+        });
     } else {
         res.redirect("/signin");
     }
