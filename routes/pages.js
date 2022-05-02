@@ -179,6 +179,22 @@ router.get('/get_book_by_id', (req, res) => {
     });
 });
 
+router.get('/get_books_by_ids', (req, res) => {
+    Book.find({ _id: {$in: req.query.book_ids}}, function (err, data) {
+        if (err || data.length === 0) {
+            res.send({
+                "message": "internal database error",
+                "data": {}
+            });
+        } else {
+            res.send({
+                "message": "success",
+                "data": data
+            })
+        }
+    });
+});
+
 router.get('/search_books', function (req, res) {
     console.log("GET /search_books");
     const search_key = req.query.search_key;

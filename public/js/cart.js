@@ -39,8 +39,12 @@ $(document).ready(function () {
         $.getJSON('/get_cart_by_id?user_id=' + user_id)
             .done(function (data) {
                 if (data["message"] === "success") {
-                    books = data["data"].cart;
-                    showList(books);
+                    book_ids = data["data"].cart;
+                    $.getJSON('/get_books_by_ids?book_ids=' + book_ids).done(function(data){
+                        books = data["data"];
+                        console.log(books);
+                        showList(books);
+                    });
                 }
             });
     }
