@@ -50,7 +50,7 @@
         
 </head>
 
-<body>
+<body style="overflow-x:hidden">
 		<!-- Fixed navbar -->
 		<div id="nav-placeholder">
 			<div class="navbar navbar-inverse navbar-fixed-top headroom" >
@@ -83,53 +83,67 @@
 	<header id="head" class="secondary"></header>
 
 
+    <div class="css-grid"> 
 
+		<div class="col1">
+			<div class="menu-toggle">
+				<div class="hamburger">
+					<span></span>
+				</div>
+			</div>
 
-	<!-- container -->
-	<div class="container">
+			<aside class="sidebar">
+				<h3>Filter</h3>
+				<div class="filter">
+                    <section class="container">
+                        <div id="selection_section" class="row">
+                    
+                    
+                            <!-- Sort selection-->
+                            <div class="col">
+                                <h6>Sort by</h6>
+                                <select id="sortDropdown" class="form-select" onchange="update_books()">>
+                                    <option id="book_name_sort" value="book_name_sort">Book name</option>
+                                    <option id="author_name_sort" value="author_name_sort">Author name</option>
+                                    <option id="price_sort" value="price_sort">Price</option>
+                                </select>
+                            </div>
+                    
+                        </div>
+                    </section>
+				</div>
 
-		<ol class="breadcrumb">
-			<li><a href="index.html">Home</a></li>
-			<li class="active">About</li>
-		</ol>
-
-		<div class="row">
-			
-
-<div class = "row">
-    <article>
-<section class="container">
-    <div id="selection_section" class="row">
-
-        <!-- search box-->
-        <div class="input-group mb-3 col-lg-9">
-            <input id="search_box" type="search" class="form-control" placeholder="Search Books" aria-label="Search"
-                   aria-describedby="basic-addon2" onsearch="update_books()">
-            <span class="input-group-text" id="basic-addon2"><i class="fas fa-search"></i></span>
-        </div>
-
-        <!-- Sort selection-->
-        <div class="col-lg-3">
-            <h6>Sort by</h6>
-            <select id="sortDropdown" class="form-select" onchange="update_books()">>
-                <option id="book_name_sort" value="book_name_sort">Book name</option>
-                <option id="author_name_sort" value="author_name_sort">Author name</option>
-                <option id="price_sort" value="price_sort">Price</option>
-            </select>
-        </div>
-
-    </div>
-</section>
-</article>
-</div>
-
-<!-- Book List-->
-<section id="book_section" class="container">
-    <div id="book_list" class="row"></div>
-</section>
+			</aside>
 		</div>
-	</div>	<!-- /container -->
+	<!-- container -->
+
+	<div class="row">
+        <div class = "row">
+                <article>
+            <section class="container">
+                <div id="selection_section" class="row">
+                    <!-- search box-->
+                    <div class="input-group mb-3 col-lg-9">
+                        <input id="search_box" type="search" class="form-control" placeholder="Search Books" aria-label="Search"
+                            aria-describedby="basic-addon2" onsearch="update_books()">
+                        <span class="input-group-text" id="basic-addon2"><i class="fas fa-search"></i></span>
+                    </div>
+                </div>
+            </section>
+            </article>
+            </div>
+
+            <!-- Book List-->
+            <section id="book_section" class="container">
+                <div class="col-lg-9">
+                <div id="book_list" class="row"></div>
+                </div>
+            </section>
+    </div>
+
 	
+
+
 
 
 
