@@ -31,8 +31,10 @@ $(document).ready(function () {
 function addToCart() {
     $.post('/add_to_cart', {book_id: book_id}).done((data) => {
         if (data.message === "success"){
+            console.log(data);
             location.reload();
         } else{
+            console.log(data);
             location.href = data.redr;
         }
     });

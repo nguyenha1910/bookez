@@ -214,15 +214,16 @@ router.get('/get_cart_by_id', (req, res) => {
 });
 
 router.post('/add_to_cart', (req, res) => {
+    console.log("POST /add_to_cart");
     //Users need to log in to add a book to their cart
     if (req.isAuthenticated) {
         // Save the book to the cart list inside User schema
         const book_id = req.body.book_id;
         const user_id = req.user._id;
+
         User.updateOne(
             {
                 _id: user_id,
-                // 'cart.book_id': {$ne: book_id}
             },
             {
                 $push: {
@@ -246,9 +247,9 @@ router.post('/add_to_cart', (req, res) => {
         // navigate to the login page
         res.send({
             message: "login required",
-            redr: "/signin.html"
+            redr: "/signin"
         });
-        res.redirect('/signin');
+        // res.redirect('/signin');
     }
 });
 
