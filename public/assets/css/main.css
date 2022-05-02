@@ -354,6 +354,8 @@ img.pull-left { margin-right: 10px; }
 		width:200px;height:200px;
 		margin-right:15px;
 		border-radius: 30px;
+		margin-left:15px;
+		margin-top: 10px;
 	}
 	#names.names {
 		/* margin-left: 200px; */

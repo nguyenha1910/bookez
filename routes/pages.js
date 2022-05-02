@@ -184,7 +184,22 @@ router.get('/purchase', (req,res) => {
 
 
 
-
+router.get('/get_all_books', (req,res) => {
+    console.log('GET /get_all_books');
+    Book.find(function (err, data) {
+        if (err) {
+            res.send({
+                "message": "internal database error",
+                "data": []
+            });
+        } else {
+            res.send({
+                "message": "success",
+                "data": data
+            })
+        }
+    });
+});
 
 
 
