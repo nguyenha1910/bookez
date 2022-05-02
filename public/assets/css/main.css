@@ -422,9 +422,20 @@ img.pull-left { margin-right: 10px; }
 }
 
 .bookDiv {
-    color: black;
     margin-bottom: 10px;
-    margin-left: 10px;
-    height: 200px;
+    height: 300px;
 }
 
+#book_list_img.book_list_img {
+	height:50%;
+	width: 50%;
+	position: absolute;
+	bottom: 0%;
+	left: 25%;
+	margin-bottom: 15px;
+}
+
+#book_list_sidebar.sidebar {
+	/* background-color: #F4F3F8; */
+	font-family:Verdana, Geneva, Tahoma, sans-serif;
+}

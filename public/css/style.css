@@ -12,7 +12,7 @@
     --honeydew: #f1faeeff;
     --powder-blue: #a8dadcff;
     --celadon-blue: #457b9dff;
-    --prussian-blue: #1d3557ff;
+    --prussian-blue: rgb(45, 103, 184);
 }
 
 .navbar-custom{
@@ -34,7 +34,7 @@
 }
 
 .even_row {
-    background-color: var(--honeydew);
+    background-color: var(--prussian-blue);
 }
 
 #book_list {
