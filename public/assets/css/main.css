@@ -418,6 +418,7 @@ img.pull-left { margin-right: 10px; }
 
 #book_list {
     color: black;
+	text-align: center;
 }
 
 .bookDiv {
@@ -427,6 +428,3 @@ img.pull-left { margin-right: 10px; }
     height: 200px;
 }
 
-a {
-	color:black;
-}
