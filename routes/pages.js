@@ -62,7 +62,7 @@ const userSchema = new mongoose.Schema({
     user_type: {
         type: String
     },
-    cart:[
+    cart: [
         {
             book_id: {type: mongoose.Schema.Types.ObjectId, ref: 'Book'}
         }
@@ -82,42 +82,41 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
-
-router.get('/', (req,res) => {
-    res.sendFile( path.join(__dirname, "../public/views/index.html") ); 
+router.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/views/index.html"));
 });
 
 
-router.get('/about', (req,res) => {
-    res.sendFile( path.join(__dirname, "../public/views/about.html") );
+router.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/views/about.html"));
 });
 
 
-router.get('/admin-orders', (req,res) => {
-    res.sendFile( path.join(__dirname, "../public/views/order-admin-page.html") );
+router.get('/admin-orders', (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/views/order-admin-page.html"));
 });
 
-router.get('/admin-donations', (req,res) => {
-    res.sendFile( path.join(__dirname, "../public/views/donation-admin-page.html") );
+router.get('/admin-donations', (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/views/donation-admin-page.html"));
 });
 
-router.get('/signin', (req,res) => {
-    res.sendFile( path.join(__dirname, "../public/views/signin.html") );
+router.get('/signin', (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/views/signin.html"));
 });
 
-router.get('/register', (req,res) => {
-    res.sendFile( path.join(__dirname, "../public/views/signup.html") );
+router.get('/register', (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/views/signup.html"));
 });
 
-router.get('/each_order', (req,res) => {
-    res.sendFile( path.join(__dirname, "../public/views/each_order.html") );
+router.get('/each_order', (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/views/each_order.html"));
 });
 
-router.get('/about', (req,res) => {
-    res.sendFile( path.join(__dirname, "../public/views/about.html") ); 
-}); 
+router.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/views/about.html"));
+});
 
-router.get('/get_current_user', (req,res) => {
+router.get('/get_current_user', (req, res) => {
     if (req.isAuthenticated()) {
         res.send({
             message: "success",
@@ -131,19 +130,40 @@ router.get('/get_current_user', (req,res) => {
     }
 });
 
-router.get('/book_list', (req,res) => {
-    res.sendFile( path.join(__dirname, "../public/views/book_list.html") );
+router.get('/book_list', (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/views/book_list.html"));
 });
 
-router.get('/thank-you', (req,res) => {
-    res.sendFile( path.join(__dirname, "../public/views/thankyou.html") );
+router.get('/book_detail', (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/views/book_detail.html"));
 });
 
-router.get('/donation-form', (req,res) => {
-    res.sendFile( path.join(__dirname, "../public/views/donation-form.html") );
+router.get('/thank-you', (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/views/thankyou.html"));
 });
-  
-router.get('/get_book_by_id', (req,res) => {
+
+router.get('/donation-form', (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/views/donation-form.html"));
+});
+
+router.get('/get_all_books', (req, res) => {
+    console.log('GET /get_all_books');
+    Book.find(function (err, data) {
+        if (err) {
+            res.send({
+                "message": "internal database error",
+                "data": []
+            });
+        } else {
+            res.send({
+                "message": "success",
+                "data": data
+            })
+        }
+    });
+});
+
+router.get('/get_book_by_id', (req, res) => {
     Book.find({"_id": req.query.book_id}, function (err, data) {
         if (err || data.length === 0) {
             res.send({
@@ -159,16 +179,41 @@ router.get('/get_book_by_id', (req,res) => {
     });
 });
 
-router.get('/get_cart_by_id', (req,res) => {
-    if (req.isAuthenticated()){
-        res.sendFile( path.join(__dirname, "../public/views/cart.html") );
-    }
-    else{
+router.get('/search_books', function (req, res) {
+    console.log("GET /search_books");
+    const search_key = req.query.search_key;
+    console.log(search_key);
+    Book.find({
+        $or: [
+            {book_name: {$regex: search_key, $options : 'i'}},
+            {author_name: {$regex: search_key, $options : 'i'}},
+            // {price: {$regex: search_key}}
+        ]
+    }, (err, data) => {
+        if (err) {
+            res.send({
+                'message': 'search failed',
+                'data': []
+            });
+        } else {
+            // console.log(data);
+            res.send({
+                'message': 'success',
+                'data': data
+            });
+        }
+    });
+});
+
+router.get('/get_cart_by_id', (req, res) => {
+    if (req.isAuthenticated()) {
+        res.sendFile(path.join(__dirname, "../public/views/cart.html"));
+    } else {
         res.redirect("/signin");
     }
 });
 
-router.post('/add_to_cart',(req, res)=>{
+router.post('/add_to_cart', (req, res) => {
     //Users need to log in to add a book to their cart
     if (req.isAuthenticated) {
         // Save the book to the cart list inside User schema
@@ -207,11 +252,10 @@ router.post('/add_to_cart',(req, res)=>{
     }
 });
 
-router.get('/purchase', (req,res) => {
-    if (req.isAuthenticated()){
-        res.sendFile( path.join(__dirname, "../public/views/purchase.html") );
-    }
-    else{
+router.get('/purchase', (req, res) => {
+    if (req.isAuthenticated()) {
+        res.sendFile(path.join(__dirname, "../public/views/purchase.html"));
+    } else {
         res.redirect("/signin");
     }
 });
@@ -230,9 +274,4 @@ router.get('/purchase', (req,res) => {
 // });
 
 
-
-
-
-
-
-module.exports = router; 
+module.exports = router;

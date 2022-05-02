@@ -67,3 +67,14 @@ function update_books(){
     }
     showList(bookData);
 }
+
+function searchBook() {
+    $.get('/search_books', {
+        search_key: $('#search_box').val(),
+    }).done((data)=>{
+        console.log(data);
+        if (data.message === "success"){
+            showList(data.data);
+        }
+    });
+}
