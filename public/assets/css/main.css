@@ -416,5 +416,17 @@ img.pull-left { margin-right: 10px; }
 
 /* BOOK LIST */
 
+#book_list {
+    color: black;
+}
 
-	
+.bookDiv {
+    color: black;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    height: 200px;
+}
+
+a {
+	color:black;
+}

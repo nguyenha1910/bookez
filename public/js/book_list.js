@@ -30,7 +30,7 @@ function showList(books) {
     ///
 
     $.each($('#book_list .row'), function (idx) {
-        $(this).addClass('col-lg-3');
+        $(this).addClass('col-lg-3 col-md-6 col-sm-12');
         if (idx % 2 === 0) {
             $(this).addClass('even_row');
         } else {
