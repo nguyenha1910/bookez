@@ -37,13 +37,10 @@
     background-color: var(--prussian-blue);
 }
 
-#book_list {
-    color: black;
-}
 
-.bookDiv {
+/* .bookDiv {
     color: black;
     margin-bottom: 10px;
     margin-left: 10px;
     height: 200px;
-}
+} */

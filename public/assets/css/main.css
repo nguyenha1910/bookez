@@ -423,14 +423,16 @@ img.pull-left { margin-right: 10px; }
 .bookDiv {
     margin-bottom: 10px;
     height: 300px;
+	text-align: center;
+	position: relative;
 }
 
 #book_list_img.book_list_img {
-	height:50%;
-	width: 50%;
-	position: absolute;
+	height: 200px;
+	width: 150px;
+	position: relative;
 	bottom: 0%;
-	left: 25%;
+	/* left: 30%; */
 	margin-bottom: 15px;
 }
 

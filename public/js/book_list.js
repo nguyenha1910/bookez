@@ -5,14 +5,13 @@
 
 function get_book_object(book) {
     return `<div class="bookDiv row py-2" data-m="${book._id}">
-                <div class="infoDiv row col-10">
-                    <div class="col-7 book_name"><a>${book.book_name}</a></div>
-                    <div class="col-2 author_name"><a>${book.author_name}</a></div>
-                    <div class="col-1 price"><a>$ ${book.price.toFixed(2)}</a></div>
-                </div>
-                <div class="buttonDiv col-2">
-                    <button type="button" class="btn btn-outline-primary">Add to Cart</button>
-                </div>
+    <div class="col-1 img"><img id="book_list_img" class="book_list_img" src="img/dummy_book.png" alt="square"/></div>
+                <div class="col-7 book_name"><a>${book.book_name}</a></div>
+                <div class="col-2 author_name"><a>${book.author_name}</a></div>
+                <div class="col-1 price"><a>$ ${book.price.toFixed(2)}</a></div>
+<div class="buttonDiv col-2">
+    <button type="button" class="btn btn-outline-primary">Add to Cart</button>
+</div>
             </div>`;
 }
 
@@ -32,14 +31,14 @@ function showList(books) {
     ///
 
     $.each($('#book_list .row'), function (idx) {
-        $(this).addClass('col-lg-3 col-md-5 col-sm-8');
+        $(this).addClass('col-lg-4 col-md-5 col-sm-8');
         if (idx % 2 === 0) {
             $(this).addClass('even_row');
         } else {
             $(this).addClass('odd_row');
         }
     });
-    
+
 
 
     $('.infoDiv').on('click', function () {
