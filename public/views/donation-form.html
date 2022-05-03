@@ -18,6 +18,11 @@
 	<link rel="stylesheet" href="assets/css/bootstrap-theme.css" media="screen" >
 	<link rel="stylesheet" href="assets/css/main.css">
 
+	<!--Google jQuery-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script src="/js/donation_form.js" defer></script>
+
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	<script src="assets/js/html5shiv.js"></script>
@@ -35,90 +40,146 @@
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
 					<a class="navbar-brand" href="/"><img src="/favicon.ico" alt="BookEZ">  BookEZ</a>
 				</div>
+				<!--nav-collapse -->
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav pull-right">
 						<li><a href="/">Home</a></li>
 						<li><a href="/about">About</a></li>
-						<li class="dropdown">
+						<li class="dropdown" id="admin_zone">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin zone <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="/admin-orders">Orders</a></li>
 								<li><a href="/admin-donations">Donations</a></li>
 							</ul>
 						</li>
-						<li><a href="/donation-form">Donate</a></li>
-						<li><a class="btn" href="/signin">SIGN IN / SIGN UP</a></li>
+						<li><a href="/book_list">Book list</a></li>
+						<li id="signin"><a class="btn" href="/signin">SIGN IN / SIGN UP</a></li>
+						<li class="dropdown" id="profile"> 
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="user_fname"></span>'s profile <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="">Profile page</a></li>
+								<li><a href="/cart">Cart</a></li>
+								<li><a href="/auth/logout">Logout</a></li>
+							</ul>
+						</li>
 					</ul>
-				</div><!--/.nav-collapse -->
+				</div>
+				<!--/.nav-collapse -->
 			</div>
 		</div> 
 	</div>
 	<!-- /.navbar -->
 	<header id="head" class="secondary"></header>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<!-- container -->
 	<div class="container">
-
 		<ol class="breadcrumb">
 			<li><a href="index.html">Home</a></li>
 			<li class="active">About</li>
 		</ol>
 
 		<div class="row">
-			
 			<!-- Article main content -->
 			<article class="col-sm-9 maincontent">
 				<header class="page-header">
 					<h1 class="page-title">Donate</h1>
 				</header>
 				
-				<br>
-					<form id="donation">
-					<!-- First row-->
-						<div class="row" style="margin-top: 12px">
-							<div class="form-group">
-								<label for="stocknum" class="form-label">First Name</label>
-								<input type="text" name="fname" id="fname" class="form-control" placeholder="xxxxxxxx">
-							</div>
+				
+				<form action="/order_and_donation/donate" method = "POST">
+					<input type="text" class="form-control" name="user_id" id="user_id">
+					<div class="row top-margin" id="full_name">
+						<div class="col-sm-6">
+							<label>First Name</label>
+							<input type="text" class="form-control" name="first_name" id="first_name">
 						</div>
-
-						<!-- 2nd row-->
-						<div class="row" style="margin-top: 12px">
-							<div class="form-group">
-								<label for="make" class="form-label">Last Name</label>
-								<input type="text" name="lname" id="lname" class="form-control" placeholder="xxxxxxxx">
-							</div>
+						<div class="col-sm-6">
+							<label>Last Name</label>
+							<input type="text" class="form-control" name="last_name" id="last_name">
 						</div>
+					</div>
 
-						<!-- 3rd row-->
-						<div class="row" style="margin-top: 12px">
-							<div class="form-group">
-								<label for="model" class="form-label">Book</label>
-								<input type="text" name="book" id="book" class="form-control" placeholder="xxxxxxxx">
-							</div>
+					<div class="row top-margin">
+						<div class="col-sm-8">
+							<label>Book name <span class="text-danger">*</span></label>
+							<input type="text" class="form-control" name="book_name" id="book_name">
 						</div>
-
-						<!-- 4th row-->
-						<div class="row" style="margin-top: 12px">
-							<div class="form-group">
-								<label for="model" class="form-label">Author</label>
-								<input type="text" name="author" id="author" class="form-control" placeholder="xxxxxxxx">
-							</div>
+						<div class="col-sm-4">
+							<label>Edition</label>
+							<input type="text" class="form-control" name="edition" id="edition">
 						</div>
-
-
-						<!-- Alert for ERROR MESSAGES--> 
-						<label id="alert"></label>
-
-
-						<div class="row">
-							<div class="col-sm-6 text-right">
-								<input class="btn btn-action" type="submit" value="Submit">
-							</div>
-						</div>
-
+					</div>
 					
-					</form>
+					<div class="row top-margin">
+						<div class="col-sm-8">
+							<label>Author name</label>
+							<input type="text" class="form-control" name="author_name" id="author_name">
+						</div>
+						<div class="col-sm-4">
+							<label>Condition <span class="text-danger">*</span></label>
+							<select name="condition" id="condition" class="form-control">
+                                <option value=> </option>
+                                <option value="Poor">Poor</option>
+                                <option value="Fair">Fair</option>
+                                <option value="Good">Good</option>
+                                <option value="Very Good">Very Good</option>
+								<option value="Like New">Like New</option>
+                            </select>
+						</div>
+					</div>
+
+					<div class="row top-margin">
+						<div class="col-sm-6 email_input">
+							<label>Email Address <span class="text-danger">*</span></label>
+							<input type="email" class="form-control" name="email" id="email">
+						</div>
+						<div class="col-sm-6">
+							<label>Phone Number <span class="text-danger">*</span></label>
+							<input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" name="phone_num" id="phone_num">
+							<small>Format: 123-456-7890</small>
+						</div>
+					</div>
+
+					<div class="top-margin">
+						<label>How can we reach you to get the book? <span class="text-danger">*</span></label>
+						<textarea type="text" class="form-control" name="note" id="note"></textarea>
+					</div>
+
+					<div class="top-margin">
+						<p id="error_message" style="color: red"></p>
+					</div>
+
+					<div class="top-margin">
+						<p id="success_message" style="color: green"></p>
+					</div>
+
+					<hr>
+
+					<div class="row button">
+						<!-- <div class="col-lg-8">
+							<label class="checkbox">
+								<input type="checkbox"> 
+								I've read the <a href="page_terms.html">Terms and Conditions</a>
+							</label>                        
+						</div> -->
+						<!-- <div class="col-lg-4 text-right"> -->
+							<button class="btn btn-action" type="submit">Submit</button>
+						<!-- </div> -->
+					</div>
+				</form>
 
 			</article>
 			<!-- /Article -->
@@ -136,11 +197,9 @@
 	<br>
 
 	<footer id="footer" class="top-space">
-
 		<div class="footer2">
 			<div class="container">
 				<div class="row">
-					
 					<!-- <div class="col-md-6 widget">
 						<div class="widget-body">
 							<p class="simplenav">
@@ -152,7 +211,6 @@
 							</p>
 						</div>
 					</div> -->
-
 					<div class="col-md-6 widget">
 						<div class="widget-body">
 							<p class="text-right" style="text-align:right">

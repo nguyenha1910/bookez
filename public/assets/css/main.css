@@ -336,76 +336,78 @@ img.pull-left { margin-right: 10px; }
 	.widget-simplenav a{ margin:0 5px; }		
 
 	
-	/* Added CSS */
-	/* ABOUT US */
-	#contacts {
-		margin-bottom: 20px;
-		margin-left: auto;
-		margin-right: auto;
-		width: 95%;
-		height: 200px;
-		text-align: left;
-		position:relative;
-		outline: 4px solid #000;
-		text-align: left;
-		padding-left: 5%;
-		padding-bottom: 0.5%;
-	} 	
+
 	
-	#names {
-		margin-left: 200px;
-		float: right;
-		position:absolute;
-		width: 50%;
-		bottom: 50%;
+/* Added CSS */
+/* ABOUT US */
+#contacts {
+	margin-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 95%;
+	height: 200px;
+	text-align: left;
+	position:relative;
+	outline: 4px solid #000;
+	text-align: left;
+	padding-left: 5%;
+	padding-bottom: 0.5%;
+} 	
+
+#names {
+	margin-left: 200px;
+	float: right;
+	position:absolute;
+	width: 50%;
+	bottom: 50%;
+}
+
+/* #email {
+	margin-left: 200px;
+	float: right;
+	position:absolute;
+	width: 50%;
+	bottom: 50%;
+	bottom: 30%;
+} */
+
+/* THANK YOU */
+#thankyou {
+	margin-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 90%;
+	min-height: 250px;
+	outline: 4px solid #000;
+	padding-left: 5%;
+	padding-bottom: 2px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+} 	
+
+
+/* DONATION-FORM */
+#donation {
+	/* height:500px; */
+	/* align-items: center; */
+	background-color: #F4F3F8;
+	padding-top: 20px;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 20px;
+	text-align:left;
+	outline: 1px solid rgb(12, 12, 12);
+}
+/* 
+.button {
+	transition-duration: 0.4s;
 	}
 
-	#email {
-		margin-left: 200px;
-		float: right;
-		position:absolute;
-		width: 50%;
-		bottom: 50%;
-		bottom: 30%;
-	}
-
-	/* THANK YOU */
-	#thankyou {
-		margin-bottom: 20px;
-		margin-left: auto;
-		margin-right: auto;
-		max-width: 90%;
-		min-height: 250px;
-		outline: 4px solid #000;
-		padding-left: 5%;
-		padding-bottom: 2px;
-		display: flex;
-  		justify-content: center;
-  		align-items: center;
-	} 	
-
-
-	/* DONATION-FORM */
-	#donation {
-		/* height:500px; */
-		/* align-items: center; */
-		background-color: #F4F3F8;
-		padding-top: 20px;
-		padding-left: 30px;
-		padding-right: 30px;
-		padding-bottom: 20px;
-		text-align:left;
-		outline: 1px solid rgb(12, 12, 12);
-	}
-
-	.button {
-		transition-duration: 0.4s;
-		}
-
-		.button:hover {
-		background-color: #000; /* Green */
-		color: white;
-	}
+	.button:hover {
+	background-color: #000; 
+	color: white;
+} */
 
 
 

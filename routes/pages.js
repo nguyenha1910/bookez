@@ -2,8 +2,8 @@ const express = require('express');
 // const questionController = require('../controllers/question');   // load a module
 const router = express.Router();
 const authController = require('../controllers/auth');          // load a module
-
 const path = require('path');
+const router = express.Router();
 const mongoose = require("mongoose");
 const passportLocalMongoose = require("passport-local-mongoose");
 const passport = require("passport");
@@ -112,17 +112,7 @@ const userSchema = new mongoose.Schema({
     ]
 });
 
-// User passportLocalMongoose to process userSchema
-userSchema.plugin(passportLocalMongoose, {
-    usernameField: 'email'
-});
 const User = mongoose.model('User', userSchema);
-
-passport.use(User.createStrategy());
-// Convert obj to binary data
-passport.serializeUser(User.serializeUser());
-// Convert binary data to obj
-passport.deserializeUser(User.deserializeUser());
 
 
 router.get('/', (req, res) => {
@@ -134,6 +124,13 @@ router.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/about.html"));
 });
 
+router.get('/book_list', (req,res) => {
+    res.sendFile( path.join(__dirname, "../public/views/book_list.html") );
+});
+
+router.get('/contact', (req,res) => {
+    res.sendFile( path.join(__dirname, "../public/views/contact.html") );
+});
 
 router.get('/admin-orders', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/order-admin-page.html"));
@@ -143,13 +140,33 @@ router.get('/admin-donations', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/donation-admin-page.html"));
 });
 
-router.get('/signin', (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/views/signin.html"));
+router.get('/each_donation', (req,res) => {
+    res.sendFile( path.join(__dirname, "../public/views/each_donation.html") );
+});
+
+router.get('/signin', (req,res) => {
+    res.sendFile( path.join(__dirname, "../public/views/signin.html") );
 });
 
 router.get('/register', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/signup.html"));
 });
+
+
+router.get('/cart', (req,res) => {
+    res.sendFile( path.join(__dirname, "../public/views/cart.html") );
+});
+
+router.get('/each_order', (req,res) => {
+    res.sendFile( path.join(__dirname, "../public/views/each_order.html") );
+});
+
+router.get('/thankyou', (req,res) => {
+    res.sendFile( path.join(__dirname, "../public/views/thankyou.html") );
+});
+
+router.get('/donation-form', (req,res) => {
+    res.sendFile( path.join(__dirname, "../public/views/donation-form.html") );
 
 router.get('/each_order', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/each_order.html"));
@@ -171,6 +188,7 @@ router.get('/get_current_user', (req, res) => {
             data: {}
         });
     }
+
 });
 
 router.get('/book_list', (req, res) => {
@@ -184,6 +202,7 @@ router.get('/book_detail', (req, res) => {
 router.get('/thank-you', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/thankyou.html"));
 });
+
 
 router.get('/donation-form', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/donation-form.html"));
@@ -389,17 +408,6 @@ router.post('/purchase', authController.isLoggedIn, (req,res) => {
     }
 });
 
-// router.get('/questions_tagged/tag=:tag', authController.isLoggedIn, questionController.populateQuestionsWithTag, (req,res) => {
-//     if (req.user) {
-//         res.render('questions_tagged', {
-//             user: req.user,
-//             questionsTagged: req.questions, 
-//             main_tag: req.main_tag
-//         }); 
-//     } else {
-//         res.render('index');
-//     }
-// });
 
 
 module.exports = router;
