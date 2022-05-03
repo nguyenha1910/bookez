@@ -1,6 +1,9 @@
 const express = require('express');
-const path = require('path');
+// const questionController = require('../controllers/question');   // load a module
 const router = express.Router();
+const authController = require('../controllers/auth');          // load a module
+
+const path = require('path');
 const mongoose = require("mongoose");
 const passportLocalMongoose = require("passport-local-mongoose");
 const passport = require("passport");
@@ -8,22 +11,12 @@ const validator = require('validator');
 
 const session = require("express-session");
 
-//Initialize passport
-// router.use(session({
-//     secret: "MyLittleSecretThatIdontWantOthersToKnow",
-//     resave: false,
-//     saveUninitialized: false
-// }));
-// router.use(passport.initialize());
-// router.use(passport.session());
-
-
 // mongoose.connect('mongodb://localhost:27017/bookDB',
 //     {useNewUrlParser: true}, function () {
 //         console.log("db connection successful");
 //     });
 
-const bookSchema = {
+const bookSchema = new mongoose.Schema({
     book_name: {
         type: String,
         required: [true, "Book name cannot be empty"],
@@ -33,14 +26,16 @@ const bookSchema = {
     },
     price: {
         type: Number,
+        default: 0
     }
-}
+});
 
 const Book = mongoose.model('Book', bookSchema);
 
 const orderSchema = new mongoose.Schema({
     user_id: {
-        user_id: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+        user_id: String
+            // {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
     },
     fname: {
         type: String,
@@ -86,7 +81,6 @@ const orderSchema = new mongoose.Schema({
 
 const Order = mongoose.model('Order', orderSchema);
 
-
 const userSchema = new mongoose.Schema({
     email: {
         type: String,
@@ -119,23 +113,14 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/index.html"));
 });
-
 
 router.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/about.html"));
 });
 
-router.get('/book_list', (req,res) => {
-    res.sendFile( path.join(__dirname, "../public/views/book_list.html") );
-});
-
-router.get('/contact', (req,res) => {
-    res.sendFile( path.join(__dirname, "../public/views/contact.html") );
-});
 
 router.get('/admin-orders', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/order-admin-page.html"));
@@ -145,33 +130,13 @@ router.get('/admin-donations', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/donation-admin-page.html"));
 });
 
-router.get('/each_donation', (req,res) => {
-    res.sendFile( path.join(__dirname, "../public/views/each_donation.html") );
-});
-
-router.get('/signin', (req,res) => {
-    res.sendFile( path.join(__dirname, "../public/views/signin.html") );
+router.get('/signin', (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/views/signin.html"));
 });
 
 router.get('/register', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/signup.html"));
 });
-
-
-router.get('/cart', (req,res) => {
-    res.sendFile( path.join(__dirname, "../public/views/cart.html") );
-});
-
-router.get('/each_order', (req,res) => {
-    res.sendFile( path.join(__dirname, "../public/views/each_order.html") );
-});
-
-router.get('/thankyou', (req,res) => {
-    res.sendFile( path.join(__dirname, "../public/views/thankyou.html") );
-});
-
-router.get('/donation-form', (req,res) => {
-    res.sendFile( path.join(__dirname, "../public/views/donation-form.html") );
 
 router.get('/each_order', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/each_order.html"));
@@ -193,7 +158,6 @@ router.get('/get_current_user', (req, res) => {
             data: {}
         });
     }
-
 });
 
 router.get('/book_list', (req, res) => {
@@ -207,7 +171,6 @@ router.get('/book_detail', (req, res) => {
 router.get('/thank-you', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/thankyou.html"));
 });
-
 
 router.get('/donation-form', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/donation-form.html"));
@@ -313,8 +276,8 @@ router.post('/add_to_cart',function(req,res) {
     const book_id = req.body.book_id;
     const user_id = req.body.user_id;
 
-    console.log(user_id);
-    console.log(book_id);
+    console.log("user_id", user_id);
+    console.log("book_id", book_id);
 
     User.updateOne(
         {
@@ -322,12 +285,13 @@ router.post('/add_to_cart',function(req,res) {
         },
         {
             $push: {
-                cart: book_id
+                cart: {book_id}
             }
         },
         {},
         (err) => {
             if (err) {
+                console.log(err);
                 res.send({
                     message: "database error"
                 });
@@ -338,7 +302,6 @@ router.post('/add_to_cart',function(req,res) {
             }
         }
     );
-
 });
 
 router.post('/purchase', authController.isLoggedIn, (req,res) => {
@@ -399,6 +362,17 @@ router.post('/purchase', authController.isLoggedIn, (req,res) => {
     }
 });
 
+// router.get('/questions_tagged/tag=:tag', authController.isLoggedIn, questionController.populateQuestionsWithTag, (req,res) => {
+//     if (req.user) {
+//         res.render('questions_tagged', {
+//             user: req.user,
+//             questionsTagged: req.questions,
+//             main_tag: req.main_tag
+//         });
+//     } else {
+//         res.render('index');
+//     }
+// });
 
 
 module.exports = router;
