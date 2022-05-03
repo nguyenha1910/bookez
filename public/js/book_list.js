@@ -5,12 +5,14 @@
 
 function get_book_object(book) {
     return `<div class="bookDiv row py-2" data-m="${book._id}">
-                <div class="col-7 book_name"><a>${book.book_name}</a></div>
-                <div class="col-2 author_name"><a>${book.author_name}</a></div>
-                <div class="col-1 price"><a>$ ${book.price.toFixed(2)}</a></div>
-<!--                <div class="col-2">-->
-<!--                    <button type="button" class="btn btn-outline-primary">Add to Cart</button>-->
-<!--                </div>-->
+                <div class="infoDiv row col-10">
+                    <div class="col-7 book_name"><a>${book.book_name}</a></div>
+                    <div class="col-2 author_name"><a>${book.author_name}</a></div>
+                    <div class="col-1 price"><a>$ ${book.price.toFixed(2)}</a></div>
+                </div>
+                <div class="buttonDiv col-2">
+                    <button type="button" class="btn btn-outline-primary">Add to Cart</button>
+                </div>
             </div>`;
 }
 
@@ -28,9 +30,21 @@ function showList(books) {
         }
     });
 
-    $('.bookDiv').on('click', function () {
-        const book_id = $(this).attr('data-m');
+    $('.infoDiv').on('click', function () {
+        const book_id = $(this).parent().attr('data-m');
         location.href = "views/book_detail.html?book_id=" + book_id;
+    });
+    $('.buttonDiv').on('click', function () {
+        const book_id = $(this).parent().attr('data-m');
+        $.post('/add_to_cart', {book_id: book_id}).done((data) => {
+            if (data.message === "success"){
+                console.log(data);
+                location.reload();
+            } else{
+                console.log(data);
+                location.href = data.redr;
+            }
+        });
     });
 }
 
@@ -66,4 +80,15 @@ function update_books(){
         });
     }
     showList(bookData);
+}
+
+function searchBook() {
+    $.get('/search_books', {
+        search_key: $('#search_box').val(),
+    }).done((data)=>{
+        console.log(data);
+        if (data.message === "success"){
+            showList(data.data);
+        }
+    });
 }

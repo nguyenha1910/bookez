@@ -28,42 +28,55 @@ $(document).ready(function () {
     }
 });
 
-$('#cartButton').on('click', function(){
-    // console.log(book_id);
-    $.getJSON('/get_current_user').done((data)=>{
-        if (data.message === "success"){
-            console.log(data.data);
-            // // console.log(data);
-            // user_id = data.data._id;
-            // car_id = obj.value;
-            // const car = cars[car_id];
-            // like = {
-            //     user_id: user_id,
-            //     make: car['make'],
-            //     model: car['model'],
-            //     year: car['year'],
-            //     price: car['price']
-            // };
-            // console.log(like);
-            // // $.post('/like_car', like).done((data)=>{
-            // //     if (data.message === "success"){
-            // //         console.log(`car ${car_id} liked`);
-            // //     } else {
-            // //         location.href = "login.html";
-            // //     }
-            // // });
+function addToCart() {
+    $.get('/auth/get_user').done((data)=>{
+        user_id = data.data.id;
+        if (user_id){
+            $.post('/add_to_cart', {user_id: user_id, book_id: book_id}).done((data) => {
+                if (data.message === "success"){
+                    console.log(data);
+                    // location.reload();
+                } else{
+                    console.log(data);
+                    // location.href = data.redr;
+                }
+            });
+        } else {
+            location.href = '/signin';
         }
-        else {
-            console.log(data);
-            // location.href = '/login';
-        }
-    });
-});
 
-// $.post('/get_car_by_id?car_id=' + car_id)
-//     .done(function (data) {
-//         if (data["message"] === "success") {
-//             car = data["data"];
-//             load_car(car);
+    });
+
+}
+
+
+// $('#cartButton').on('click', function(){
+//     // console.log(book_id);
+//     $.getJSON('/get_current_user').done((data)=>{
+//         if (data.message === "success"){
+//             console.log(data.data);
+//             // console.log(data);
+//             user_id = data.data._id;
+//             const car = cars[car_id];
+//             like = {
+//                 user_id: user_id,
+//                 make: car['make'],
+//                 model: car['model'],
+//                 year: car['year'],
+//                 price: car['price']
+//             };
+//             console.log(like);
+//             $.post('/add_to_cart', like).done((data)=>{
+//                 if (data.message === "success"){
+//                     console.log(`Book added to cart`);
+//                 } else {
+//                     location.href = "login.html";
+//                 }
+//             });
+//         }
+//         else {
+//             console.log(data);
+//             // location.href = '/login';
 //         }
 //     });
+// });
