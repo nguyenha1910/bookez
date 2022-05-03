@@ -18,6 +18,7 @@ const bookSchema = {
 const Book = mongoose.model('Book', bookSchema);
 
 const bookList = [];
+
 fs.createReadStream(__dirname+'/data/bookez_data.csv')
     .pipe(csv())
     .on('data', (data) => bookList.push(data))

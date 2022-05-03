@@ -362,17 +362,4 @@ router.post('/purchase', authController.isLoggedIn, (req,res) => {
     }
 });
 
-// router.get('/questions_tagged/tag=:tag', authController.isLoggedIn, questionController.populateQuestionsWithTag, (req,res) => {
-//     if (req.user) {
-//         res.render('questions_tagged', {
-//             user: req.user,
-//             questionsTagged: req.questions,
-//             main_tag: req.main_tag
-//         });
-//     } else {
-//         res.render('index');
-//     }
-// });
-
-
-module.exports = router;
+module.exports = router; 
