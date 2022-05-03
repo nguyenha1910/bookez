@@ -16,7 +16,7 @@ const session = require("express-session");
 //         console.log("db connection successful");
 //     });
 
-const bookSchema = {
+const bookSchema = new mongoose.Schema({
     book_name: {
         type: String,
         required: [true, "Book name cannot be empty"],
@@ -28,7 +28,7 @@ const bookSchema = {
         type: Number,
         default: 0
     }
-}
+});
 
 const Book = mongoose.model('Book', bookSchema);
 
@@ -81,7 +81,6 @@ const orderSchema = new mongoose.Schema({
 
 const Order = mongoose.model('Order', orderSchema);
 
-
 const userSchema = new mongoose.Schema({
     email: {
         type: String,
@@ -114,11 +113,9 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/index.html"));
 });
-
 
 router.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/about.html"));
@@ -311,27 +308,13 @@ router.post('/add_to_cart',function(req,res) {
     console.log("user_id", user_id);
     console.log("book_id", book_id);
 
-    // User.find({"_id": user_id}, function (err, data) {
-    //     if (err || data.length === 0) {
-    //         res.send({
-    //             "message": "internal database error",
-    //             "data": {}
-    //         });
-    //     } else {
-    //         res.send({
-    //             "message": "success",
-    //             "data": data[0]
-    //         })
-    //     }
-    // });
-
     User.updateOne(
         {
             _id: user_id,
         },
         {
             $push: {
-                cart: book_id
+                cart: {book_id}
             }
         },
         {},
