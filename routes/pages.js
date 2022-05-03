@@ -1,5 +1,4 @@
 const express = require('express');
-// const authController = require('../controllers/auth');          // load a module
 // const questionController = require('../controllers/question');   // load a module
 const router = express.Router();
 const authController = require('../controllers/auth');          // load a module
@@ -11,16 +10,6 @@ const passport = require("passport");
 const validator = require('validator');
 
 const session = require("express-session");
-
-//Initialize passport
-// router.use(session({
-//     secret: "MyLittleSecretThatIdontWantOthersToKnow",
-//     resave: false,
-//     saveUninitialized: false
-// }));
-// router.use(passport.initialize());
-// router.use(passport.session());
-
 
 // mongoose.connect('mongodb://localhost:27017/bookDB',
 //     {useNewUrlParser: true}, function () {
@@ -37,6 +26,7 @@ const bookSchema = {
     },
     price: {
         type: Number,
+        default: 0
     }
 }
 
@@ -44,7 +34,8 @@ const Book = mongoose.model('Book', bookSchema);
 
 const orderSchema = new mongoose.Schema({
     user_id: {
-        user_id: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+        user_id: String
+            // {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
     },
     fname: {
         type: String,
@@ -298,8 +289,22 @@ router.post('/add_to_cart',function(req,res) {
     const book_id = req.body.book_id;
     const user_id = req.body.user_id;
 
-    console.log(user_id);
-    console.log(book_id);
+    console.log("user_id", user_id);
+    console.log("book_id", book_id);
+
+    // User.find({"_id": user_id}, function (err, data) {
+    //     if (err || data.length === 0) {
+    //         res.send({
+    //             "message": "internal database error",
+    //             "data": {}
+    //         });
+    //     } else {
+    //         res.send({
+    //             "message": "success",
+    //             "data": data[0]
+    //         })
+    //     }
+    // });
 
     User.updateOne(
         {
@@ -313,6 +318,7 @@ router.post('/add_to_cart',function(req,res) {
         {},
         (err) => {
             if (err) {
+                console.log(err);
                 res.send({
                     message: "database error"
                 });
@@ -323,7 +329,6 @@ router.post('/add_to_cart',function(req,res) {
             }
         }
     );
-
 });
 
 router.post('/purchase', authController.isLoggedIn, (req,res) => {

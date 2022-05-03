@@ -26,7 +26,8 @@ const userSchema = new mongoose.Schema({
     user_type: { type: Number, default: 0 },
     cart:[
         {
-            book_id: {type: mongoose.Schema.Types.ObjectId, ref: 'Book'}
+            book_id: String
+                // {type: mongoose.Schema.Types.ObjectId, ref: 'Book'}
         }
     ]
 });
