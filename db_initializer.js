@@ -4,11 +4,6 @@ const fs = require('fs');
 
 // const rawdata = fs.readFileSync(__dirname + "data/bookez_data.csv");
 
-mongoose.connect('mongodb://localhost:27017/bookDB',
-    {useNewUrlParser: true}, function () {
-        console.log("db connection successful");
-    });
-
 const bookSchema = {
     book_name: String,
     author_name: String,

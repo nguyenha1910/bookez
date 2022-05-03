@@ -19,7 +19,6 @@ mongoose.connect('mongodb://localhost:27017/bookDB',
         console.log("db connection successful");
     });
 
-
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static( path.join(__dirname, './public') ));
 
@@ -35,6 +34,7 @@ app.use(cookieParser());
 app.use('/', require('./routes/pages'));
 app.use('/auth', require('./routes/auth')); 
 app.use('/books', require('./routes/books')); 
+app.use('/order_and_donation', require('./routes/order_and_donation')); 
 
 port_number = 3002;
 app.listen(port_number, function () {
