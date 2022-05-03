@@ -31,16 +31,20 @@ $(document).ready(function () {
 function addToCart() {
     $.get('/auth/get_user').done((data)=>{
         user_id = data.data.id;
-        console.log(user_id);
-        $.post('/add_to_cart', {user_id: user_id, book_id: book_id}).done((data) => {
-            if (data.message === "success"){
-                console.log(data);
-                // location.reload();
-            } else{
-                console.log(data);
-                // location.href = data.redr;
-            }
-        });
+        if (user_id){
+            $.post('/add_to_cart', {user_id: user_id, book_id: book_id}).done((data) => {
+                if (data.message === "success"){
+                    console.log(data);
+                    // location.reload();
+                } else{
+                    console.log(data);
+                    // location.href = data.redr;
+                }
+            });
+        } else {
+            location.href = '/signin';
+        }
+
     });
 
 }
