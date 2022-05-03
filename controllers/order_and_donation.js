@@ -45,7 +45,7 @@ const Donation = mongoose.model('Donations', donationSchema);
 
 
 
-// ************************************************************** Donatipn **************************************************************
+// ************************************************************** Donation **************************************************************
 // A FUNCTION to handle a POST request for donate
 exports.donate_fn = (req, res) => {
     console.log("Donate body: ", req.body); 
@@ -73,7 +73,7 @@ exports.donate_fn = (req, res) => {
 
         // if (result) {
         //     req.session.message_success = 'User registered'; 
-        return res.redirect('/donation-form'); 
+        return res.redirect('/thankyou'); 
         // }   
     }
 

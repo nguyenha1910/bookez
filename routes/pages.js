@@ -5,11 +5,24 @@ const authController = require('../controllers/auth');          // load a module
 
 const path = require('path');
 const mongoose = require("mongoose");
-const passportLocalMongoose = require("passport-local-mongoose");
-const passport = require("passport");
-const validator = require('validator');
+// const passportLocalMongoose = require("passport-local-mongoose");
+// const passport = require("passport");
+// const validator = require('validator');
 
 const session = require("express-session");
+<<<<<<< HEAD
+const authController = require('../controllers/auth');          // load a module
+//Initialize passport
+// router.use(session({
+//     secret: "MyLittleSecretThatIdontWantOthersToKnow",
+//     resave: false,
+//     saveUninitialized: false
+// }));
+// router.use(passport.initialize());
+// router.use(passport.session());
+
+=======
+>>>>>>> 9bd02c899897eabf79d3f3d8528f3956f0fff944
 
 // mongoose.connect('mongodb://localhost:27017/bookDB',
 //     {useNewUrlParser: true}, function () {
@@ -138,12 +151,27 @@ router.get('/register', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/signup.html"));
 });
 
-router.get('/each_order', (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/views/each_order.html"));
+<<<<<<< HEAD
+router.get('/cart', (req,res) => {
+    res.sendFile( path.join(__dirname, "../public/views/cart.html") );
 });
 
-router.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/views/about.html"));
+router.get('/each_order', (req,res) => {
+    res.sendFile( path.join(__dirname, "../public/views/each_order.html") );
+});
+
+router.get('/thankyou', (req,res) => {
+    res.sendFile( path.join(__dirname, "../public/views/thankyou.html") );
+});
+
+router.get('/donation-form', (req,res) => {
+    res.sendFile( path.join(__dirname, "../public/views/donation-form.html") );
+});
+
+=======
+>>>>>>> 9bd02c899897eabf79d3f3d8528f3956f0fff944
+router.get('/each_order', (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/views/each_order.html"));
 });
 
 router.get('/get_current_user', (req, res) => {

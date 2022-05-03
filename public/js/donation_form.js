@@ -4,7 +4,7 @@ var user;
 
 // check to see if there is a user
 $.get('/auth/get_user').done((data)=>{
-    if (data){
+    if (data["data"]){
         user = data.data;
         console.log("user: ", user);
         
