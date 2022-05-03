@@ -1,5 +1,4 @@
 $(document).ready(()=>{
-    
     $.get('/auth/get_user').done((data)=>{
         console.log(data);
         if (data["data"]){
