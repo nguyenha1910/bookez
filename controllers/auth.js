@@ -161,7 +161,7 @@ exports.isLoggedIn = async (req, res, next) => {
 
     try{
         const decoded = jwt.verify(token, process.env.JWT_SECRET); 
-        // req.user = decoded; 
+        req.user = decoded;
         // // console.log( "isLoggedIn: ", req.user); 
         res.send({
             message: "user exists",
