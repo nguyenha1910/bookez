@@ -22,13 +22,25 @@ function showList(books) {
         $('#book_list').append(get_book_object(book, idx));
     });
 
+    ///
+    $('#book_list li')
+    .attr("value", function (idx) {
+        return books[idx]._id;
+    })
+    .append("<div class='row'></div>");
+
+    ///
+
     $.each($('#book_list .row'), function (idx) {
+        $(this).addClass('col-lg-3 col-md-5 col-sm-8');
         if (idx % 2 === 0) {
             $(this).addClass('even_row');
         } else {
             $(this).addClass('odd_row');
         }
     });
+    
+
 
     $('.infoDiv').on('click', function () {
         const book_id = $(this).parent().attr('data-m');

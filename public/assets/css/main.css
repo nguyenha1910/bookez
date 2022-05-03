@@ -9,6 +9,9 @@
     --red: #ff3c38;
     --white: white;
 	--dark: black; 
+	--pastel-yellow: #fefae0; /* really light yellow used in highlight */
+	/* --celadon-blue: #457b9dff;
+    --prussian-blue: #1d3557ff; */
 }
 
 
@@ -21,10 +24,10 @@
 	text-align: center; 
 	padding-top:300px; 
 	color: var(--white); 
-	font-family:"Open sans", Helvetica, Arial; 
+	font-family: 'Karla', sans-serif;
 	font-weight:800; }
 #head.secondary { height:100px; min-height: 100px; padding-top:0px; }
-	#head .lead { font-family:"Open sans", Helvetica, Arial; font-size:60px; margin-bottom:6px; color:white; line-height:1.15em; } 
+	#head .lead { font-family: 'Karla', sans-serif;; font-size:60px; margin-bottom:6px; color:white; line-height:1.15em; } 
 	#head .tagline { color:rgba(255,255,255,0.75); margin-bottom:25px; }
 	#head .btn { margin-bottom:10px;}
 	#head .btn-default { text-shadow: none; background:transparent; color:rgba(255,255,255,.5); -webkit-box-shadow:inset 0px 0px 0px 3px rgba(255,255,255,.5); -moz-box-shadow:inset 0px 0px 0px 3px rgba(255,255,255,.5); box-shadow:inset 0px 0px 0px 3px rgba(255,255,255,.5); background: transparent; }
@@ -45,7 +48,7 @@
 
 
 /* Highlights (in jumbotron in most cases) */
-.highlight { margin-top:40px; }
+.highlight { margin-top:40px;}
 	.h-caption { text-align: center; } 
 	.h-caption i { display:block; font-size: 54px; color:#382526; margin-bottom:36px; }
 	.h-caption h4 { color:#382526; font-size: 16px; font-weight: bold; margin-bottom:20px; }
@@ -70,18 +73,12 @@
 }
 
 
-
 /* -------------------- Form -------------------- */
 form .button {
     display:flex;
     justify-content: flex-end;
     margin-right: 10px;
 }
-
-
-
-
-
 
 
 
@@ -277,14 +274,6 @@ form .button {
 
 
 
-
-
-
-
-
-
-
-
 /* Typography */
 /* h1, h2, h3, h4, h5, h6 { font-family:"Open sans", Helvetica, Arial; }
 h1, .h1, h2, .h2, h3, .h3 { margin-top:30px; } 
@@ -335,82 +324,117 @@ img.pull-left { margin-right: 10px; }
 	.widget-simplenav { margin-left:-5px; }		
 	.widget-simplenav a{ margin:0 5px; }		
 
+	/* Added CSS */
+	/* ABOUT US */
+	#contacts.contacts {
+		margin-bottom: 20px;
+		margin-left: auto;
+		margin-right: auto;
+		width: auto;
+		min-height: 200px;
+		text-align: left;
+		position:relative;
+		/* outline: 4px solid #000; */
+		text-align: left;
+		padding-left: 5%;
+		padding-bottom: 0.5%;
+		overflow-x: hidden;
+		overflow-y: auto;
+	} 	
 	
-
+	#contact-wrapper.contact-wrapper {
+		margin-left: 5%;
+		margin-right: 5%;
+		outline: 4px solid #000;
+		margin-bottom: 20px;
+	}
 	
-/* Added CSS */
-/* ABOUT US */
-#contacts {
-	margin-bottom: 20px;
-	margin-left: auto;
-	margin-right: auto;
-	width: 95%;
-	height: 200px;
-	text-align: left;
-	position:relative;
-	outline: 4px solid #000;
-	text-align: left;
-	padding-left: 5%;
-	padding-bottom: 0.5%;
-} 	
-
-#names {
-	margin-left: 200px;
-	float: right;
-	position:absolute;
-	width: 50%;
-	bottom: 50%;
-}
-
-/* #email {
-	margin-left: 200px;
-	float: right;
-	position:absolute;
-	width: 50%;
-	bottom: 50%;
-	bottom: 30%;
-} */
-
-/* THANK YOU */
-#thankyou {
-	margin-bottom: 20px;
-	margin-left: auto;
-	margin-right: auto;
-	max-width: 90%;
-	min-height: 250px;
-	outline: 4px solid #000;
-	padding-left: 5%;
-	padding-bottom: 2px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-} 	
-
-
-/* DONATION-FORM */
-#donation {
-	/* height:500px; */
-	/* align-items: center; */
-	background-color: #F4F3F8;
-	padding-top: 20px;
-	padding-left: 30px;
-	padding-right: 30px;
-	padding-bottom: 20px;
-	text-align:left;
-	outline: 1px solid rgb(12, 12, 12);
-}
-/* 
-.button {
-	transition-duration: 0.4s;
+	#contactimg.contactimg {
+		position: relative;
+		float:left; 
+		width:200px;height:200px;
+		margin-right:15px;
+		border-radius: 30px;
+		margin-left:15px;
+		margin-top: 10px;
+	}
+	#names.names {
+		/* margin-left: 200px; */
+		float: right;
+		position:absolute;
+		bottom: 70%;
 	}
 
-	.button:hover {
-	background-color: #000; 
-	color: white;
-} */
+	#emails.emails {
+		/* margin-left: 200px; */
+		float: right;
+		position:absolute;
+		bottom: 60%;
+		
+	}
 
-
-
-
-
+	#contact_description.contact_description {
+		font-family: Georgia, 'Times New Roman', Times, serif;
+		/* margin-left: 200px; */
+		margin-right: 150px;
+		float: right;
+		position:absolute;
+		bottom: 0%;
+		top: 40%;
+	}
 	
+	/* THANK YOU */
+	#thankyou.thankyou{
+		margin-bottom: 20px;
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 90%;
+		min-height: 250px;
+		outline: 4px solid #000;
+		padding-left: 5%;
+		padding-bottom: 2px;
+		display: flex;
+  		justify-content: center;
+  		align-items: center;
+	} 	
+
+
+	/* DONATION-FORM */
+	#donation.donate{
+		/* height:500px; */
+		/* align-items: center; */
+		background-color: #F4F3F8;
+		padding-top: 20px;
+		padding-left: 30px;
+		padding-right: 30px;
+		padding-bottom: 20px;
+		text-align:left;
+		outline: 1px solid rgb(12, 12, 12);
+	}
+
+
+/* BOOK LIST */
+
+#book_list {
+    color: black;
+	text-align: center;
+}
+
+.bookDiv {
+    margin-bottom: 10px;
+    height: 300px;
+}
+
+#book_list_img.book_list_img {
+	height:50%;
+	width: 50%;
+	position: absolute;
+	bottom: 0%;
+	left: 25%;
+	margin-bottom: 15px;
+}
+
+#book_list_sidebar.sidebar {
+	/* background-color: #F4F3F8; */
+	font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
