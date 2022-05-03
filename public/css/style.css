@@ -7,7 +7,12 @@
     /*--light-orange: #ffbd75;*/
     /*--orange: #f3722c;*/
     --red: #ff3c38;
-    --white: white;
+    --white: white;    
+
+    --honeydew: #f1faeeff;
+    --powder-blue: #a8dadcff;
+    --celadon-blue: #457b9dff;
+    --prussian-blue: rgb(45, 103, 184);
 }
 
 .navbar-custom{
@@ -22,3 +27,23 @@
     color: var(--red);
 }
 
+
+/* BOOK LIST */
+.odd_row {
+    background-color: var(--powder-blue);
+}
+
+.even_row {
+    background-color: var(--prussian-blue);
+}
+
+#book_list {
+    color: black;
+}
+
+.bookDiv {
+    color: black;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    height: 200px;
+}

@@ -33,11 +33,10 @@ function addToCart() {
         user_id = data.data.id;
         if (user_id){
             $.post('/add_to_cart', {user_id: user_id, book_id: book_id}).done((data) => {
+                console.log(data);
                 if (data.message === "success"){
-                    console.log(data);
                     // location.reload();
                 } else{
-                    console.log(data);
                     // location.href = data.redr;
                 }
             });
