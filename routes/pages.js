@@ -8,6 +8,8 @@ const path = require('path');
 const mongoose = require("mongoose");
 const passportLocalMongoose = require("passport-local-mongoose");
 const passport = require("passport");
+const validator = require('validator');
+
 const session = require("express-session");
 
 //Initialize passport
@@ -39,6 +41,55 @@ const bookSchema = {
 }
 
 const Book = mongoose.model('Book', bookSchema);
+
+const orderSchema = new mongoose.Schema({
+    user_id: {
+        user_id: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+    },
+    fname: {
+        type: String,
+        required: [true, "Firstname cannot be empty"],
+    },
+    lname: {
+        type: String,
+        required: [true, "Lastname cannot be empty"],
+    },
+    email: {
+        type: String,
+        // validate: [validator.isEmail, 'Invalid email']
+    },
+    phone_no: {
+        type: String
+    },
+    str: {
+        type: String
+    },
+    city: {
+        type: String
+    },
+    state: {
+        type: String
+    },
+    zip: {
+        type: String
+    },
+    status: {
+        type: Number,
+        default: 0,
+        enum: [0, 1]
+        // 0: pending
+        // 1: completed
+    },
+    note: {
+        type: String
+    },
+    date_time:{
+        type: String
+    }
+});
+
+const Order = mongoose.model('Order', orderSchema);
+
 
 const userSchema = new mongoose.Schema({
     email: {
@@ -180,7 +231,7 @@ router.get('/get_book_by_id', (req, res) => {
 });
 
 router.get('/get_books_by_ids', (req, res) => {
-    Book.find({ _id: {$in: req.query.book_ids}}, function (err, data) {
+    Book.find({_id: {$in: req.query.book_ids}}, function (err, data) {
         if (err || data.length === 0) {
             res.send({
                 "message": "internal database error",
@@ -201,8 +252,8 @@ router.get('/search_books', function (req, res) {
     console.log(search_key);
     Book.find({
         $or: [
-            {book_name: {$regex: search_key, $options : 'i'}},
-            {author_name: {$regex: search_key, $options : 'i'}},
+            {book_name: {$regex: search_key, $options: 'i'}},
+            {author_name: {$regex: search_key, $options: 'i'}},
             // {price: {$regex: search_key}}
         ]
     }, (err, data) => {
@@ -241,54 +292,107 @@ router.get('/get_cart_by_id', (req, res) => {
     }
 });
 
-router.post('/add_to_cart', (req, res) => {
+router.post('/add_to_cart',(req,res) => {
     console.log("POST /add_to_cart");
-    //Users need to log in to add a book to their cart
-    if (req.isAuthenticated) {
-        // Save the book to the cart list inside User schema
-        const book_id = req.body.book_id;
-        const user_id = req.user._id;
-
-        User.updateOne(
-            {
-                _id: user_id,
-            },
-            {
-                $push: {
-                    cart: book_id
-                }
-            },
-            {},
-            (err) => {
-                if (err) {
-                    res.send({
-                        message: "database error"
-                    });
-                } else {
-                    res.send({
-                        message: "success"
-                    });
-                }
-            }
-        );
-    } else {
-        // navigate to the login page
-        res.send({
-            message: "login required",
-            redr: "/signin"
-        });
-        // res.redirect('/signin');
-    }
+    const book_id = req.body.book_id;
+    const user_id = req.user._id;
+    console.log(book_id);
+    console.log(user_id);
+    // //Users need to log in to add a book to their cart
+    // if (req.user) {
+    //     // Save the book to the cart list inside User schema
+    //     const book_id = req.body.book_id;
+    //     const user_id = req.user._id;
+    //
+    //     User.updateOne(
+    //         {
+    //             _id: user_id,
+    //         },
+    //         {
+    //             $push: {
+    //                 cart: book_id
+    //             }
+    //         },
+    //         {},
+    //         (err) => {
+    //             if (err) {
+    //                 res.send({
+    //                     message: "database error"
+    //                 });
+    //             } else {
+    //                 res.send({
+    //                     message: "success"
+    //                 });
+    //             }
+    //         }
+    //     );
+    // } else {
+    //     // navigate to the login page
+    //     res.send({
+    //         message: "login required",
+    //         redr: "/signin"
+    //     });
+    //     // res.redirect('/signin');
+    // }
 });
 
-router.get('/purchase', (req, res) => {
-    if (req.isAuthenticated()) {
-        res.sendFile(path.join(__dirname, "../public/views/purchase.html"));
+router.post('/purchase', authController.isLoggedIn, (req,res) => {
+    if (req.user) {
+        console.log("POST /purchase");
+        if (req.body._id) {
+            const order = {
+                user_id: req.body.user_id,
+                first_name: req.body.first_name,
+                last_name: req.body.last_name,
+                phone_no: req.body.phone_no,
+                email: req.body.email,
+                address: req.body.address,
+                apt: req.body.apt,
+                state: req.body.state,
+                zip: req.body.zip,
+                note: req.body.note,
+            }
+            console.log(order);
+
+            const newOrder = new Order(order);
+            newOrder.save((err, new_order) => {
+                if (err) {
+                    console.log(err);
+                    console.log("Failed to place order");
+                    // res.send("Database error");
+                    res.redirect("views/purchase.html?error_message=" + err['message']
+                        + "&input=" + JSON.stringify(order));
+                } else {
+                    // Set cart field in User to empty list
+                    User.find({"_id": req.query.user_id}, function (err, data) {
+                        if (err || data.length === 0) {
+                            console.log("Cannot find user with this id");
+                        } else {
+                            let update_user = data[0];
+                            update_user.cart = [];
+
+                            User.updateOne({_id: req.body.user_id},
+                                {$set: update_user},
+                                {runValidators: true},
+                                (err, info) => {
+                                    if (err) {
+                                        res.redirect("views/profile.html?error_message=" + err['message']
+                                            + "&input=" + JSON.stringify(car) + "&user_id=" + req.body.user_id);
+                                    } else {
+                                        // success
+                                        res.redirect("views/profile.html?user_id=" + req.body.user_id);
+                                    }
+                                }
+                            );
+                        }
+                    });
+                }
+            });
+        }
     } else {
         res.redirect("/signin");
     }
 });
-
 
 // router.get('/questions_tagged/tag=:tag', authController.isLoggedIn, questionController.populateQuestionsWithTag, (req,res) => {
 //     if (req.user) {
