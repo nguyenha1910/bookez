@@ -26,7 +26,8 @@ const userSchema = new mongoose.Schema({
     user_type: { type: Number, default: 0 },
     cart:[
         {
-            book_id: {type: mongoose.Schema.Types.ObjectId, ref: 'Book'}
+            book_id: String
+                // {type: mongoose.Schema.Types.ObjectId, ref: 'Book'}
         }
     ]
 });
@@ -154,14 +155,17 @@ exports.login_fn = async (req, res) => {
 
 // Check logged in status
 exports.isLoggedIn = async (req, res, next) => {
+    console.log("inside get user");
     const token = req.cookies.jwt; 
     if (!token) {
-        return next(); 
+        res.send({
+            message: "no user"
+        });
     }; 
 
     try{
         const decoded = jwt.verify(token, process.env.JWT_SECRET); 
-        // req.user = decoded; 
+        req.user = decoded;
         // // console.log( "isLoggedIn: ", req.user); 
         res.send({
             message: "user exists",

@@ -37,12 +37,11 @@
 	<!--Font Awesome library-->
 	<script src="https://kit.fontawesome.com/e5b5eed843.js" crossorigin="anonymous"></script>
 
-
 	<!--Google jQuery-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
-	<script src="/js/index.js" defer></script>
+	<script src="/js/get_user.js" defer></script>
 
 </head>
 
@@ -58,30 +57,31 @@
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
 					<a class="navbar-brand" href="/"><img src="/favicon.ico" alt="BookEZ">  BookEZ</a>
 				</div>
+				<!--nav-collapse -->
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav pull-right">
 						<li><a href="/">Home</a></li>
 						<li><a href="/about">About</a></li>
-
-						<li class="dropdown">
+						<li class="dropdown" id="admin_zone">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin zone <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="/admin-orders">Orders</a></li>
 								<li><a href="/admin-donations">Donations</a></li>
 							</ul>
 						</li>
-
-						<li><a href="">Contact</a></li>
+						<li><a href="/book_list">Book list</a></li>
 						<li id="signin"><a class="btn" href="/signin">SIGN IN / SIGN UP</a></li>
 						<li class="dropdown" id="profile"> 
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="user_fname"></span>'s profile <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="">Profile page</a></li>
+								<li><a href="/cart">Cart</a></li>
 								<li><a href="/auth/logout">Logout</a></li>
 							</ul>
 						</li>
 					</ul>
-				</div><!--/.nav-collapse -->
+				</div>
+				<!--/.nav-collapse -->
 			</div>
 		</div> 
 	</div>
@@ -115,6 +115,8 @@
 			With a passion to solve this real-life problem facing by many real-life college students, our mission for Book-EZ is to make books 
 			more affordable and available for the Clark community.
 		</p>
+		<br>
+		<a class="btn btn-action btn-lg" role="button" href="/donation-form">Donate books</a>
 	</div>
 	<!-- /Intro-->
 		
@@ -127,13 +129,13 @@
 				<div class="col-md-3 col-sm-6 highlight">
 					<div class="h-caption"><h4><i class="fa fa-cogs fa-5"></i>Step 1: Create an account</h4></div>
 					<div class="h-body text-center">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate. Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?</p>
+						<p> Description </p>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 highlight">
 					<div class="h-caption"><h4><i class="fa fa-flash fa-5"></i>Step 2: Choose your favorite book and add to your cart</h4></div>
 					<div class="h-body text-center">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, commodi, sequi quis ad fugit omnis cumque a libero error nesciunt molestiae repellat quos perferendis numquam quibusdam rerum repellendus laboriosam reprehenderit! </p>
+						<p> Description </p>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 highlight">
@@ -143,7 +145,7 @@
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 highlight">
-					<div class="h-caption"><h4><i class="fa fa-smile-o fa-5"></i>Step 4: </h4></div>
+					<div class="h-caption"><h4><i class="fa fa-smile-o fa-5"></i>Step 4: We will contact you via your preferred communications method for delivery!</h4></div>
 					<div class="h-body text-center">
 						<p>Me too</p>
 					</div>

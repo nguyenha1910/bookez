@@ -16,38 +16,49 @@
 	<!-- Custom styles for our template -->
 	<link rel="stylesheet" href="assets/css/bootstrap-theme.css" media="screen" >
 	<link rel="stylesheet" href="assets/css/main.css">
+	<script src="/js/get_user.js" defer></script>
+
 	
 </head>
 
 <body>
-		<!-- Fixed navbar -->
-		<div id="nav-placeholder">
-			<div class="navbar navbar-inverse navbar-fixed-top headroom" >
-				<div class="container">
-					<div class="navbar-header">
-						<!-- Button for smallest screens -->
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-						<a class="navbar-brand" href="/"><img src="/favicon.ico" alt="BookEZ">  BookEZ</a>
-					</div>
-					<div class="navbar-collapse collapse">
-						<ul class="nav navbar-nav pull-right">
-							<li><a href="/">Home</a></li>
-							<li><a href="/about">About</a></li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin zone <b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<li><a href="/admin-orders">Orders</a></li>
-									<li><a href="/admin-donations">Donations</a></li>
-								</ul>
-							</li>
-							<li><a href="/donation-form">Donate</a></li>
-							<li><a class="btn" href="/signin">SIGN IN / SIGN UP</a></li>
-						</ul>
-					</div><!--/.nav-collapse -->
+	<!-- Fixed navbar -->
+	<div id="nav-placeholder">
+		<div class="navbar navbar-inverse navbar-fixed-top headroom" >
+			<div class="container">
+				<div class="navbar-header">
+					<!-- Button for smallest screens -->
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+					<a class="navbar-brand" href="/"><img src="/favicon.ico" alt="BookEZ">  BookEZ</a>
 				</div>
-			</div> 
-		</div>
-		<!-- /.navbar -->
+				<!--nav-collapse -->
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav pull-right">
+						<li><a href="/">Home</a></li>
+						<li><a href="/about">About</a></li>
+						<li class="dropdown" id="admin_zone">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin zone <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="/admin-orders">Orders</a></li>
+								<li><a href="/admin-donations">Donations</a></li>
+							</ul>
+						</li>
+						<li><a href="/book_list">Book list</a></li>
+						<li id="signin"><a class="btn" href="/signin">SIGN IN / SIGN UP</a></li>
+						<li class="dropdown" id="profile"> 
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="user_fname"></span>'s profile <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="">Profile page</a></li>
+								<li><a href="/auth/logout">Logout</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</div> 
+	</div>
+	<!-- /.navbar -->
 
 	<header id="head" class="secondary"></header>
 
