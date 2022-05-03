@@ -2,12 +2,12 @@ const express = require('express');
 const path = require('path');
 const router = express.Router();
 const mongoose = require("mongoose");
-const passportLocalMongoose = require("passport-local-mongoose");
-const passport = require("passport");
-const validator = require('validator');
+// const passportLocalMongoose = require("passport-local-mongoose");
+// const passport = require("passport");
+// const validator = require('validator');
 
 const session = require("express-session");
-
+const authController = require('../controllers/auth');          // load a module
 //Initialize passport
 // router.use(session({
 //     secret: "MyLittleSecretThatIdontWantOthersToKnow",
@@ -157,7 +157,6 @@ router.get('/register', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/signup.html"));
 });
 
-
 router.get('/cart', (req,res) => {
     res.sendFile( path.join(__dirname, "../public/views/cart.html") );
 });
@@ -172,13 +171,10 @@ router.get('/thankyou', (req,res) => {
 
 router.get('/donation-form', (req,res) => {
     res.sendFile( path.join(__dirname, "../public/views/donation-form.html") );
+});
 
 router.get('/each_order', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/each_order.html"));
-});
-
-router.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/views/about.html"));
 });
 
 router.get('/get_current_user', (req, res) => {
