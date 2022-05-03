@@ -161,6 +161,7 @@ exports.isLoggedIn = async (req, res, next) => {
         res.send({
             message: "no user"
         });
+        return;
     }; 
 
     try{

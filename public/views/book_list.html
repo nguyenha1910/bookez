@@ -1,6 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
+    <meta charset="UTF-8">
+    <title>BookEZ</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!--    <link rel="icon" href="img/bookez_icon.png">-->
+    <!--    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">-->
+    <!--    Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+            crossorigin="anonymous"></script>
+
+    <!--    Google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Raleway:wght@100&family=Roboto:wght@100&display=swap"
+          rel="stylesheet">
+
+    <!--    fontawesome-->
+    <script src="https://kit.fontawesome.com/e5b5eed843.js" crossorigin="anonymous"></script>
+
+    <!--    Google jQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
+=======
+>>>>>>> 9bd02c899897eabf79d3f3d8528f3956f0fff944
 
     
 	<meta charset="utf-8">
@@ -52,31 +81,76 @@
 
   
 <body>
+    <!-- Fixed navbar -->
+    <div id="nav-placeholder">
+        <div class="navbar navbar-inverse navbar-fixed-top headroom" >
+            <div class="container">
+                <div class="navbar-header">
+                    <!-- Button for smallest screens -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                    <a class="navbar-brand" href="/"><img src="/favicon.ico" alt="BookEZ">  BookEZ</a>
+                </div>
+                <!--nav-collapse -->
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav pull-right">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li class="dropdown" id="admin_zone">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin zone <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/admin-orders">Orders</a></li>
+                                <li><a href="/admin-donations">Donations</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/book_list">Book list</a></li>
+                        <li id="signin"><a class="btn" href="/signin">SIGN IN / SIGN UP</a></li>
+                        <li class="dropdown" id="profile"> 
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="user_fname"></span>'s profile <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="">Profile page</a></li>
+                                <li><a href="/cart">Cart</a></li>
+                                <li><a href="/auth/logout">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div> 
+    </div>
+    <!-- /.navbar -->
 
-<section id="nav-placeholder">
-    
-</section>
+    <header id="head" class="secondary"></header>
 
-<section class="container">
-    <div id="selection_section" class="row">
+    <section class="container">
+        <div id="selection_section" class="row">
 
-        <!-- search box-->
-        <div class="input-group mb-3 col-lg-9">
-            <input id="search_box" type="search" class="form-control" placeholder="Search Books" aria-label="Search"
-                   aria-describedby="basic-addon2" onsearch="searchBook()">
-            <span class="input-group-text" id="basic-addon2" onclick="searchBook()"><i class="fas fa-search"></i></span>
+            <!-- search box-->
+            <div class="input-group mb-3 col-lg-9">
+                <input id="search_box" type="search" class="form-control" placeholder="Search Books" aria-label="Search"
+                    aria-describedby="basic-addon2" onsearch="searchBook()">
+                <span class="input-group-text" id="basic-addon2" onclick="searchBook()"><i class="fas fa-search"></i></span>
+            </div>
+
+            <!-- Sort selection-->
+            <div class="col-lg-3">
+                <h6>Sort by</h6>
+                <select id="sortDropdown" class="form-select" onchange="update_books()">>
+                    <option id="book_name_sort" value="book_name_sort">Book name</option>
+                    <option id="author_name_sort" value="author_name_sort">Author name</option>
+                    <option id="price_sort" value="price_sort">Price</option>
+                </select>
+            </div>
+
+<<<<<<< HEAD
         </div>
+    </section>
 
-        <!-- Sort selection-->
-        <div class="col-lg-3">
-            <h6>Sort by</h6>
-            <select id="sortDropdown" class="form-select" onchange="update_books()">>
-                <option id="book_name_sort" value="book_name_sort">Book name</option>
-                <option id="author_name_sort" value="author_name_sort">Author name</option>
-                <option id="price_sort" value="price_sort">Price</option>
-            </select>
-        </div>
-
+    <!-- Book List-->
+    <section id="book_section" class="container">
+        <div id="book_list" class=""></div>
+    </section>
+=======
 <body style="background-color:#f1faeeff">
 		<!-- Fixed navbar -->
 		<div id="nav-placeholder">
@@ -200,6 +274,7 @@
 	<script src="assets/js/headroom.min.js"></script>
 	<script src="assets/js/jQuery.headroom.min.js"></script>
 	<script src="assets/js/template.js"></script>
+>>>>>>> 9bd02c899897eabf79d3f3d8528f3956f0fff944
 
 	
 </body>
