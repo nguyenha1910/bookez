@@ -5,24 +5,7 @@ const authController = require('../controllers/auth');          // load a module
 
 const path = require('path');
 const mongoose = require("mongoose");
-// const passportLocalMongoose = require("passport-local-mongoose");
-// const passport = require("passport");
-// const validator = require('validator');
-
 const session = require("express-session");
-<<<<<<< HEAD
-const authController = require('../controllers/auth');          // load a module
-//Initialize passport
-// router.use(session({
-//     secret: "MyLittleSecretThatIdontWantOthersToKnow",
-//     resave: false,
-//     saveUninitialized: false
-// }));
-// router.use(passport.initialize());
-// router.use(passport.session());
-
-=======
->>>>>>> 9bd02c899897eabf79d3f3d8528f3956f0fff944
 
 // mongoose.connect('mongodb://localhost:27017/bookDB',
 //     {useNewUrlParser: true}, function () {
@@ -48,7 +31,7 @@ const Book = mongoose.model('Book', bookSchema);
 const orderSchema = new mongoose.Schema({
     user_id: {
         user_id: String
-            // {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+        // {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
     },
     fname: {
         type: String,
@@ -87,7 +70,7 @@ const orderSchema = new mongoose.Schema({
     note: {
         type: String
     },
-    date_time:{
+    date_time: {
         type: String
     }
 });
@@ -119,7 +102,7 @@ const userSchema = new mongoose.Schema({
     cart: [
         {
             book_id: {type: String}
-                // {type: mongoose.Schema.Types.ObjectId, ref: 'Book'}
+            // {type: mongoose.Schema.Types.ObjectId, ref: 'Book'}
         }
     ]
 });
@@ -151,50 +134,40 @@ router.get('/register', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/signup.html"));
 });
 
-<<<<<<< HEAD
-router.get('/cart', (req,res) => {
-    res.sendFile( path.join(__dirname, "../public/views/cart.html") );
+router.get('/cart', (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/views/cart.html"));
 });
 
-router.get('/each_order', (req,res) => {
-    res.sendFile( path.join(__dirname, "../public/views/each_order.html") );
-});
-
-router.get('/thankyou', (req,res) => {
-    res.sendFile( path.join(__dirname, "../public/views/thankyou.html") );
-});
-
-router.get('/donation-form', (req,res) => {
-    res.sendFile( path.join(__dirname, "../public/views/donation-form.html") );
-});
-
-=======
->>>>>>> 9bd02c899897eabf79d3f3d8528f3956f0fff944
 router.get('/each_order', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/each_order.html"));
 });
 
-router.get('/get_current_user', (req, res) => {
-    if (req.isAuthenticated()) {
-        res.send({
-            message: "success",
-            data: req.user
-        });
-    } else {
-        res.send({
-            message: "user not found",
-            data: {}
-        });
-    }
+router.get('/thankyou', (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/views/thankyou.html"));
 });
+
+router.get('/donation-form', (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/views/donation-form.html"));
+});
+
+router.get('/each_order', (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/views/each_order.html"));
+});
+
+// router.get('/get_current_user', (req, res) => {
+//     res.send({
+//         message: "success",
+//         data: req.user
+//     });
+// });
 
 router.get('/book_list', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/book_list.html"));
 });
 
-router.get('/book_detail', (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/views/book_detail.html"));
-});
+// router.get('/book_detail', (req, res) => {
+//     res.sendFile(path.join(__dirname, "../public/views/book_detail.html"));
+// });
 
 router.get('/thank-you', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/thankyou.html"));
@@ -236,22 +209,22 @@ router.get('/get_book_by_id', (req, res) => {
         }
     });
 });
-
-router.get('/get_books_by_ids', (req, res) => {
-    Book.find({_id: {$in: req.query.book_ids}}, function (err, data) {
-        if (err || data.length === 0) {
-            res.send({
-                "message": "internal database error",
-                "data": {}
-            });
-        } else {
-            res.send({
-                "message": "success",
-                "data": data
-            })
-        }
-    });
-});
+//
+// router.get('/get_books_by_ids', (req, res) => {
+//     Book.find({_id: {$in: req.query.book_ids}}, function (err, data) {
+//         if (err || data.length === 0) {
+//             res.send({
+//                 "message": "internal database error",
+//                 "data": {}
+//             });
+//         } else {
+//             res.send({
+//                 "message": "success",
+//                 "data": data
+//             })
+//         }
+//     });
+// });
 
 router.get('/search_books', function (req, res) {
     console.log("GET /search_books");
@@ -299,7 +272,42 @@ router.get('/get_cart_by_id', (req, res) => {
     }
 });
 
-router.post('/add_to_cart',function(req,res) {
+router.get('/get_books_in_cart_by_id', (req, res) => {
+    const book_list = [];
+    User.find({"_id": req.query.user_id}, function (err, data) {
+        if (err || data.length === 0) {
+            res.send({
+                "message": "internal database error",
+                "data": {}
+            });
+            return;
+        } else {
+            user = data[0];
+            const cart = user.cart;
+            let book_ids = cart.map(function (book_item) {
+                return book_item.book_id;
+            });
+            Book.find({"_id": {$in: book_ids}}, function (err, bookData) {
+                if (err || data.length === 0) {
+                    console.log(err);
+                    res.send({
+                        "message": "internal database error",
+                        "data": []
+                    });
+                    return;
+                } else {
+                    console.log(bookData);
+                    res.send({
+                        "message": "success",
+                        "data": bookData
+                    });
+                }
+            });
+        }
+    });
+});
+
+router.post('/add_to_cart', function (req, res) {
     console.log("POST /add_to_cart");
     const book_id = req.body.book_id;
     const user_id = req.body.user_id;
@@ -332,7 +340,40 @@ router.post('/add_to_cart',function(req,res) {
     );
 });
 
-router.post('/purchase', authController.isLoggedIn, (req,res) => {
+router.post('/remove_book_from_cart', function (req, res) {
+    console.log("POST /remove_book_from_cart");
+    const book_id = req.body.book_id;
+    const user_id = req.body.user_id;
+
+    console.log("user_id", user_id);
+    console.log("book_id", book_id);
+
+    User.updateOne(
+        {
+            _id: user_id,
+        },
+        {
+            $pull: {
+                cart: {book_id: book_id}
+            }
+        },
+        {},
+        (err) => {
+            if (err) {
+                console.log(err);
+                res.send({
+                    message: "database error"
+                });
+            } else {
+                res.send({
+                    message: "success"
+                });
+            }
+        }
+    );
+});
+
+router.post('/purchase', authController.isLoggedIn, (req, res) => {
     if (req.user) {
         console.log("POST /purchase");
         if (req.body._id) {
