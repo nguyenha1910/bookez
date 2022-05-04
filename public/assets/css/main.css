@@ -347,6 +347,13 @@ img.pull-left { margin-right: 10px; }
 		font-weight: 400;
 
 	}
+	.emptyspace {
+		 
+			width: 960px; 
+			text-align: left; 
+			margin: 0 auto 
+		   
+	}
 	
 	#contact-wrapper.contact-wrapper {
 		margin-left: 5%;
