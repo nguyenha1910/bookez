@@ -11,13 +11,12 @@ console.log(user_id);
 function get_book_object(book) {
     return `<div class="bookDiv row py-2" data-m="${book._id}">
                 <div class="infoDiv col">
-                    <div class="book_name"><a>${book.book_name}</a></div>
-                    <div class="author_name"><a>${book.author_name}</a></div>
-                    <div class="price"><a>${book.price}</a></div>
+                    <div class="book_name">${book.book_name}</div>
+                    <div class="author_name">${book.author_name}</div>
+                    <div class="price">${book.price}</div>
                 </div>
                 <div class="buttonDiv col">
-                    <div class="price">{book.price}</div>
-                    <button type="button btn bth-danger">Remove</button>
+                    <button type="button" class="btn btn-danger">Remove</button>
                 </div>
             </div>`;
 }
@@ -28,17 +27,17 @@ function showList(books) {
         $('#cart_list').append(get_book_object(book, idx));
     });
 
-    $('infoDiv').on('click', function () {
-        const book_id = $(this).attr('data-m');
-        location.href = "book_detail.html?book_id=" + book_id;
+    $('.infoDiv').on('click', function () {
+        const book_id = $(this).parent().attr('data-m');
+        location.href = '../views/book_detail.html?book_id=' + book_id;
     });
+
+    
 }
 
 $(document).ready(function () {
     if (user_id) {
         $.getJSON('/get_books_in_cart_by_id?user_id=' + user_id).done((data)=>{
-            // const dataParse = JSON.parse(data);
-            console.log(data.data);
             showList(data.data);
         });
     }
