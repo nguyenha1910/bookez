@@ -28,24 +28,18 @@ function showList(books) {
         $('#cart_list').append(get_book_object(book, idx));
     });
 
-    $('bookDiv').on('click', function () {
+    $('infoDiv').on('click', function () {
         const book_id = $(this).attr('data-m');
-        location.href = "book_detail.html?book_id=" + car_id;
+        location.href = "book_detail.html?book_id=" + book_id;
     });
 }
 
 $(document).ready(function () {
     if (user_id) {
-        $.getJSON('/get_cart_by_id?user_id=' + user_id)
-            .done(function (data) {
-                if (data["message"] === "success") {
-                    book_ids = data["data"].cart;
-                    $.getJSON('/get_books_by_ids?book_ids=' + book_ids).done(function(data){
-                        books = data["data"];
-                        console.log(books);
-                        showList(books);
-                    });
-                }
-            });
+        $.getJSON('/get_books_in_cart_by_id?user_id=' + user_id).done((data)=>{
+            // const dataParse = JSON.parse(data);
+            console.log(data.data);
+            showList(data.data);
+        });
     }
 });
