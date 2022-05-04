@@ -15,9 +15,9 @@ function get_book_object(book) {
                     <div class="col-2 author_name"><a>${book.author_name}<a></div>
                     <div class="col-1 price">$ ${book.price.toFixed(2)}</div>
                 </div>
-                <div class="buttonDiv" onclick="addToCart(this)">
-                    <button type="button" class="btn btn-outline-primary">Add to Cart</button>
-                </div>
+<!--                <div class="buttonDiv">-->
+                    <button type="button" class="btn btn-outline-primary" onclick="addToCart(this)" data-m="${book._id}">Add to Cart</button>
+<!--                </div>-->
             </div>`;
 }
 
@@ -48,7 +48,7 @@ $.getJSON("/get_all_books").done((data) => {
     if (data.message === "success") {
         console.log("file loaded");
         bookData = data.data;
-        showList(bookData);
+        showList(bookData.slice(0, 10));
     } else {
         console.log("FE cant load data");
     }
@@ -95,15 +95,19 @@ function toDetailPage(divObj) {
 }
 
 function addToCart(divObj) {
-    console.log('Add to cart clicked');
-    const book_id = $(addToCart).parent().attr('data-m');
-    $.post('/add_to_cart', {book_id: book_id}).done((data) => {
-        if (data.message === "success") {
-            console.log(data);
-            location.reload();
-        } else {
-            console.log(data);
-            location.href = data.redr;
-        }
+    const book_id = $(divObj).attr('data-m');
+    $.get('/auth/get_user').done((data)=>{
+        user_id = data.data.id;
+        console.log(user_id);
+        $.post('/add_to_cart', {user_id: user_id, book_id: book_id}).done((data) => {
+            console.log('add_to_cart done');
+            if (data.message === "success") {
+                console.log(data);
+                location.reload();
+            } else {
+                console.log(data);
+                location.href = data.redr;
+            }
+        });
     });
 }
