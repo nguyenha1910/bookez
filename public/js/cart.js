@@ -16,7 +16,7 @@ function get_book_object(book) {
                     <div class="price">${book.price}</div>
                 </div>
                 <div class="buttonDiv col">
-                    <button type="button" class="btn btn-danger">Remove</button>
+                    <button type="button" class="btn btn-danger" onclick="removeBook(this)">Remove</button>
                 </div>
             </div>`;
 }
@@ -31,8 +31,15 @@ function showList(books) {
         const book_id = $(this).parent().attr('data-m');
         location.href = '../views/book_detail.html?book_id=' + book_id;
     });
+}
 
-    
+function removeBook(buttonDiv){
+    const book_id = $(buttonDiv).parent().parent().attr('data-m');
+    console.log(book_id);
+    $.post('/remove_book_from_cart', {user_id: user_id, book_id: book_id}).done((data)=>{
+        // console.log(data);
+        location.reload();
+    });
 }
 
 $(document).ready(function () {

@@ -340,6 +340,39 @@ router.post('/add_to_cart', function (req, res) {
     );
 });
 
+router.post('/remove_book_from_cart', function (req, res) {
+    console.log("POST /remove_book_from_cart");
+    const book_id = req.body.book_id;
+    const user_id = req.body.user_id;
+
+    console.log("user_id", user_id);
+    console.log("book_id", book_id);
+
+    User.updateOne(
+        {
+            _id: user_id,
+        },
+        {
+            $pull: {
+                cart: {book_id: book_id}
+            }
+        },
+        {},
+        (err) => {
+            if (err) {
+                console.log(err);
+                res.send({
+                    message: "database error"
+                });
+            } else {
+                res.send({
+                    message: "success"
+                });
+            }
+        }
+    );
+});
+
 router.post('/purchase', authController.isLoggedIn, (req, res) => {
     if (req.user) {
         console.log("POST /purchase");
