@@ -19,6 +19,7 @@ function get_book_object(book) {
                     <button type="button" class="btn btn-outline-primary" onclick="addToCart(this)" data-m="${book._id}">Add to Cart</button>
 <!--                </div>-->
             </div>`;
+
 }
 
 function showList(books) {

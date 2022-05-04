@@ -16,15 +16,17 @@
 	<!-- Custom styles for our template -->
 	<link rel="stylesheet" href="assets/css/bootstrap-theme.css" media="screen" >
 	<link rel="stylesheet" href="assets/css/main.css">
+	
 	<script src="/js/get_user.js" defer></script>
 
 	
 
 	<!-- FONTS -->
-	<!-- <link href="https://fonts.googleapis.com/css2?family=Anton&family=Karla:wght@200&family=Playfair+Display:wght@400;500;600;800;900&family=Stick&display=swap" rel="stylesheet">
-	 -->
 	 <link href="https://fonts.googleapis.com/css2?family=Alike&family=Average&family=Kaisei+Opti:wght@400;500;700&family=Lateef&family=Playfair+Display:wght@400;500;600;800;900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
 <body>
+
+
+
 	<!-- Fixed navbar -->
 	<div id="nav-placeholder">
 		<div class="navbar navbar-inverse navbar-fixed-top headroom" >
@@ -38,7 +40,7 @@
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav pull-right">
 						<li><a href="/">Home</a></li>
-						<li><a href="/about">About</a></li>
+						<li class="active"><a href="/about">About</a></li>
 						<li class="dropdown" id="admin_zone">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin zone <b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -52,6 +54,7 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="user_fname"></span>'s profile <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="">Profile page</a></li>
+								<li><a href="/cart">Cart</a></li>
 								<li><a href="/auth/logout">Logout</a></li>
 							</ul>
 						</li>
@@ -63,18 +66,30 @@
 	</div>
 	<!-- /.navbar -->
 
+
+
+
+
 	<header id="head" class="secondary"></header>
+
+
+
 
 	<!-- container -->
 	<div class="container">
 
 		<ol class="breadcrumb">
-			<li><a href="index.html">Home</a></li>
+			<li><a href="/">Home</a></li>
 			<li class="active">About</li>
 		</ol>
 
+
+
+
+
+
+
 		<div class="row">
-			
 			<!-- Article main content -->
 			<article class="maincontent">
 				<header class="page-header">
@@ -84,7 +99,7 @@
 				
 				<div class="widget">
 					<h3 style="margin-top: 20px; margin-bottom: 2%; text-align: center;">Business Team</h3>
-					<ul class="list-unstyled list-spaces" style = "margin-bottom: 30vh">
+					<ul class="list-unstyled list-spaces">
 
 						<div id="contact-wrapper"class="contact-wrapper col-lg-11 col-md-11 col-sm-11">
 							<div class="row">
@@ -128,17 +143,20 @@
 							</div>
 						</div>
 
+						<div id="emptyspace"class="contact-wrapper col-lg-11 col-md-11 col-sm-11">
+							<div class="row">
+								<div class="col-sm"></div>
+							</div>
+						</div>
+						
 						</ul>
 					
 				
 
-<div class="emptyspace"></div>
 
 
 
-
-
-						<ul class="list-unstyled list-spaces" style="margin-top: 50vh">
+						<ul class="list-unstyled list-spaces">
 						<h3 style="margin-bottom: 2%; text-align: center;">Engineer Team</h3>
 						
 						
@@ -214,6 +232,11 @@
 		</div>
 	</div>	<!-- /container -->
 	
+
+
+
+
+
 
 	<footer id="footer" class="top-space">
 

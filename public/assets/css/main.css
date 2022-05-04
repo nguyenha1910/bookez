@@ -345,13 +345,12 @@ img.pull-left { margin-right: 10px; }
 	header {
 		font-family: 'Lateef', cursive;
 		font-weight: 400;
-
 	}
-	.emptyspace {
-		 
-			width: 960px; 
-			text-align: left; 
-			margin: 0 auto 
+
+
+	#emptyspace {
+		margin-right: 5%;
+		height: 10vh;
 		   
 	}
 	
@@ -372,8 +371,6 @@ img.pull-left { margin-right: 10px; }
 		margin-top: 10px;
 	}
 	#names.names {
-		/* margin-left: 200px; */
-		/* font-family: 'Lateef', cursive; */
 		font-family: 'Alike', serif;
 		font-size: 32px;
 		float: right;
@@ -399,6 +396,8 @@ img.pull-left { margin-right: 10px; }
 		bottom: 0%;
 		top: 40%;
 	}
+
+
 	
 	/* THANK YOU */
 	#thankyou.thankyou{
@@ -438,11 +437,13 @@ img.pull-left { margin-right: 10px; }
 }
 
 .bookDiv {
+	padding-top: 4vh;
+
     margin-bottom: 10px;
-    height: 300px;
+    height: 350px;
 	text-align: center;
 	position: relative;
-	/* outline: 3px solid rgb(232, 229, 229); */
+	/* outline: 3px solid rgb(253, 250, 250); */
 
 }
 
@@ -459,18 +460,25 @@ img.pull-left { margin-right: 10px; }
 }
 
 #book_list_img.book_list_img {
+	
 	height: 160px;
 	width: 120px;
 	position: relative;
 	bottom: 0%;
-	/* left: 30%; */
 	margin-bottom: 15px;
 	cursor: pointer;
 }
 
+
+/* add to cart button */
+#add_to_cart {
+	position: relataive;
+	bottom: 0%;
+}
+
 #book_list_sidebar.sidebar {
 	/* background-color: #F4F3F8; */
-	font-family:Verdana, Geneva, Tahoma, sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;		
 }
 
 #search_box.form-control {
@@ -481,3 +489,5 @@ img.pull-left { margin-right: 10px; }
 	margin-left: 12px; 
 	margin-top: 40px;
 }
+
+
