@@ -6,13 +6,14 @@
 function get_book_object(book) {
     return `<div class="bookDiv row py-2" data-m="${book._id}">
     <div class="col-1 img"><a><img id="book_list_img" class="book_list_img" src="img/dummy_book.png" alt="square"/></a></div>
-                <div class="col-7 book_name"><a>${book.book_name}</a></div>
-                <div class="col-2 author_name"><a>${book.author_name}</div>
-                <div class="col-1 price"><a>$ ${book.price.toFixed(2)}</a></div>
-<div class="buttonDiv col-2">
-    <button type="button" class="btn btn-outline-primary">Add to Cart</button>
-</div>
-            </div>`;
+            <div class="col-7 book_name"><a>${book.book_name}</a></div>
+            <div class="col-2 author_name"><a>${book.author_name}</div>
+            <div class="col-1 price"><a>$ ${book.price.toFixed(2)}</a></div>
+    
+        <div class="buttonDiv col-2">
+            <button type="button" id="add_to_cart" class="btn btn-outline-primary">Add to Cart</button>
+        </div>
+    </div>`;
 }
 
 function showList(books) {
