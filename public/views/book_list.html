@@ -65,6 +65,7 @@
 
 
     <!--    JavaScript script-->
+	<script src="js/get_user.js" defer></script>
     <script src="js/book_list.js" defer></script>
 
 	<!-- Additional Fonts -->
@@ -180,14 +181,14 @@
         <div class = "row">
                 <article>
             <section class="container">
-                <div id="selection_section" class="row">
+                <div id="search_section" class="row">
 
 
                     <!-- search box-->
                     <div class="input-group mb-3 col-lg-9 col-md-8 col-sm-8">
 						<span class="input-group-text" id="basic-addon2" style="display: flex;">
                         <input id="search_box" type="search" class="form-control" placeholder="Search Books" aria-label="Search"
-                            aria-describedby="basic-addon2" onsearch="update_books()"">
+                            aria-describedby="basic-addon2" onsearch="searchBook()">
 							<i class="fas fa-search search_icon"></i>
 
 
