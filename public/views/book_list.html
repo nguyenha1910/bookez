@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
     <meta charset="UTF-8">
     <title>BookEZ</title>
     <link rel="stylesheet" href="css/style.css">
     <!--    <link rel="icon" href="img/bookez_icon.png">-->
     <!--    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">-->
+
     <!--    Bootstrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
           crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-            crossorigin="anonymous"></script>
+            crossorigin="anonymous"></script> -->
 
     <!--    Google font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,130 +28,85 @@
     <!--    Google jQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
-=======
->>>>>>> 9bd02c899897eabf79d3f3d8528f3956f0fff944
 
-    
+
 	<meta charset="utf-8">
 	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
 
-	
+
 	<title>BookEZ</title>
 
      <!--    Google jQuery-->
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
      <!--    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
- 
+
          <!--    Google font-->
          <link rel="preconnect" href="https://fonts.googleapis.com">
          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
          <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Raleway:wght@100&family=Roboto:wght@100&display=swap"
                rel="stylesheet">
-     
+
      <!--    fontawesome-->
      <script src="https://kit.fontawesome.com/e5b5eed843.js" crossorigin="anonymous"></script>
 
-     
+
 	<link rel="shortcut icon" href="assets/images/gt_favicon.png">
-	
+
 	<link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 
 	<!-- Custom styles for our template -->
 	<link rel="stylesheet" href="assets/css/bootstrap-theme.css" media="screen" >
-	<link rel="stylesheet" href="assets/css/main.css">
-	
+
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="assets/css/main.css">
-    
-    
+
+
     <!--    JavaScript script-->
     <script src="js/book_list.js" defer></script>
 
-    
+	<!-- Additional Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Alike&family=Average&family=Kaisei+Opti:wght@400;500;700&family=Lateef&family=Playfair+Display:wght@400;500;600;800;900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+
+
+
 <style>
     a {
 	color:black;
 }
 </style>
-        
+
 </head>
 
-  
-<body>
-    <!-- Fixed navbar -->
-    <div id="nav-placeholder">
-        <div class="navbar navbar-inverse navbar-fixed-top headroom" >
-            <div class="container">
-                <div class="navbar-header">
-                    <!-- Button for smallest screens -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-                    <a class="navbar-brand" href="/"><img src="/favicon.ico" alt="BookEZ">  BookEZ</a>
-                </div>
-                <!--nav-collapse -->
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav pull-right">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/about">About</a></li>
-                        <li class="dropdown" id="admin_zone">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin zone <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/admin-orders">Orders</a></li>
-                                <li><a href="/admin-donations">Donations</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="/book_list">Book list</a></li>
-                        <li id="signin"><a class="btn" href="/signin">SIGN IN / SIGN UP</a></li>
-                        <li class="dropdown" id="profile"> 
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="user_fname"></span>'s profile <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="">Profile page</a></li>
-                                <li><a href="/cart">Cart</a></li>
-                                <li><a href="/auth/logout">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <!--/.nav-collapse -->
-            </div>
-        </div> 
-    </div>
-    <!-- /.navbar -->
 
-    <header id="head" class="secondary"></header>
 
-    <section class="container">
-        <div id="selection_section" class="row">
 
-            <!-- search box-->
-            <div class="input-group mb-3 col-lg-9">
-                <input id="search_box" type="search" class="form-control" placeholder="Search Books" aria-label="Search"
-                    aria-describedby="basic-addon2" onsearch="searchBook()">
-                <span class="input-group-text" id="basic-addon2" onclick="searchBook()"><i class="fas fa-search"></i></span>
-            </div>
 
-            <!-- Sort selection-->
-            <div class="col-lg-3">
-                <h6>Sort by</h6>
-                <select id="sortDropdown" class="form-select" onchange="update_books()">>
-                    <option id="book_name_sort" value="book_name_sort">Book name</option>
-                    <option id="author_name_sort" value="author_name_sort">Author name</option>
-                    <option id="price_sort" value="price_sort">Price</option>
-                </select>
-            </div>
 
-<<<<<<< HEAD
-        </div>
-    </section>
 
-    <!-- Book List-->
-    <section id="book_section" class="container">
-        <div id="book_list" class=""></div>
-    </section>
-=======
-<body style="background-color:#f1faeeff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body style="background-color:#eefffd; overflow-x: hidden;">
 		<!-- Fixed navbar -->
 		<div id="nav-placeholder">
 			<div class="navbar navbar-inverse navbar-fixed-top headroom" >
@@ -177,14 +132,17 @@
 						</ul>
 					</div><!--/.nav-collapse -->
 				</div>
-			</div> 
+			</div>
 		</div>
 		<!-- /.navbar -->
+
+
+
 
 	<header id="head" class="secondary"></header>
 
 
-    <div class="css-grid"> 
+    <div class="css-grid">
 
 		<div class="col1">
 			<div class="menu-toggle">
@@ -198,8 +156,8 @@
 				<div class="filter">
                     <section class="container">
                         <div id="selection_section" class="row">
-                    
-                    
+
+
                             <!-- Sort selection-->
                             <div class="col">
                                 <h6>Sort by</h6>
@@ -209,7 +167,7 @@
                                     <option id="price_sort" value="price_sort">Price</option>
                                 </select>
                             </div>
-                    
+
                         </div>
                     </section>
 				</div>
@@ -223,11 +181,17 @@
                 <article>
             <section class="container">
                 <div id="selection_section" class="row">
+
+
                     <!-- search box-->
-                    <div class="input-group mb-3 col-lg-9">
+                    <div class="input-group mb-3 col-lg-9 col-md-8 col-sm-8">
+						<span class="input-group-text" id="basic-addon2" style="display: flex;">
                         <input id="search_box" type="search" class="form-control" placeholder="Search Books" aria-label="Search"
-                            aria-describedby="basic-addon2" onsearch="update_books()">
-                        <span class="input-group-text" id="basic-addon2"><i class="fas fa-search"></i></span>
+                            aria-describedby="basic-addon2" onsearch="update_books()"">
+							<i class="fas fa-search search_icon"></i>
+
+
+						</span>
                     </div>
                 </div>
             </section>
@@ -240,9 +204,11 @@
                 <div id="book_list" class="row"></div>
                 </div>
             </section>
+
+
     </div>
 </div>
-	
+
 
 	<footer id="footer" class="top-space">
 
@@ -259,23 +225,20 @@
 				</div> <!-- /row of widgets -->
 			</div>
 		</div>
-	</footer>	
-		
+	</footer>
 
 
 
 
 
-       
+
+
 	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
-
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script src="assets/js/headroom.min.js"></script>
 	<script src="assets/js/jQuery.headroom.min.js"></script>
 	<script src="assets/js/template.js"></script>
->>>>>>> 9bd02c899897eabf79d3f3d8528f3956f0fff944
 
-	
 </body>
 </html>

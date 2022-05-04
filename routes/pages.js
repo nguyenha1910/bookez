@@ -134,8 +134,8 @@ router.get('/register', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/signup.html"));
 });
 
-router.get('/cart', (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/views/cart.html"));
+router.get('/cart', (req,res) => {
+    res.sendFile( path.join(__dirname, "../public/views/cart.html") );
 });
 
 router.get('/each_order', (req, res) => {
