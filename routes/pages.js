@@ -310,7 +310,12 @@ router.get('/get_books_in_cart_by_id', (req, res) => {
 router.post('/add_to_cart', function (req, res) {
     console.log("POST /add_to_cart");
     const book_id = req.body.book_id;
-    const user_id = req.body.user_id;
+    if (req.body.user_id){
+        const user_id = req.body.user_id;
+    } else {
+        res.redirect('/signin');
+    }
+
 
     console.log("user_id", user_id);
     console.log("book_id", book_id);
