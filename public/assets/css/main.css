@@ -272,8 +272,6 @@ form .button {
 }
 
 
-
-
 /* Typography */
 /* h1, h2, h3, h4, h5, h6 { font-family:"Open sans", Helvetica, Arial; }
 h1, .h1, h2, .h2, h3, .h3 { margin-top:30px; } 
@@ -438,13 +436,13 @@ img.pull-left { margin-right: 10px; }
 
 .bookDiv {
 	padding-top: 4vh;
-
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	margin-left: 10px;
+	margin-right: auto;
     margin-bottom: 10px;
     height: 350px;
 	text-align: center;
 	position: relative;
-	/* outline: 3px solid rgb(253, 250, 250); */
-
 }
 
 .book_name {
@@ -469,6 +467,9 @@ img.pull-left { margin-right: 10px; }
 	cursor: pointer;
 }
 
+.price {
+	cursor: pointer;
+}
 
 /* add to cart button */
 #add_to_cart {
@@ -478,16 +479,17 @@ img.pull-left { margin-right: 10px; }
 
 #book_list_sidebar.sidebar {
 	/* background-color: #F4F3F8; */
-	font-family: 'Source Sans Pro', sans-serif;		
+	font-family: 'Source Sans Pro', sans-serif;	
+	margin-left: 25px;;	
 }
 
 #search_box.form-control {
-	margin-top: 30px;
+	/* margin-top: 0px; */
 	margin-bottom: 30px;
 }
 .search_icon {
 	margin-left: 12px; 
-	margin-top: 40px;
+	margin-top: 10px;
 }
 
 

@@ -36,7 +36,7 @@ function showList(books) {
         .append("<div class='row'></div>");
 
     $.each($('#book_list .row'), function (idx) {
-        $(this).addClass('col-lg-4 col-md-5 col-sm-8');
+        $(this).addClass('col-lg-3 col-md-4 col-sm-8');
         if (idx % 2 === 0) {
             $(this).addClass('even_row');
         } else {
