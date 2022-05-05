@@ -459,9 +459,8 @@ img.pull-left { margin-right: 10px; }
 }
 
 #book_list_img.book_list_img {
-	
 	height: 160px;
-	width: 120px;
+	width: 140px;
 	position: relative;
 	bottom: 0%;
 	margin-bottom: 15px;
@@ -474,7 +473,7 @@ img.pull-left { margin-right: 10px; }
 
 /* add to cart button */
 #add_to_cart {
-	position: relataive;
+	/* position: relative; */
 	bottom: 0%;
 }
 
@@ -494,3 +493,53 @@ img.pull-left { margin-right: 10px; }
 }
 
 
+/* BOOK-DETAIL PAGE */
+
+#book_info.infoDiv {
+	position: relative;
+	/* margin-bottom: 10px; */
+	margin-left:5px;
+}
+
+#cartButton.book_info {
+	margin-top: 10px;
+	position: absolute;
+	top: 20vh;
+}
+
+#book_info.info_col {
+	text-align: center;
+	height:auto
+}
+
+#book_info_img.book_info_img {
+	position:relative;
+	height: 320px;
+	width: 280px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+#book_title.book_info {
+	font-family: 'Alike', serif;
+	font-size: 36px;
+}
+
+#book_author.book_info {
+	font-family: 'Source Sans Pro', sans-serif;	
+	font-size: 16px;
+
+}
+
+#price.book_info {
+	font-family: 'Source Sans Pro', sans-serif;	
+	font-size: 20px;
+	font-weight: 500;
+
+}
+
+#book_description.book_description {
+	font-family: 'Source Sans Pro', sans-serif;	
+	font-size: 20px;
+
+}
