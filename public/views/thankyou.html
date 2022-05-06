@@ -8,7 +8,9 @@
 	
 	<title>Thank You</title>
 
-	<link rel="shortcut icon" href="assets/images/gt_favicon.png">
+	<!-- <link rel="shortcut icon" href="assets/images/gt_favicon.png"> -->
+	<link rel="icon" href="img/bookez_icon.png">
+
 	
 	<link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -18,14 +20,22 @@
 	<link rel="stylesheet" href="assets/css/bootstrap-theme.css" media="screen" >
 	<link rel="stylesheet" href="assets/css/main.css">
 
+
+	<!-- FONTS -->
+	<link href="https://fonts.googleapis.com/css2?family=Alike&family=Average&family=Kaisei+Opti:wght@400;500;700&family=Lateef&family=Playfair+Display:wght@400;500;600;800;900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+
+
 	<script src="/js/get_user.js"></script>
+
+
+
 
 </head>
 
 <body>
 
-
-	<!-- Fixed navbar -->
 	<div id="nav-placeholder">
 		<div class="navbar navbar-inverse navbar-fixed-top headroom" >
 			<div class="container">
@@ -38,7 +48,7 @@
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav pull-right">
 						<li><a href="/">Home</a></li>
-						<li><a href="/about">About</a></li>
+						<li class=""><a href="/about">About</a></li>
 						<li class="dropdown" id="admin_zone">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin zone <b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -62,7 +72,6 @@
 			</div>
 		</div> 
 	</div>
-	<!-- /.navbar -->
 
 
 
@@ -79,45 +88,41 @@
 		<div class="row">
 
 			<article class="col-lg-16 col-sm-12 maincontent">
-				<header class="page-header">
-					<h1 class="page-title">Contacts</h1>
-				</header>
+
 				
 				<body>
                     <div class="widget">
                         <div class="container-fluid" style="position:relative">
-                            <ul class="list-unstyled list-spaces">
+
+							<ul class="list-unstyled list-spaces">
 
 
-                                <li> 
-                                    <div id="thankyou" class= "thankyou row" style="text-align:center">   
-                                        <h3 style="float:left; ">Thank You For Donating to Book_EZ</h3>
-                                        <img src="img/bookez_icon.png" alt="..." style="position: relative; height:200px;">
+								<li>
+									<h1 id="bigty" class="bigty">Thank You</h1>
+								</li>
+
+								<li> 
+                                    <div id="thankyou" class= "thankyou row ">   
+                                        <h3 id="tymsg" class="tymsg">Thank you for your support.  We at Book EZ appreciate every donation that is sent to us.</h3>
+                                        <img id="tyimg" class="tyimg" src="img/bookez_icon.png" alt="...">
                                     </div>
                                 </li>
-
-                
-                                <li> 
+		
+								
+								<li> 
                                     <div id="thankyou" class="thankyou row" style="text-align: center;">   
                                         <div class="row">
                                             <div class="col-sm-8">
-                                                <img src="img/bookez_icon.png" alt="..." style="float: left; height:400px;">
+                                                <img src="img/bookez_icon.png" alt="..." style="float: left; width: 350px; height:350px;">
                                             </div>
                                             <div class="col-sm-4">
-                                                <h3 style="margin-top: 100px;">Donating Book Standard</h3>
-                                                <button id="donate-button" type="button" class="btn btn-primary" onclick="window.location.href='donation-form'">Donate Form</button>
+                                                <h3 id="tymsg_2">Donating Book Standard</h3>
+                                                <button id="donate-button" type="button" class="btn btn-warning book_info" onclick="window.location.href='donation-form'" style="margin-top: 5px; margin-bottom: 5px; margin-right: 20px">Donate Form</button>
                                             </div>
-                                          </div>
-                                          
-                                        
-
-                                       
+                                          </div>  
                                     </div>
                                 </li>
-            
-                            </ul>
-
-                           
+							</ul>
                         </div>
                     </div>
                 </body>

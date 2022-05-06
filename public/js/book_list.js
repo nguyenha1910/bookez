@@ -16,7 +16,7 @@ function get_book_object(book) {
                     <div class="col-1 price">$ ${book.price.toFixed(2)}</div>
                 </div>
 <!--                <div class="buttonDiv">-->
-                    <button type="button" class="btn btn-outline-primary" onclick="addToCart(this)" data-m="${book._id}">Add to Cart</button>
+                    <button type="button" id="" class="btn btn-warning book_info" onclick="addToCart(this)" data-m="${book._id}">Add to Cart</button>
 <!--                </div>-->
             </div>`;
 
