@@ -16,9 +16,10 @@ function get_book_object(book) {
                     <div class="col-1 price">$ ${book.price.toFixed(2)}</div>
                 </div>
 <!--                <div class="buttonDiv">-->
-                    <button type="button" class="btn btn-outline-primary" onclick="addToCart(this)" data-m="${book._id}">Add to Cart</button>
+                    <button type="button" id="" class="btn btn-warning book_info" onclick="addToCart(this)" data-m="${book._id}">Add to Cart</button>
 <!--                </div>-->
             </div>`;
+
 }
 
 function showList(books) {
@@ -35,7 +36,7 @@ function showList(books) {
         .append("<div class='row'></div>");
 
     $.each($('#book_list .row'), function (idx) {
-        $(this).addClass('col-lg-4 col-md-5 col-sm-8');
+        $(this).addClass('col-lg-3 col-md-4 col-sm-8');
         if (idx % 2 === 0) {
             $(this).addClass('even_row');
         } else {

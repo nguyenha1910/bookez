@@ -11,12 +11,18 @@ console.log(user_id);
 function get_book_object(book) {
     return `<div class="bookDiv row py-2" data-m="${book._id}">
                 <div class="infoDiv col">
-                    <div class="book_name">${book.book_name}</div>
-                    <div class="author_name">${book.author_name}</div>
-                    <div class="price">${book.price}</div>
+
+                <div class="col-1 img"><a><img id="book_list_img" 
+                    class="book_cart_img" src="/img/dummy_book.png" alt="book image"/></a>
+                    </div>
+                    
+
+                    <div id="book_title" class="cart_info book_name">${book.book_name}</div>
+                    <div id="book_author" class="cart_info author_name">By: ${book.author_name}</div>
+                    <div class="price">Price: ${book.price}</div>
                 </div>
                 <div class="buttonDiv col">
-                    <button type="button" class="btn btn-danger" onclick="removeBook(this)">Remove</button>
+                    <button type="button" id="cart_button" class="btn btn-danger" onclick="removeBook(this)">Remove</button>
                 </div>
             </div>`;
 }
