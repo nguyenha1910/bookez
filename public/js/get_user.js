@@ -10,12 +10,12 @@ $(document).ready(()=>{
             if (user.user_type == 0) {
                 $('#admin_zone').remove();
             }
-            $("a").attr("href", "/views/cart.html?user_id="+user_id);
+            $("#cart-anchor").attr("href", "/views/cart.html?user_id="+user_id);
         } else {
             console.log("no user");
             $('#profile').remove();   
             $('#admin_zone').remove();
-            $("a").attr("href", "/auth/signin");
+            $("#cart-anchor").attr("href", "/auth/signin");
         }
     });
 });
