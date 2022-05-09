@@ -4,16 +4,16 @@
 // });
 
 function get_book_object(book) {
-    return `<div class="bookDiv row py-2" data-m="${book._id}">
+    return `<div class="bookDiv row" data-m="${book._id}">
                 <div class="imgDiv" onclick="toDetailPage(this)">                
-                    <div class="col-1 img"><a><img id="book_list_img" 
+                    <div class="img"><a><img id="book_list_img" 
                     class="book_list_img" src="img/dummy_book.png" alt="book image"/></a>
                     </div>
                 </div>
                 <div class="infoDiv" onclick="toDetailPage(this)">
-                    <div class="col-7 book_name"><a>${book.book_name}</a></div>
-                    <div class="col-2 author_name"><a>${book.author_name}<a></div>
-                    <div class="col-1 price">$ ${book.price.toFixed(2)}</div>
+                    <div class="book_name"><a>${book.book_name}</a></div>
+                    <div class="author_name"><a>${book.author_name}<a></div>
+                    <div class="price">$ ${book.price.toFixed(2)}</div>
                 </div>
 <!--                <div class="buttonDiv">-->
                     <button type="button" id="" class="btn btn-warning book_info" onclick="addToCart(this)" data-m="${book._id}">Add to Cart</button>
@@ -101,10 +101,9 @@ function addToCart(divObj) {
         user_id = data.data.id;
         console.log(user_id);
         $.post('/add_to_cart', {user_id: user_id, book_id: book_id}).done((data) => {
-            console.log('add_to_cart done');
             if (data.message === "success") {
-                console.log(data);
-                location.reload();
+                // console.log(data);
+                // location.reload();
             } else {
                 console.log(data);
                 location.href = data.redr;
