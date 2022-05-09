@@ -30,6 +30,7 @@ $(document).ready(function () {
 
 function addToCart() {
     $.get('/auth/get_user').done((data)=>{
+        console.log(data);
         user_id = data.data.id;
         if (user_id){
             $.post('/add_to_cart', {user_id: user_id, book_id: book_id}).done((data) => {
