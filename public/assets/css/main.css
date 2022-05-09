@@ -582,3 +582,25 @@ a {
 
 }
 
+#cart_button {
+	position:absolute;
+	left:70%;	
+}
+
+.book_cart_img {
+	position:absolute;
+	left: 20%;
+	height: 200px;
+	width: 200px;
+}
+
+#book_title.cart_info {
+	font-family: 'Alike', serif;
+	font-size: 36px;
+}
+
+#book_author.cart_info {
+	font-family: 'Source Sans Pro', sans-serif;	
+	font-size: 16px;
+
+}
