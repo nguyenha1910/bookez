@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BookEZ</title>
+    <title>Book-EZ | Purchase</title>
     <link rel="stylesheet" href="css/style.css">
     <!--    <link rel="icon" href="img/bookez_icon.png">-->
     <!--    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">-->
@@ -18,123 +18,243 @@
     <!--    Google font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Raleway:wght@100&family=Roboto:wght@100&display=swap"
-          rel="stylesheet">
 
-    <!--    fontawesome-->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Karla:wght@200&family=Stick&display=swap" rel="stylesheet">
+
+    <!--Font Awesome library-->
     <script src="https://kit.fontawesome.com/e5b5eed843.js" crossorigin="anonymous"></script>
 
-    <!--    Google jQuery-->
+    <!--Google jQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!--    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
 
-    <!--    JavaScript script-->
-    <script src="../js/purchase.js" defer></script>
+    <!-- <script src="/js/get_user.js" defer></script> -->
+    <script src="/js/purchase.js" defer></script>
 </head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <body>
+    <!-- Fixed navbar -->
+    <div id="nav-placeholder">
+        <div class="navbar navbar-inverse navbar-fixed-top headroom" >
+            <div class="container">
+                <div class="navbar-header">
+                    <!-- Button for smallest screens -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                    <a class="navbar-brand" href="/"><img src="/favicon.ico" alt="BookEZ">  BookEZ</a>
+                </div>
+                <!--nav-collapse -->
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav pull-right">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li class="dropdown" id="admin_zone">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin zone <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/admin-orders">Orders</a></li>
+                                <li><a href="/admin-donations">Donations</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/book_list">Book list</a></li>
+                        <li id="signin"><a class="btn" href="/signin">SIGN IN / SIGN UP</a></li>
+                        <li class="dropdown" id="profile"> 
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="user_fname"></span>'s profile <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="">Profile page</a></li>
+                                <li><a href="/cart">Cart</a></li>
+                                <li><a href="/auth/logout">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div> 
+    </div>
+    <!-- /.navbar -->
 
-<section id="nav-placeholder">
-</section>
+    <header id="head" class="secondary"></header>
 
-<section id="purchase_form" class="container my-3">
-    <form action="/purchase" method="post">
-        <div class="mb-3">
-            <label for="first_name" class="form-label">First Name</label>
-            <input type="text" class="form-control" id="first_name" placeholder="" name="first_name" required>
+    <section id="purchase_form" class="container my-3">
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li class="active">Purchase</li>
+        </ol>
+        <br>
+
+        <form action="/order_and_donation/purchase" method="post">
+            <input type="text" class="form-control" name="user_id" id="user_id">
+            <div class="top-margin hide">
+                <label for="first_name" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="first_name" placeholder="" name="first_name" >
+            </div>
+            <div class="top-margin hide">
+                <label for="last_name" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="last_name" placeholder="" name="last_name" >
+            </div>
+            <div class="top-margin">
+                <label for="phone_no" class="form-label">Phone Number <span class="text-danger">*</span> </label>
+                <input type="text" class="form-control" id="phone_no" placeholder="" name="phone_no" >
+            </div>
+            <div class="top-margin hide" >
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" id="email" >
+            </div>
+            <div class="top-margin">
+                <label for="address" class="form-label">Address <span class="text-danger">*</span> </label>
+                <input class="form-control" type="text" name="address" id="address" >
+            </div>
+            <div class="top-margin">
+                <label for="apt" class="form-label">Apt, Suite, Box Number <span class="text-danger">*</span></label>
+                <input class="form-control" type="text" name="apt" id="apt" >
+            </div>
+            <div class="top-margin">
+                <label for="city" class="form-label">City <span class="text-danger">*</span> </label>
+                <input class="form-control" type="text" name="city" id="city" >
+            </div>
+            <div class="top-margin">
+                <label for="state" class="form-label">State <span class="text-danger">*</span> </label> <br>
+                <select class="form-select" type="text" name="state" id="state"  >
+                    <option value="" disabled selected hidden>Select state</option>
+                    <option value="AL">AL</option>
+                    <option value="AK">AK</option>
+                    <option value="AR">AR</option>
+                    <option value="AZ">AZ</option>
+                    <option value="CA">CA</option>
+                    <option value="CO">CO</option>
+                    <option value="CT">CT</option>
+                    <option value="DC">DC</option>
+                    <option value="DE">DE</option>
+                    <option value="FL">FL</option>
+                    <option value="GA">GA</option>
+                    <option value="HI">HI</option>
+                    <option value="IA">IA</option>
+                    <option value="ID">ID</option>
+                    <option value="IL">IL</option>
+                    <option value="IN">IN</option>
+                    <option value="KS">KS</option>
+                    <option value="KY">KY</option>
+                    <option value="LA">LA</option>
+                    <option value="MA">MA</option>
+                    <option value="MD">MD</option>
+                    <option value="ME">ME</option>
+                    <option value="MI">MI</option>
+                    <option value="MN">MN</option>
+                    <option value="MO">MO</option>
+                    <option value="MS">MS</option>
+                    <option value="MT">MT</option>
+                    <option value="NC">NC</option>
+                    <option value="NE">NE</option>
+                    <option value="NH">NH</option>
+                    <option value="NJ">NJ</option>
+                    <option value="NM">NM</option>
+                    <option value="NV">NV</option>
+                    <option value="NY">NY</option>
+                    <option value="ND">ND</option>
+                    <option value="OH">OH</option>
+                    <option value="OK">OK</option>
+                    <option value="OR">OR</option>
+                    <option value="PA">PA</option>
+                    <option value="RI">RI</option>
+                    <option value="SC">SC</option>
+                    <option value="SD">SD</option>
+                    <option value="TN">TN</option>
+                    <option value="TX">TX</option>
+                    <option value="UT">UT</option>
+                    <option value="VT">VT</option>
+                    <option value="VA">VA</option>
+                    <option value="WA">WA</option>
+                    <option value="WI">WI</option>
+                    <option value="WV">WV</option>
+                    <option value="WY">WY</option>
+                </select>
+            </div>
+            <div class="top-margin">
+                <label for="zip" class="form-label">ZIP <span class="text-danger">*</span> </label>
+                <input class="form-control" type="text" name="zip" id="zip" >
+            </div>
+            <div class="top-margin">
+                <label for="note" class="form-label">Delivery Note </label>
+                <textarea type="text" class="form-control" name="note" id="note"></textarea>
+            </div>
+            <div class="top-margin">
+                <p id="error_message" style="color: red"></p>
+            </div>
+
+            <div class="top-margin">
+                <p id="success_message" style="color: green"></p>
+            </div>
+            <div class="top-margin">
+                <button type="submit" class="btn btn-primary" style="width: 20%">Place Order</button>
+            </div>
+        </form>
+    </section>
+
+
+
+
+
+
+<footer id="footer" class="top-space">
+    <div class="footer1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 widget">
+                    <h3 class="widget-title">Contact</h3>
+                    <div class="widget-body">
+                        <p>(508) 310-8300<br>
+                            <a href="mailto:#">bookEZ@gmail.com</a><br>
+                            <br>
+
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3 widget">
+                    <h3 class="widget-title">Follow me</h3>
+                    <div class="widget-body">
+                        <p class="follow-me-icons">
+                            <a href="https://www.instagram.com/clarkubookez/"><i class="fa fa-instagram fa-2"></i></a>
+                            <a href="https://www.linkedin.com/company/book-ez/"><i class="fa fa-linkedin-square fa-2"></i></a>
+                            <a href="https://www.youtube.com/watch?v=5Q4nZqo55mo"><i class="fa fa-youtube-square fa-2"></i></a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 widget">
+                    <h3 class="widget-title">About</h3>
+                    <div class="widget-body">
+                        <p>
+                            Book-EZ is a student start-up business based at Clark University,
+                            operating through recycling and reselling books back to the
+                            Clark community at extremely affordable prices.
+                        </p>
+                    </div>
+                </div>
+
+            </div> <!-- /row of widgets -->
         </div>
-        <div class="mb-3">
-            <label for="last_name" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="last_name" placeholder="" name="last_name" required>
-        </div>
-        <div class="mb-3">
-            <label for="phone_no" class="form-label">Phone Number</label>
-            <input type="text" class="form-control" id="phone_no" placeholder="" name="phone_no" required>
-        </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" name="email" id="email" required>
-        </div>
-        <div class="mb-3">
-            <label for="address" class="form-label">Address</label>
-            <input class="form-control" type="text" name="address" id="address" required>
-        </div>
-        <div class="mb-3">
-            <label for="apt" class="form-label">Apt, Suite, Box Number</label>
-            <input class="form-control" type="text" name="apt" id="apt" required>
-        </div>
-        <div class="mb-3">
-            <label for="state" class="form-label">State</label>
-            <select class="form-select" type="text" name="state" id="state"  required>
-                <option value="" disabled selected hidden>Select state</option>
-                <option value="AL">AL</option>
-                <option value="AK">AK</option>
-                <option value="AR">AR</option>
-                <option value="AZ">AZ</option>
-                <option value="CA">CA</option>
-                <option value="CO">CO</option>
-                <option value="CT">CT</option>
-                <option value="DC">DC</option>
-                <option value="DE">DE</option>
-                <option value="FL">FL</option>
-                <option value="GA">GA</option>
-                <option value="HI">HI</option>
-                <option value="IA">IA</option>
-                <option value="ID">ID</option>
-                <option value="IL">IL</option>
-                <option value="IN">IN</option>
-                <option value="KS">KS</option>
-                <option value="KY">KY</option>
-                <option value="LA">LA</option>
-                <option value="MA">MA</option>
-                <option value="MD">MD</option>
-                <option value="ME">ME</option>
-                <option value="MI">MI</option>
-                <option value="MN">MN</option>
-                <option value="MO">MO</option>
-                <option value="MS">MS</option>
-                <option value="MT">MT</option>
-                <option value="NC">NC</option>
-                <option value="NE">NE</option>
-                <option value="NH">NH</option>
-                <option value="NJ">NJ</option>
-                <option value="NM">NM</option>
-                <option value="NV">NV</option>
-                <option value="NY">NY</option>
-                <option value="ND">ND</option>
-                <option value="OH">OH</option>
-                <option value="OK">OK</option>
-                <option value="OR">OR</option>
-                <option value="PA">PA</option>
-                <option value="RI">RI</option>
-                <option value="SC">SC</option>
-                <option value="SD">SD</option>
-                <option value="TN">TN</option>
-                <option value="TX">TX</option>
-                <option value="UT">UT</option>
-                <option value="VT">VT</option>
-                <option value="VA">VA</option>
-                <option value="WA">WA</option>
-                <option value="WI">WI</option>
-                <option value="WV">WV</option>
-                <option value="WY">WY</option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="zip" class="form-label">ZIP</label>
-            <input class="form-control" type="number" name="zip" id="zip" required>
-        </div>
-        <div class="mb-3">
-            <label for="note" class="form-label">Delivery Note</label>
-            <input class="form-control" type="text" name="note" id="note" required>
-        </div>
-        <div class="mb-3">
-            <p class="error_message"></p>
-        </div>
-        <div class="mb-3">
-            <button type="submit" class="btn btn-primary" style="width: 20%">Place Order</button>
-        </div>
-    </form>
-</section>
+    </div>
+</footer>
 
 </body>
 </html>

@@ -6,7 +6,6 @@ const authController = require('../controllers/auth');          // load a module
 const path = require('path');
 const mongoose = require("mongoose");
 const session = require("express-session");
-
 // mongoose.connect('mongodb://localhost:27017/bookDB',
 //     {useNewUrlParser: true}, function () {
 //         console.log("db connection successful");
@@ -77,6 +76,8 @@ const orderSchema = new mongoose.Schema({
 
 const Order = mongoose.model('Order', orderSchema);
 
+
+
 const userSchema = new mongoose.Schema({
     email: {
         type: String,
@@ -117,7 +118,6 @@ router.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/about.html"));
 });
 
-
 router.get('/admin-orders', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/order-admin-page.html"));
 });
@@ -138,8 +138,12 @@ router.get('/cart', (req,res) => {
     res.sendFile( path.join(__dirname, "../public/views/cart.html") );
 });
 
-router.get('/each_order', (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/views/each_order.html"));
+router.get('/each_donation', (req,res) => {
+    res.sendFile( path.join(__dirname, "../public/views/each_donation.html") );
+});
+
+router.get('/each_order', (req,res) => {
+    res.sendFile( path.join(__dirname, "../public/views/each_order.html") );
 });
 
 router.get('/thankyou', (req, res) => {
@@ -154,13 +158,6 @@ router.get('/each_order', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/each_order.html"));
 });
 
-// router.get('/get_current_user', (req, res) => {
-//     res.send({
-//         message: "success",
-//         data: req.user
-//     });
-// });
-
 router.get('/book_list', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/book_list.html"));
 });
@@ -171,6 +168,10 @@ router.get('/book_list', (req, res) => {
 
 router.get('/thank-you', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/thankyou.html"));
+});
+
+router.get('/purchase', (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/views/purchase.html"));
 });
 
 router.get('/donation-form', (req, res) => {

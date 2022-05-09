@@ -12,7 +12,6 @@ function get_donation_object(donation) {
                 </div>
                 <div class="row donation_info">
                     <p>Donated by: ${donation.user_fname} ${donation.user_lname}</p>
-                    <p>User id: ${donation.user_id}</p>
                 </div>
             </a>     
             </li>`
@@ -25,7 +24,9 @@ $.get('/order_and_donation/populateDonations').done((data)=>{
         console.log("donation_list: ", donation_list);
         console.log(donation_list.length);
         $('#donation_length').text(donation_list.length);
-        $('#donation_list').append(get_donation_object(donation_list[0])); 
+        donation_list.forEach((item) => {
+            $('#donation_list').append(get_donation_object(item)); 
+        });
     } 
 });
 
