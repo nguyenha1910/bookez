@@ -313,37 +313,36 @@ router.post('/add_to_cart', function (req, res) {
     const book_id = req.body.book_id;
     if (req.body.user_id){
         const user_id = req.body.user_id;
+        
+        console.log("user_id", user_id);
+        console.log("book_id", book_id);
+
+        User.updateOne(
+            {
+                _id: user_id,
+            },
+            {
+                $push: {
+                    cart: {book_id}
+                }
+            },
+            {},
+            (err) => {
+                if (err) {
+                    console.log(err);
+                    res.send({
+                        message: "database error"
+                    });
+                } else {
+                    res.send({
+                        message: "success"
+                    });
+                }
+            }
+        );
     } else {
         res.redirect('/signin');
     }
-
-
-    console.log("user_id", user_id);
-    console.log("book_id", book_id);
-
-    User.updateOne(
-        {
-            _id: user_id,
-        },
-        {
-            $push: {
-                cart: {book_id}
-            }
-        },
-        {},
-        (err) => {
-            if (err) {
-                console.log(err);
-                res.send({
-                    message: "database error"
-                });
-            } else {
-                res.send({
-                    message: "success"
-                });
-            }
-        }
-    );
 });
 
 router.post('/remove_book_from_cart', function (req, res) {
