@@ -16,6 +16,7 @@ const app = express();
 
 // for deployment
 require('./middleware/production')(app); 
+const uri = process.env.bookez_db;
 
 mongoose.connect('mongodb://localhost:27017/bookDB',
     {useNewUrlParser: true}, function () {
@@ -38,6 +39,7 @@ app.use('/', require('./routes/pages'));
 app.use('/auth', require('./routes/auth')); 
 app.use('/books', require('./routes/books')); 
 app.use('/order_and_donation', require('./routes/order_and_donation')); 
+
 
 port_number = 3002;
 app.listen(port_number, function () {
