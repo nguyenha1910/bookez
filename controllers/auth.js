@@ -155,7 +155,7 @@ exports.login_fn = async (req, res) => {
 
 // Check logged in status
 exports.isLoggedIn = async (req, res, next) => {
-    console.log("inside get user");
+    // console.log("inside get user");
     const token = req.cookies.jwt; 
     if (!token) {
         res.send({

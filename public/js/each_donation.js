@@ -8,7 +8,7 @@ function get_donation_object(donation) {
             </div>
             <div class="row donation_info">
                 <p>Donated by: ${donation.user_fname} ${donation.user_lname}</p>
-                <p>User id: ${donation.user_id}</p>
+                <p>Note: ${donation.note}</p>
             </div>`    
 }
 
