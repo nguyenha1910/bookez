@@ -1,59 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>BookEZ</title>
-<!--    <link rel="stylesheet" href="css/style.css">-->
-    <!--    <link rel="icon" href="img/bookez_icon.png">-->
-    <!--    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">-->
-    <!--    Bootstrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
-          crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-            crossorigin="anonymous"></script>
+	<meta charset="utf-8">
+	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	
+	<title>Book-EZ | Book Detail</title>
+	<link rel="icon" href="../img/bookez_icon.png">
 
-    <!--    Google font-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Raleway:wght@100&family=Roboto:wght@100&display=swap"
-          rel="stylesheet">
+	<link rel="shortcut icon" href="../assets/images/gt_favicon.png">
+		<!-- Tab icon -->
+		<link rel="icon" href="img/bookez_icon.png">
+	
+	<link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/css/font-awesome.min.css">
 
-    <!--    fontawesome-->
-    <script src="https://kit.fontawesome.com/e5b5eed843.js" crossorigin="anonymous"></script>
+	<!-- Custom styles for our template -->
+	<link rel="stylesheet" href="../assets/css/bootstrap-theme.css" media="screen" >
+	<link rel="stylesheet" href="../assets/css/main.css">
+	
+	<!--Google Font-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!--    Google jQuery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!--    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
 
-    <!--    JavaScript script-->
+	<!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+	<!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+	<link href="https://fonts.googleapis.com/css2?family=Anton&family=Karla:wght@200&family=Stick&display=swap" rel="stylesheet">
+
+
+	<!--Font Awesome library-->
+	<script src="https://kit.fontawesome.com/e5b5eed843.js" crossorigin="anonymous"></script>
+
+	<!--Google jQuery-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+	<script src="../js/get_user.js" defer></script>
     <script src="../js/book_detail.js" defer></script>
+
+
+     <!-- Fonts -->
+     <link href="https://fonts.googleapis.com/css2?family=Alike&family=Average&family=Kaisei+Opti:wght@400;500;700&family=Lateef&family=Playfair+Display:wght@400;500;600;800;900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+
 </head>
-<body class="container">
 
-<section id="nav-placeholder">
-</section>
 
-<section id="book_info">
-<!--    <div class="row imgDiv">-->
-<!--        <img id="poster_img" src="">-->
-<!--    </div>-->
-    <div class="row infoDiv">
-        <div class="infoCol col">
-            <h4 id="book_title"></h4>
-            <p id="book_author"></p>
-            <p id="price"></p>
-        </div>
+
+<body class="home">
+
+
+	<!-- Fixed navbar -->
+	<div id="nav-placeholder">
+		<div class="navbar navbar-inverse navbar-fixed-top headroom" >
+			<div class="container">
+				<div class="navbar-header">
+					<!-- Button for smallest screens -->
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+					<a class="navbar-brand" href="/"><img src="/favicon.ico" alt="BookEZ">  Book-EZ</a>
+				</div>
+				<!--nav-collapse -->
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav pull-right">
+						<li class=""><a href="/">Home</a></li>
+						<li><a href="/about">About</a></li>
+						<li class="dropdown" id="admin_zone">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin zone <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="/admin-orders">Orders</a></li>
+								<li><a href="/admin-donations">Donations</a></li>
+							</ul>
+						</li>
+						<li><a href="/book_list">Book list</a></li>
+						<li id="signin"><a class="btn" href="/signin">SIGN IN / SIGN UP</a></li>
+						<li class="dropdown" id="profile"> 
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="user_fname"></span>'s profile <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="">Profile page</a></li>
+								<li><a href="/cart"  id="cart-anchor">Cart</a></li>
+								<li><a href="/auth/logout">Logout</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</div> 
+	</div>
+	<!-- /.navbar -->
+
+
+
+
+
+
+	<header id="head" class="secondary"></header>
+
+
+
+
+
+    <!-- BREADCRUMB -->
+    <div class="container">
+		<ol class="breadcrumb">
+			<li><a href="/">Home</a></li>
+            <li><a href="/book_list">Book List</a></li>
+			<li class="active">Book Info</li>
+		</ol>
     </div>
-    <div class="buttonDiv">
-        <button id="cartButton" type="button" class="btn btn-warning" onclick="addToCart()">Add to Cart</button>
-    </div>
-</section>
+    
+    <!-- END OF BREADCRUMB -->
 
-<section id="footer-placeholder">
-</section>
+    <br />
 
+
+
+
+
+
+
+<!-- PAGE CONTENT -->
+    <article style="margin-top: 20px;">
+        <section id="book_info">
+
+            <div id="book_info" class="row infoDiv">
+                <!-- BOOK IMAGE -->
+                <div class="img col-xs-5" style="text-align: center;">
+                    <a><img id="book_info_img" class="book_info_img" src="../img/dummy_book.png" alt="book image"/></a>
+
+                    
+                </div>
+                
+                <!-- BOOK INFO -->
+                <div id="book_info" class="infoCol col-xs-5">
+                        <h4 id="book_title" class="book_info"></h4>
+                        <div>
+                            <p style="display: inline-block;">By: </p>
+                            <p style="display: inline-block;" id="book_author" class="book_info"></p> 
+                        </div>
+   
+                        <div>
+                            <p style="display: inline-block;">Price: </p>
+                            <p style="display: inline-block;" id="price" class="book_info"></p> 
+                        </div>
+                        <div>
+                            <p style="display: inline-block;">Condition: </p>
+                            <!-- Add a Condition category to the Database -->
+                        </div>
+
+            
+                        <p id="book_description" class="book_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                        
+                    </div>
+
+                         <!-- ADD TO CART BUTTON -->
+                    <div class="col-xs-2 buttonDiv">
+                        <button id="cartButton" type="button" class="btn btn-warning book_info" >Add to Cart</button>
+                    </div>
+                </div>
+
+	<!-- container -->
+        </section>
+
+
+
+
+
+
+        
+    </article>
+
+
+
+
+    <!-- END OF PAGE CONTENT -->
+
+
+
+
+
+	<footer id="footer" class="top-space">
+		<div class="footer1">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 widget">
+						<h3 class="widget-title">Contact</h3>
+						<div class="widget-body">
+							<p>(508) 310-8300<br>
+								<a href="mailto:#">bookEZ@gmail.com</a><br>
+								<br>
+
+							</p>
+						</div>
+					</div>
+					<div class="col-md-3 widget">
+						<h3 class="widget-title">Follow me</h3>
+						<div class="widget-body">
+							<p class="follow-me-icons">
+								<a href="https://www.instagram.com/clarkubookez/"><i class="fa fa-instagram fa-2"></i></a>
+								<a href="https://www.linkedin.com/company/book-ez/"><i class="fa fa-linkedin-square fa-2"></i></a>
+								<a href="https://www.youtube.com/watch?v=5Q4nZqo55mo"><i class="fa fa-youtube-square fa-2"></i></a>
+							</p>
+						</div>
+					</div>
+
+					<div class="col-md-6 widget">
+						<h3 class="widget-title">About</h3>
+						<div class="widget-body">
+							<p>
+								Book-EZ is a student start-up business based at Clark University,
+								operating through recycling and reselling books back to the
+								Clark community at extremely affordable prices.
+							</p>
+						</div>
+					</div>
+
+				</div> <!-- /row of widgets -->
+			</div>
+		</div>
+	</footer>	
+		
+
+
+
+
+	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="../assets/js/headroom.min.js"></script>
+	<script src="../assets/js/jQuery.headroom.min.js"></script>
+	<script src="../assets/js/template.js"></script>
 </body>
 </html>

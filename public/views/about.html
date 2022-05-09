@@ -4,9 +4,14 @@
 	<meta charset="utf-8">
 	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
 
-	<title>About us</title>
+	
+	<title>Book-EZ | About Us</title>
 
 	<link rel="shortcut icon" href="assets/images/gt_favicon.png">
+
+	<!-- Tab icon -->
+	<link rel="icon" href="img/bookez_icon.png">
+
 	
 	<link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -17,40 +22,25 @@
 	<link rel="stylesheet" href="assets/css/main.css">
 	
 	<script src="/js/get_user.js" defer></script>
-</head>
 
+	
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	<!-- FONTS -->
+	 <link href="https://fonts.googleapis.com/css2?family=Alike&family=Average&family=Kaisei+Opti:wght@400;500;700&family=Lateef&family=Playfair+Display:wght@400;500;600;800;900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
 <body>
+
+
+
 	<!-- Fixed navbar -->
+
+	
 	<div id="nav-placeholder">
 		<div class="navbar navbar-inverse navbar-fixed-top headroom" >
 			<div class="container">
 				<div class="navbar-header">
 					<!-- Button for smallest screens -->
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-					<a class="navbar-brand" href="/"><img src="/favicon.ico" alt="BookEZ">  BookEZ</a>
+					<a class="navbar-brand" href="/"><img src="/favicon.ico" alt="BookEZ">  Book-EZ</a>
 				</div>
 				<!--nav-collapse -->
 				<div class="navbar-collapse collapse">
@@ -70,7 +60,7 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="user_fname"></span>'s profile <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="">Profile page</a></li>
-								<li><a href="/cart">Cart</a></li>
+								<li><a href="/cart"  id="cart-anchor">Cart</a></li>
 								<li><a href="/auth/logout">Logout</a></li>
 							</ul>
 						</li>
@@ -80,9 +70,18 @@
 			</div>
 		</div> 
 	</div>
+
+
 	<!-- /.navbar -->
 
+
+
+
+
 	<header id="head" class="secondary"></header>
+
+
+
 
 	<!-- container -->
 	<div class="container">
@@ -91,8 +90,9 @@
 			<li class="active">About</li>
 		</ol>
 
+
+
 		<div class="row">
-			
 			<!-- Article main content -->
 			<article class="maincontent">
 				<header class="page-header">
@@ -102,7 +102,7 @@
 				
 				<div class="widget">
 					<h3 style="margin-top: 20px; margin-bottom: 2%; text-align: center;">Business Team</h3>
-					<ul class="list-unstyled list-spaces ">
+					<ul class="list-unstyled list-spaces">
 
 						<div id="contact-wrapper"class="contact-wrapper col-lg-11 col-md-11 col-sm-11">
 							<div class="row">
@@ -146,11 +146,21 @@
 							</div>
 						</div>
 
+						<div id="emptyspace"class="contact-wrapper col-lg-11 col-md-11 col-sm-11">
+							<div class="row">
+								<div class="col-sm"></div>
+							</div>
+						</div>
+						
 						</ul>
-					<br />
-					<br />
+					
+				
+
+
+
+
 						<ul class="list-unstyled list-spaces">
-						<h3 style="margin-top: auto; margin-bottom: 2%; text-align: center;">Engineer Team</h3>
+						<h3 style="margin-bottom: 2%; text-align: center;">Engineer Team</h3>
 						
 						
 						<div id="contact-wrapper"class="contact-wrapper col-lg-11 col-md-11 col-sm-11">
@@ -224,37 +234,53 @@
 			<!-- /Article -->
 		</div>
 	</div>	<!-- /container -->
-	
+
+
+
+
+
+
 
 	<footer id="footer" class="top-space">
-		<div class="footer2">
+		<div class="footer1">
 			<div class="container">
 				<div class="row">
-					
-					<!-- <div class="col-md-6 widget">
+					<div class="col-md-3 widget">
+						<h3 class="widget-title">Contact</h3>
 						<div class="widget-body">
-							<p class="simplenav">
-								<a href="#">Home</a> | 
-								<a href="about.html">About</a> |
-								<a href="sidebar-right.html">Sidebar</a> |
-								<a href="contact.html">Contact</a> |
-								<b><a href="signup.html">Sign up</a></b>
+							<p>(508) 310-8300<br>
+								<a href="mailto:#">bookEZ@gmail.com</a><br>
+								<br>
+
 							</p>
 						</div>
-					</div> -->
+					</div>
+					<div class="col-md-3 widget">
+						<h3 class="widget-title">Follow me</h3>
+						<div class="widget-body">
+							<p class="follow-me-icons">
+								<a href="https://www.instagram.com/clarkubookez/"><i class="fa fa-instagram fa-2"></i></a>
+								<a href="https://www.linkedin.com/company/book-ez/"><i class="fa fa-linkedin-square fa-2"></i></a>
+								<a href="https://www.youtube.com/watch?v=5Q4nZqo55mo"><i class="fa fa-youtube-square fa-2"></i></a>
+							</p>
+						</div>
+					</div>
 
 					<div class="col-md-6 widget">
+						<h3 class="widget-title">About</h3>
 						<div class="widget-body">
-							<p class="text-right" style="text-align:right">
-								Copyright &copy; 2022, Book-EZ
+							<p>
+								Book-EZ is a student start-up business based at Clark University,
+								operating through recycling and reselling books back to the
+								Clark community at extremely affordable prices.
 							</p>
 						</div>
 					</div>
 				</div> <!-- /row of widgets -->
 			</div>
 		</div>
-	</footer>	
-		
+	</footer>
+
 
 
 
