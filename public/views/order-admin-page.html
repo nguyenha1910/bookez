@@ -37,6 +37,12 @@
 	<script src="/js/order-admin-page.js"></script>
 	<script src="/js/get_user.js"></script>
 
+	<style>
+		ul {
+			list-style: none;	
+		}
+	</style>
+
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	<script src="assets/js/html5shiv.js"></script>
@@ -63,10 +69,10 @@
 					<ul class="nav navbar-nav pull-right">
 						<li><a href="/">Home</a></li>
 						<li><a href="/about">About</a></li>
-						<li class="dropdown" id="admin_zone">
+						<li class="dropdown active" id="admin_zone">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin zone <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="/admin-orders">Orders</a></li>
+								<li class="active"><a href="/admin-orders">Orders</a></li>
 								<li><a href="/admin-donations">Donations</a></li>
 							</ul>
 						</li>
@@ -76,7 +82,11 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="user_fname"></span>'s profile <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="">Profile page</a></li>
+<<<<<<< HEAD
+								<li><a href="/cart">Cart</a></li>
+=======
 								<li><a href="/cart" id="cart-anchor">Cart</a></li>
+>>>>>>> 5e0e989b4d1c3f242fe8e4b1348ab2552fd7dca9
 								<li><a href="/auth/logout">Logout</a></li>
 							</ul>
 						</li>
@@ -161,28 +171,15 @@
 
 
 
-		<!-- <!–– Column 2 ––> -->
+		<!–– Column 2 ––>
         <div class="col2">
 			<h2>All Orders</h2>
 			<p class="text-start"><strong>Total: <span id="order_length"></span> orders</strong></p>
             
-            <!-- <! –– List of questions ––> -->
-            <ul id="order_list" class="list-group">
-                <!-- {{#each questions}}     
-                <li>
-                <a href="/each_question/id={{_id}}" method="GET" class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">{{title}}</h5>
-                        <small>{{date_and_time}}</small>
-                    </div> 
-                    <p class="mb-1">{{body}}</p>
-                    <small>{{tags}}</small>
-                </a>      
-                </li>      
-                {{/each}}                 -->
-            </ul>
+            <! –– List of questions ––>
+            <ul id="order_list" class="list-group"></ul>
 
-            <!-- <! –– Pagination ––> -->
+            <! –– Pagination ––>
             <ul class="pagination justify-content-end">
                 <li class="page-item">
                 <a class="page-link" href="#" aria-label="Previous">
