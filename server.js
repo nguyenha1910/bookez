@@ -14,6 +14,9 @@ dotenv.config({ path: './.env'});
 
 const app = express();
 
+// for deployment
+require('./middleware/production')(app); 
+
 mongoose.connect('mongodb://localhost:27017/bookDB',
     {useNewUrlParser: true}, function () {
         console.log("db connection successful");

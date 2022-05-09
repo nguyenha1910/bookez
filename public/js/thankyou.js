@@ -15,7 +15,7 @@ $(document).ready(()=>{
             console.log("no user");
             $('#profile').remove();   
             $('#admin_zone').remove();
-            // $("#cart-anchor").attr("href", "/auth/signin");
+            $("#cart-anchor").attr("href", "/auth/signin");
         }
     });
 });
