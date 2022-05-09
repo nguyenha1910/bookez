@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BookEZ</title>
+    <title>Book-EZ - Book List</title>
     <link rel="stylesheet" href="css/style.css">
     <!--    <link rel="icon" href="img/bookez_icon.png">-->
     <!--    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">-->
+
+		<!-- Tab icon -->
+		<link rel="icon" href="img/bookez_icon.png">
 
     <!--    Google font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,11 +69,6 @@
 
 
 
-<style>
-    a {
-	color:black;
-}
-</style>
 
 </head>
 
@@ -146,6 +144,8 @@
 			<li class="active">Book List</li>
 		</ol>
 	</div>
+	<br />
+	<br />
 
     <div class="css-grid">
 
@@ -156,12 +156,14 @@
 				</div>
 			</div>
 
+			
+<!-- Sidebar -->
 			<aside class="sidebar" id="book_list_sidebar">
 				<h3>Filter</h3>
 				<div class="filter">
                     <section class="container">
                         <div id="selection_section" class="row">
-
+<!-- End Sidebar -->
 
                             <!-- Sort selection-->
                             <div class="col">
@@ -181,41 +183,52 @@
 		</div>
 	<!-- container -->
 
+
+	<article>
+
 	<div class="row">
         <div class = "row">
-                <article>
             <section class="container">
                 <div id="search_section" class="row">
 
 
                     <!-- search box-->
-                    <div class="input-group mb-3 col-lg-9 col-md-8 col-sm-8 col-xs-10">
-						<span class="input-group-text" id="basic-addon2" style="display: flex;">
-                        <input id="search_box" type="search" class="form-control" placeholder="Search Books" aria-label="Search"
-                            aria-describedby="basic-addon2" onsearch="searchBook()">
-							<i class="fas fa-search search_icon"></i>
-						</span>
-                    </div>
+					<div class="container" style="display: flex;">
+						<div class="input-group mb-3 col-lg-9 col-md-8 col-sm-8 col-xs-11">
+							<span class="input-group-text" id="basic-addon2" style="display: flex;">
+							<input id="search_box" type="search" class="form-control" placeholder="Search Books" aria-label="Search"
+								aria-describedby="basic-addon2" onsearch="searchBook()" style="margin-left: 10%;">
+								<i class="fas fa-search search_icon"></i>
+							</span>
+						</div>
+					</div>
+                    
+					<!-- End search box -->
 
 
 
 
                 </div>
-            </section>
-            </article>
             </div>
 
             <!-- Book List-->
             <section id="book_section" class="container">
-                <div class="col-lg-9">
+                <div class="col-lg-12">
                 <div id="book_list" class="row"></div>
                 </div>
             </section>
-
+			<!-- End booklist -->
+		</section>
 
     </div>
 </div>
 
+</article>
+
+<!-- Pagination -->
+
+
+<!-- End Pagination -->
 
 	<footer id="footer" class="top-space">
 
