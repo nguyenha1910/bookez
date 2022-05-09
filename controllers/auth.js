@@ -120,8 +120,8 @@ exports.login_fn = async (req, res) => {
         // console.log('Email list', email_list); 
         const user = email_list[0]; 
 
-        console.log("password: ", password);
-        console.log("user.password: ", user.password);
+        // console.log("password: ", password);
+        // console.log("user.password: ", user.password);
         if ( email_list.length == 0 || !(await bcrypt.compare(password, user.password)) ) {
             // req.session.message = "Email or Password is incorrect"; 
             return res.redirect('/signin');
@@ -175,7 +175,8 @@ exports.isLoggedIn = async (req, res, next) => {
     } 
     catch (ex) {
         res.send({
-            message: "no user"
+            message: "no user",
+            data:{}
         });
     }
 }

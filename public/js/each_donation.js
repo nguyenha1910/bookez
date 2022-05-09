@@ -6,9 +6,12 @@ function get_donation_object(donation) {
                 <p>Condition: ${donation.condition}</p>
                 <small>${donation.date_and_time}</small>
             </div>
+            <br>
             <div class="row donation_info">
                 <p>Donated by: ${donation.user_fname} ${donation.user_lname}</p>
+                <p>Phone Number: ${donation.phone_num}</p>
                 <p>Note: ${donation.note}</p>
+                <p>Status: ${donation.status}</p>
             </div>`    
 }
 
