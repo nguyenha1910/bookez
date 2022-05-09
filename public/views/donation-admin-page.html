@@ -34,8 +34,14 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 	<!--JS-->
-	<!-- <script src="/js/get_user.js"></script> -->
+	<script src="/js/get_user.js"></script>
 	<script src="/js/donation-admin-page.js"></script>
+	
+	<style>
+		ul {
+			list-style: none;	
+		}
+	</style>
 	
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -77,11 +83,11 @@
 					<ul class="nav navbar-nav pull-right">
 						<li><a href="/">Home</a></li>
 						<li><a href="/about">About</a></li>
-						<li class="dropdown" id="admin_zone">
+						<li class="dropdown active" id="admin_zone">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin zone <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="/admin-orders">Orders</a></li>
-								<li><a href="/admin-donations">Donations</a></li>
+								<li class="active"><a href="/admin-donations">Donations</a></li>
 							</ul>
 						</li>
 						<li><a href="/book_list">Book list</a></li>
@@ -90,6 +96,7 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="user_fname"></span>'s profile <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="">Profile page</a></li>
+								<li><a href="/cart">Cart</a></li>
 								<li><a href="/auth/logout">Logout</a></li>
 							</ul>
 						</li>

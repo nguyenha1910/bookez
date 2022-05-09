@@ -11,8 +11,8 @@ const orderSchema = new mongoose.Schema({
     street_name: String, 
     city: String,
     state: String,
-    zip: Number,
-    status: String,
+    zip: String,
+    status: { type: String, default: "Pending" },
     note: String
 }) 
 
@@ -120,5 +120,82 @@ exports.get_donation_by_id = async (req, res, next) => {
 }
 
 
+
+
+
+
+
+
+
+
+// ************************************************************** Order **************************************************************
+// A FUNCTION to handle a POST request for donate
+exports.order_fn = (req, res) => {
+    console.log("Order body: ", req.body); 
+
+    // Insert the new account into our database
+    async function insertNewOrder() {
+        const newOrder = new Order({
+            user_id: req.body.user_id,
+            user_fname: req.body.first_name,
+            user_lname: req.body.last_name,
+            email: req.body.email,
+            phone_num: req.body.phone_num,
+            street_name: req.body.address, 
+            city: req.body.city,
+            state: req.body.state,
+            zip: req.body.zip,
+            note: req.body.note
+        })
+
+        const result = await newOrder.save(); 
+        console.log(result);
+
+        // if (result) {
+        //     req.session.message_success = 'User registered'; 
+        return res.redirect('/thankyou'); 
+        // }   
+    }
+
+    insertNewOrder(); 
+}
+
+
+
+exports.populateOrders = async (req, res, next) => {  
+    try {
+        const order_list = await Order.find({}); 
+
+        if (!order_list) return next();
+
+        // var string = JSON.stringify(question_list);
+        // var ques_list = JSON.parse(string);
+        res.send({
+            message: "successful",
+            data: order_list.reverse()
+        });
+    } catch (error) {
+        console.log(error);
+        return next();
+    }
+}
+
+
+exports.get_order_by_id = async (req, res, next) => {  
+    try {
+        const instance = await Order.find({_id: req.query.order_id}); 
+        
+        // var string = JSON.stringify(oneQuestion);
+        // var instance = JSON.parse(string);
+        
+        res.send({
+            message: "retrieve order instance successful",
+            data: instance[0]
+        });
+    } catch (error) {
+        console.log(error);
+        return next();
+    }
+}
 
 

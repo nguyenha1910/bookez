@@ -5,7 +5,7 @@
 	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	
-	<title>BookEZ</title>
+	<title>Order</title>
 	<link rel="icon" href="img/bookez_icon.png">
 
 	<link rel="shortcut icon" href="assets/images/gt_favicon.png">
@@ -35,7 +35,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 	<script src="/js/get_user.js" defer></script>
-	<script src="/js/each_donation.js" defer></script>
+	<script src="/js/each_order.js" defer></script>
 
 </head>
 
@@ -56,10 +56,10 @@
 					<ul class="nav navbar-nav pull-right">
 						<li><a href="/">Home</a></li>
 						<li><a href="/about">About</a></li>
-						<li class="dropdown" id="admin_zone">
+						<li class="dropdown active" id="admin_zone">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin zone <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="/admin-orders">Orders</a></li>
+								<li class="active"><a href="/admin-orders">Orders</a></li>
 								<li><a href="/admin-donations">Donations</a></li>
 							</ul>
 						</li>
@@ -87,11 +87,13 @@
     <div class="container">
         <ol class="breadcrumb">
 			<li><a href="/">Home</a></li>
-			<li><a href="/admin-donations">Donation List</a></li>
-            <li class="active">Each Donation</li>
+			<li><a href="/admin-orders">Order List</a></li>
+            <li class="active">Each Order</li>
 		</ol>
         
-        <div class="container mt-4" id="donation_body"></div>
+        <br>
+
+        <div class="container mt-4" id="order_body"></div>
 
     </div>
 

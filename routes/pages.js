@@ -10,20 +10,6 @@ const mongoose = require("mongoose");
 // const validator = require('validator');
 
 const session = require("express-session");
-<<<<<<< HEAD
-const authController = require('../controllers/auth');          // load a module
-//Initialize passport
-// router.use(session({
-//     secret: "MyLittleSecretThatIdontWantOthersToKnow",
-//     resave: false,
-//     saveUninitialized: false
-// }));
-// router.use(passport.initialize());
-// router.use(passport.session());
-
-=======
->>>>>>> 9bd02c899897eabf79d3f3d8528f3956f0fff944
-
 // mongoose.connect('mongodb://localhost:27017/bookDB',
 //     {useNewUrlParser: true}, function () {
 //         console.log("db connection successful");
@@ -94,6 +80,8 @@ const orderSchema = new mongoose.Schema({
 
 const Order = mongoose.model('Order', orderSchema);
 
+
+
 const userSchema = new mongoose.Schema({
     email: {
         type: String,
@@ -134,7 +122,6 @@ router.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/about.html"));
 });
 
-
 router.get('/admin-orders', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/order-admin-page.html"));
 });
@@ -151,9 +138,12 @@ router.get('/register', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/signup.html"));
 });
 
-<<<<<<< HEAD
 router.get('/cart', (req,res) => {
     res.sendFile( path.join(__dirname, "../public/views/cart.html") );
+});
+
+router.get('/each_donation', (req,res) => {
+    res.sendFile( path.join(__dirname, "../public/views/each_donation.html") );
 });
 
 router.get('/each_order', (req,res) => {
@@ -168,24 +158,8 @@ router.get('/donation-form', (req,res) => {
     res.sendFile( path.join(__dirname, "../public/views/donation-form.html") );
 });
 
-=======
->>>>>>> 9bd02c899897eabf79d3f3d8528f3956f0fff944
 router.get('/each_order', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/each_order.html"));
-});
-
-router.get('/get_current_user', (req, res) => {
-    if (req.isAuthenticated()) {
-        res.send({
-            message: "success",
-            data: req.user
-        });
-    } else {
-        res.send({
-            message: "user not found",
-            data: {}
-        });
-    }
 });
 
 router.get('/book_list', (req, res) => {
@@ -198,6 +172,10 @@ router.get('/book_detail', (req, res) => {
 
 router.get('/thank-you', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/views/thankyou.html"));
+});
+
+router.get('/purchase', (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/views/purchase.html"));
 });
 
 router.get('/donation-form', (req, res) => {

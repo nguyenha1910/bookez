@@ -4,8 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
 
-	
-	<title>Contacts</title>
+	<title>About us</title>
 
 	<link rel="shortcut icon" href="assets/images/gt_favicon.png">
 	
@@ -16,10 +15,32 @@
 	<!-- Custom styles for our template -->
 	<link rel="stylesheet" href="assets/css/bootstrap-theme.css" media="screen" >
 	<link rel="stylesheet" href="assets/css/main.css">
-	<script src="/js/get_user.js" defer></script>
-
 	
+	<script src="/js/get_user.js" defer></script>
 </head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <body>
 	<!-- Fixed navbar -->
@@ -35,7 +56,7 @@
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav pull-right">
 						<li><a href="/">Home</a></li>
-						<li><a href="/about">About</a></li>
+						<li class="active"><a href="/about">About</a></li>
 						<li class="dropdown" id="admin_zone">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin zone <b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -49,6 +70,7 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="user_fname"></span>'s profile <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="">Profile page</a></li>
+								<li><a href="/cart">Cart</a></li>
 								<li><a href="/auth/logout">Logout</a></li>
 							</ul>
 						</li>
@@ -64,9 +86,8 @@
 
 	<!-- container -->
 	<div class="container">
-
 		<ol class="breadcrumb">
-			<li><a href="index.html">Home</a></li>
+			<li><a href="/">Home</a></li>
 			<li class="active">About</li>
 		</ol>
 
@@ -206,7 +227,6 @@
 	
 
 	<footer id="footer" class="top-space">
-
 		<div class="footer2">
 			<div class="container">
 				<div class="row">
@@ -230,7 +250,6 @@
 							</p>
 						</div>
 					</div>
-
 				</div> <!-- /row of widgets -->
 			</div>
 		</div>
@@ -246,7 +265,5 @@
 	<script src="assets/js/headroom.min.js"></script>
 	<script src="assets/js/jQuery.headroom.min.js"></script>
 	<script src="assets/js/template.js"></script>
-
-	
 </body>
 </html>
