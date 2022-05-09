@@ -17,6 +17,7 @@ const app = express();
 // for deployment
 require('./middleware/production')(app); 
 const uri = process.env.bookez_db;
+// console.log(uri);
 
 mongoose.connect('mongodb://localhost:27017/bookDB',
     {useNewUrlParser: true}, function () {
