@@ -10,13 +10,11 @@ console.log(user_id);
 
 function get_book_object(book) {
     return `<div class="bookDiv row py-2" data-m="${book._id}">
-                <div class="infoDiv col">
-
-                <div class="col-1 img"><a><img id="book_list_img" 
+                <div class="col img"><a><img id="book_list_img" 
                     class="book_cart_img" src="/img/dummy_book.png" alt="book image"/></a>
-                    </div>
+                </div>
                     
-
+                <div class="infoDiv col">
                     <div id="book_title" class="cart_info book_name">${book.book_name}</div>
                     <div id="book_author" class="cart_info author_name">By: ${book.author_name}</div>
                     <div class="price">Price: ${book.price}</div>
@@ -39,10 +37,10 @@ function showList(books) {
     });
 }
 
-function removeBook(buttonDiv){
+function removeBook(buttonDiv) {
     const book_id = $(buttonDiv).parent().parent().attr('data-m');
     console.log(book_id);
-    $.post('/remove_book_from_cart', {user_id: user_id, book_id: book_id}).done((data)=>{
+    $.post('/remove_book_from_cart', {user_id: user_id, book_id: book_id}).done((data) => {
         // console.log(data);
         location.reload();
     });
@@ -50,7 +48,7 @@ function removeBook(buttonDiv){
 
 $(document).ready(function () {
     if (user_id) {
-        $.getJSON('/get_books_in_cart_by_id?user_id=' + user_id).done((data)=>{
+        $.getJSON('/get_books_in_cart_by_id?user_id=' + user_id).done((data) => {
             showList(data.data);
         });
     }
