@@ -98,7 +98,7 @@ function toDetailPage(divObj) {
 function addToCart(divObj) {
     const book_id = $(divObj).attr('data-m');
     $.get('/auth/get_user').done((data)=>{
-        user_id = data.data.id;
+        const user_id = data.data.id;
         console.log(user_id);
         $.post('/add_to_cart', {user_id: user_id, book_id: book_id}).done((data) => {
             if (data.message === "success") {
