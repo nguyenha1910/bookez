@@ -9,6 +9,7 @@ function get_donation_object(donation) {
             <br>
             <div class="row donation_info">
                 <p>Donated by: ${donation.user_fname} ${donation.user_lname}</p>
+                <p>Email: ${donation.email}</p>
                 <p>Phone Number: ${donation.phone_num}</p>
                 <p>Note: ${donation.note}</p>
                 <p>Status: ${donation.status}</p>

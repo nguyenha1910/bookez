@@ -31,27 +31,26 @@ $.get('/order_and_donation/populateOrders').done((data)=>{
 
 
 
-// // function for search functionality
-// function search_filter(){
-//     const currentSearch = $('#search_box').val().toLowerCase(); //receive user input in the search box
-//     // for each loop jQuery
-//     $.each($('#order_list li'), function (){ // run function for each li elem
-//         // console.log($(this));
-//         // search from the title and overview section
-//         const title = $(this).find('h5').text().toLowerCase();
-//         const overview = $(this).find('.mb-1 p').text().toLowerCase();
+// function for search functionality
+function search_filter(){
+    const currentSearch = $('#search_box').val().toLowerCase(); //receive user input in the search box
+    // for each loop jQuery
+    $.each($('#order_list li'), function (){ // run function for each li elem
+        // console.log($(this));
+        // search from the title and overview section
+        const info = $(this).find('p').text().toLowerCase();
 
-//         const hasWord = title.includes(currentSearch) || overview.includes(currentSearch);
-//         if (hasWord) {
-//             // console.log(title);
-//             $(this).show(500);
-//         }else{
-//             $(this).hide(500);
-//         }
-//     });
-// }
+        const hasWord = info.includes(currentSearch);
+        if (hasWord) {
+            // console.log(title);
+            $(this).show(500);
+        }else{
+            $(this).hide(500);
+        }
+    });
+}
 
-// $('#search_box').on('keyup', search_filter);
+$('#search_box').on('keyup', search_filter);
 
 
 
