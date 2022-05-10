@@ -15,8 +15,8 @@ dotenv.config({ path: './.env'});
 const app = express();
 
 // for deployment
-require('./middleware/production')(app); 
-const uri = process.env.bookez_db;
+// require('./middleware/production')(app); 
+// const uri = process.env.bookez_db;
 // console.log(uri);
 
 mongoose.connect('mongodb://localhost:27017/bookDB',
@@ -43,6 +43,6 @@ app.use('/order_and_donation', require('./routes/order_and_donation'));
 
 
 port_number = 3002;
-app.listen(port_number, function () {
+app.listen(process.env.PORT || port_number, function () {
     console.log(`server started at ${port_number}`);
 });
