@@ -42,7 +42,11 @@ app.use('/books', require('./routes/books'));
 app.use('/order_and_donation', require('./routes/order_and_donation')); 
 
 
-port_number = 3002;
-app.listen(process.env.PORT || port_number, function () {
-    console.log(`server started at ${port_number}`);
-});
+var port_number = app.listen(process.env.PORT || 3002);
+app.listen(port_number);
+
+
+// port_number = 3002;
+// app.listen(process.env.PORT || port_number, function () {
+//     console.log(`server started at ${port_number}`);
+// });
