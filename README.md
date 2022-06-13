@@ -1,6 +1,8 @@
 # bookez
 ## Book-EZ Website
-  
+Visit the website here: https://book-ez.herokuapp.com/  
+
+
 To start this project, 
 1. Clone the project.
 2. Initialize the project by running these lines in terminal inside of the bookez directory:  
