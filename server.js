@@ -40,3 +40,5 @@ port_number = 3002;
 app.listen(port_number, function () {
     console.log(`server started at ${port_number}`);
 });
+
+const uri = process.env.MONGODB_URI;
