@@ -49,7 +49,7 @@ $.getJSON("/get_all_books").done((data) => {
     if (data.message === "success") {
         console.log("file loaded");
         bookData = data.data;
-        showList(bookData.slice(0, 10));
+        showList(bookData.slice(0, 100));
     } else {
         console.log("FE cant load data");
     }
