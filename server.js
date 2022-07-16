@@ -75,13 +75,10 @@ app.use('/auth', require('./routes/auth'));
 app.use('/books', require('./routes/books')); 
 app.use('/order_and_donation', require('./routes/order_and_donation')); 
 
+port = process.env.PORT || 3000;
+app.listen(port, function () {
+    console.log(`server started at ${port}`);
+});
 
-var port_number = app.listen(process.env.PORT || 3002);
-app.listen(port_number);
-
-
-// port_number = 3002;
-// app.listen(process.env.PORT || port_number, function () {
-//     console.log(`server started at ${port_number}`);
-// });
+const uri = process.env.MONGODB_URI;
 
