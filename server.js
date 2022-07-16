@@ -36,9 +36,9 @@ app.use('/auth', require('./routes/auth'));
 app.use('/books', require('./routes/books')); 
 app.use('/order_and_donation', require('./routes/order_and_donation')); 
 
-port_number = 3002;
-app.listen(port_number, function () {
-    console.log(`server started at ${port_number}`);
+port = process.env.PORT || 3000;
+app.listen(port, function () {
+    console.log(`server started at ${port}`);
 });
 
 const uri = process.env.MONGODB_URI;
