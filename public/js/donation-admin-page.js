@@ -1,3 +1,32 @@
+$(document).ready(()=>{
+    $.get('/auth/get_user').done((data)=>{
+        console.log(data);
+        if (data["message"] === "user exists"){
+            const user = data.data;
+            if (user.user_type != 1) {
+                location.href = "/"; 
+                return false; 
+            }
+            const user_id = user.id;
+            console.log(user);
+            $('#signin').remove();
+            $('#user_fname').text(user.fname);
+            if (user.user_type == 0) {
+                $('#admin_zone').remove();
+            }
+            $("#cart-anchor").attr("href", "/views/cart.html?user_id="+user_id);
+        } else {
+            console.log("no user");
+            location.href = "/"; 
+            // $('#profile').remove();   
+            // $('#admin_zone').remove();
+            // $("#cart-anchor").attr("href", "/auth/signin");
+        }
+    });
+});
+
+
+
 let donation_list; 
 
 // donation list
@@ -33,32 +62,27 @@ $.get('/order_and_donation/populateDonations').done((data)=>{
 
 
 
+// function for search functionality
+function search_filter(){
+    const currentSearch = $('#search_box').val().toLowerCase(); //receive user input in the search box
+    // for each loop jQuery
+    $.each($('#donation_list li'), function (){ // run function for each li elem
+        // console.log($(this));
+        // search from the title and overview section
+        const book_name = $(this).find('h4').text().toLowerCase();
+        const info = $(this).find('p').text().toLowerCase();
 
+        const hasWord = book_name.includes(currentSearch) || info.includes(currentSearch);
+        if (hasWord) {
+            // console.log(title);
+            $(this).show(500);
+        }else{
+            $(this).hide(500);
+        }
+    });
+}
 
-
-
-
-// // function for search functionality
-// function search_filter(){
-//     const currentSearch = $('#search_box').val().toLowerCase(); //receive user input in the search box
-//     // for each loop jQuery
-//     $.each($('#order_list li'), function (){ // run function for each li elem
-//         // console.log($(this));
-//         // search from the title and overview section
-//         const title = $(this).find('h5').text().toLowerCase();
-//         const overview = $(this).find('.mb-1 p').text().toLowerCase();
-
-//         const hasWord = title.includes(currentSearch) || overview.includes(currentSearch);
-//         if (hasWord) {
-//             // console.log(title);
-//             $(this).show(500);
-//         }else{
-//             $(this).hide(500);
-//         }
-//     });
-// }
-
-// $('#search_box').on('keyup', search_filter);
+$('#search_box').on('keyup', search_filter);
 
 
 

@@ -1,10 +1,13 @@
 // order list
 function get_order_object(order) {
     return `<p><strong>Order by: ${order.user_fname} ${order.user_lname}</strong></p>
-            <small>${order.date_and_time}</small>
-            <p>Phone number: ${order.phone_num} </p>
+            <p>Email: ${order.email} </p>
+            <small>${order.date_and_time}</small> <br> <br>
+            
             <p>Area: ${order.city} ${order.state} ${order.zip}</p>
-            <p>Note: ${order.note} </p>`
+            <p>Status: ${order.status} </p>
+            <p>Note: ${order.note} </p>
+            `
 }
 
 const queryString = window.location.search;
