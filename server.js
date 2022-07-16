@@ -18,8 +18,8 @@ const app = express();
 
 // for deployment
 // require('./middleware/production')(app); 
-// const uri = process.env.bookez_db;
-// console.log(uri);
+const uri = process.env.MONGODB_URI;
+console.log(uri);
 
 mongoose.connect('mongodb://localhost:27017/bookDB',
     {useNewUrlParser: true}, function () {
@@ -80,5 +80,4 @@ app.listen(port, function () {
     console.log(`server started at ${port}`);
 });
 
-const uri = process.env.MONGODB_URI;
 
