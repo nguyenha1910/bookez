@@ -1,6 +1,6 @@
 # bookez
 ## Book-EZ Website
-Visit the website here: https://book-ez.herokuapp.com/  
+Visit the website here: https://bookezclarku.herokuapp.com/book_list  
 
 
 To start this project, 
