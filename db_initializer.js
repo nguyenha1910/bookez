@@ -10,7 +10,7 @@ const fs = require('fs');
 const rawdata = fs.readFileSync(__dirname + "/data/bookez_data.csv");
 
 const uri = process.env.MONGODB_URI;
-const uri = 'mongodb://localhost:27017/bookDB';
+// const uri = 'mongodb://localhost:27017/bookDB';
 console.log(uri);
 
 mongoose.connect(uri,

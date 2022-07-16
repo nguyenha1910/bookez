@@ -20,7 +20,7 @@ const app = express();
 // require('./middleware/production')(app);
 
 const uri = process.env.MONGODB_URI;
-const uri = 'mongodb://localhost:27017/bookDB';
+// const uri = 'mongodb://localhost:27017/bookDB';
 console.log(uri);
 
 mongoose.connect(uri,
