@@ -1,6 +1,6 @@
 # bookez
 ## Book-EZ Website
-Visit the website here: https://bookezclarku.herokuapp.com/book_list  
+Visit the website here: https://bookezclarku.herokuapp.com/book_list  (Heroku free is no longer available)
 
 
 To run this project, 
